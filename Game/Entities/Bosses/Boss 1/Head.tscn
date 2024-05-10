@@ -1,0 +1,103 @@
+[gd_scene load_steps=15 format=3 uid="uid://d07ga7gwyur0t"]
+
+[ext_resource type="Script" path="res://Game/Entities/Bosses/Boss 1/Head.gd" id="1_3xjnd"]
+[ext_resource type="Texture2D" uid="uid://crqvtdl2i1hv6" path="res://Assets/Bosses/boss_spr.png" id="2_ehlgv"]
+[ext_resource type="Texture2D" uid="uid://bj3t7m5es51da" path="res://Assets/Bosses/member_spr.png" id="3_phce1"]
+[ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="4_idsir"]
+[ext_resource type="Script" path="res://Components/Damage/Hurtbox.gd" id="5_xvfts"]
+[ext_resource type="Script" path="res://Components/Stats/Stats.gd" id="6_yn7gt"]
+[ext_resource type="Script" path="res://Components/Damage/Hurt.gd" id="7_27p0f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyjhq"]
+atlas = ExtResource("2_ehlgv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jnsfj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyjhq")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w34wd"]
+atlas = ExtResource("3_phce1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_joio3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w34wd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ot42i"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6bbq"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0etf"]
+size = Vector2(64, 64)
+
+[node name="Head" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_3xjnd")
+
+[node name="Sprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jnsfj")
+autoplay = "default"
+
+[node name="member1_spr" type="AnimatedSprite2D" parent="."]
+position = Vector2(-64, 48)
+sprite_frames = SubResource("SpriteFrames_joio3")
+autoplay = "default"
+
+[node name="Hitbox" type="Area2D" parent="member1_spr"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("4_idsir")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="member1_spr/Hitbox"]
+shape = SubResource("RectangleShape2D_ot42i")
+
+[node name="Hurtbox" type="Area2D" parent="member1_spr"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("5_xvfts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="member1_spr/Hurtbox"]
+shape = SubResource("RectangleShape2D_s6bbq")
+
+[node name="Stats" type="Node" parent="member1_spr"]
+script = ExtResource("6_yn7gt")
+health = 3
+
+[node name="Hurt" type="Node" parent="member1_spr" node_paths=PackedStringArray("stats", "hurtbox")]
+script = ExtResource("7_27p0f")
+stats = NodePath("../Stats")
+hurtbox = NodePath("../Hurtbox")
+
+[node name="BossHurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("5_xvfts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossHurtbox"]
+shape = SubResource("RectangleShape2D_y0etf")
+
+[node name="BossStats" type="Node" parent="."]
+script = ExtResource("6_yn7gt")
+health = 30
+
+[node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
+script = ExtResource("7_27p0f")
+stats = NodePath("../BossStats")
+hurtbox = NodePath("../BossHurtbox")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddxg15egd2mbt"]
+
+[ext_resource type="Script" path="res://Game/Entities/Bullets/Base/Bullet.gd" id="1_ppos0"]
+[ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="2_5ihcw"]
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_ppos0")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+script = ExtResource("2_5ihcw")

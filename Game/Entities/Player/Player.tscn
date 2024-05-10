@@ -1,0 +1,97 @@
+[gd_scene load_steps=17 format=3 uid="uid://cavv0c8wefvuo"]
+
+[ext_resource type="Script" path="res://Game/Entities/Player/Player.gd" id="1_u7wy1"]
+[ext_resource type="Texture2D" uid="uid://c8asyurk7tvt4" path="res://Assets/Player/player.png" id="2_2d8av"]
+[ext_resource type="Resource" uid="uid://dx4y0tlgux7v1" path="res://Resources/Movement Data/Player/player_default_md.tres" id="2_mjqvo"]
+[ext_resource type="Script" path="res://Components/State Machine/MoveControl.gd" id="3_n0djw"]
+[ext_resource type="Script" path="res://Components/State Machine/MovementStateMachine.gd" id="4_wladf"]
+[ext_resource type="Script" path="res://Components/State Machine/States/idle_state.gd" id="5_sqwkq"]
+[ext_resource type="Script" path="res://Components/State Machine/States/moving_state.gd" id="6_nqrp0"]
+[ext_resource type="Script" path="res://Components/Damage/Hurtbox.gd" id="8_da7pf"]
+[ext_resource type="Script" path="res://Components/Damage/Hurt.gd" id="9_yd7qh"]
+[ext_resource type="Script" path="res://Components/Stats/Stats.gd" id="10_4pdqy"]
+[ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="11_s3px0"]
+[ext_resource type="PackedScene" uid="uid://bqeufqikc3wxn" path="res://Game/Entities/Bullets/player_bullet.tscn" id="12_o07yb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pftt"]
+atlas = ExtResource("2_2d8av")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l381x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pftt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtoyq"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4cjq"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 0
+motion_mode = 1
+script = ExtResource("1_u7wy1")
+movement_data = ExtResource("2_mjqvo")
+
+[node name="Sprites" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_l381x")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_wtoyq")
+metadata/_edit_lock_ = true
+
+[node name="MoveControl" type="Node" parent="."]
+script = ExtResource("3_n0djw")
+
+[node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("4_wladf")
+starting_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("moving_state")]
+script = ExtResource("5_sqwkq")
+moving_state = NodePath("../Moving")
+
+[node name="Moving" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("6_nqrp0")
+idle_state = NodePath("../Idle")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("10_4pdqy")
+health = 3
+
+[node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
+script = ExtResource("9_yd7qh")
+stats = NodePath("../Stats")
+hurtbox = NodePath("../Hurtbox")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("8_da7pf")
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_r4cjq")
+debug_color = Color(0.154645, 0.617607, 0.529035, 0.42)
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("11_s3px0")
+scene = ExtResource("12_o07yb")
+
+[node name="AtkTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="AtkTimer" to="." method="_on_atk_timer_timeout"]
