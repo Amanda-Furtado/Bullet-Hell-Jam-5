@@ -89,16 +89,11 @@ sprite = NodePath("../Sprite")
 [node name="lilStarSpawner" type="Node2D" parent="." node_paths=PackedStringArray("ray_cast")]
 script = ExtResource("1_20ms0")
 scene = ExtResource("14_pcgj5")
-ray_cast = NodePath("../RayCast")
+ray_cast = NodePath("")
 
 [node name="AtkTimer" type="Timer" parent="."]
 wait_time = 0.8
 autostart = true
 
-[node name="RayCast" type="RayCast2D" parent="."]
-collision_mask = 0
-
 [node name="Marker" type="Marker2D" parent="."]
 position = Vector2(-8, 0)
-
-[connection signal="timeout" from="AtkTimer" to="." method="_on_atk_timer_timeout"]

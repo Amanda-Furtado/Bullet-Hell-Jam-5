@@ -6,7 +6,6 @@ extends CharacterBody2D
 @onready var sprite = $Sprite
 @onready var atk_timer = $AtkTimer
 @onready var lil_star_spawner = $lilStarSpawner
-@onready var ray_cast = $RayCast
 @onready var marker = $Marker
 
 #damage
@@ -43,7 +42,6 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	shoot()
-	#ray_cast.target_position = marker.to_local(player.position)
 
 
 func shoot() -> void:
@@ -66,7 +64,3 @@ func shoot() -> void:
 			get_tree().root.call_deferred("add_child", new_bullet)
 		await get_tree().create_timer(1 / fire_rate).timeout
 		can_shoot = true
-
-
-func _on_atk_timer_timeout() -> void:
-	pass
