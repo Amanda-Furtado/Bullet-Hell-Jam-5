@@ -69,8 +69,3 @@ debug_color = Color(0.302776, 0.614443, 0.375808, 0.42)
 position = Vector2(-32, 0)
 script = ExtResource("5_jswo6")
 scene = ExtResource("6_17dpp")
-
-[node name="RotationTimer" type="Timer" parent="."]
-autostart = true
-
-[connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]
