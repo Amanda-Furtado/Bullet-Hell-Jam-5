@@ -2,7 +2,7 @@ class_name Bullet extends CharacterBody2D
 
 
 @export var speed: int = 2
-var direction: Vector2 = Vector2.RIGHT
+var direction: Vector2 = Vector2.LEFT
 
 
 func _ready():

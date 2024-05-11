@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://qhcex4ei7jh"]
+
+[ext_resource type="Script" path="res://Game/Entities/Bosses/The Moon/TheMoon.gd" id="1_8ocbu"]
+[ext_resource type="Texture2D" uid="uid://bga0rpnysawmj" path="res://Assets/Bosses/The Moon/moon_spr.png" id="1_t1xvu"]
+[ext_resource type="Texture2D" uid="uid://cnrqg5jsx6jwx" path="res://Assets/Bosses/The Moon/moon2_spr.png" id="2_wfw7e"]
+[ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="3_it85t"]
+[ext_resource type="Script" path="res://Components/Damage/Hurtbox.gd" id="4_bvep4"]
+[ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="5_jswo6"]
+[ext_resource type="PackedScene" uid="uid://ba8mf1gb1n7gw" path="res://Game/Entities/Bullets/Boss Bullets/Moon Bullets/quesso_bullet.tscn" id="6_17dpp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe72r"]
+atlas = ExtResource("1_t1xvu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tres"]
+atlas = ExtResource("2_wfw7e")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bpiej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe72r")
+}],
+"loop": false,
+"name": &"phase1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tres")
+}],
+"loop": true,
+"name": &"phase2",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7xmcv"]
+radius = 31.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lx3dh"]
+radius = 32.0156
+
+[node name="TheMoon" type="CharacterBody2D"]
+position = Vector2(-1, 0)
+motion_mode = 1
+script = ExtResource("1_8ocbu")
+
+[node name="Sprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bpiej")
+animation = &"phase1"
+autoplay = "phase1"
+
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("3_it85t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_7xmcv")
+debug_color = Color(0.875917, 0.266809, 0.555277, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("4_bvep4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_lx3dh")
+debug_color = Color(0.302776, 0.614443, 0.375808, 0.42)
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(-32, 0)
+script = ExtResource("5_jswo6")
+scene = ExtResource("6_17dpp")
+
+[node name="RotationTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]

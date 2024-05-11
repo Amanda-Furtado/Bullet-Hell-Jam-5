@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dixiqobk8vsih" path="res://Assets/Tilesets/generictiles_spr.png" id="1_037gs"]
 [ext_resource type="Script" path="res://Game/Levels/base_level/Level.gd" id="1_rm52v"]
 [ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Entities/Player/Player.tscn" id="2_rxb33"]
-[ext_resource type="PackedScene" uid="uid://d07ga7gwyur0t" path="res://Game/Entities/Bosses/Boss 1/Head.tscn" id="4_kf5kl"]
+[ext_resource type="PackedScene" uid="uid://qhcex4ei7jh" path="res://Game/Entities/Bosses/The Moon/TheMoon.tscn" id="4_2pptp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s457o"]
 texture = ExtResource("1_037gs")
@@ -84,6 +84,5 @@ layer_1/tile_data = PackedInt32Array()
 [node name="Player" parent="." instance=ExtResource("2_rxb33")]
 position = Vector2(88, 128)
 
-[node name="Head" parent="." instance=ExtResource("4_kf5kl")]
-position = Vector2(464, 144)
-rotation = 1.57079
+[node name="TheMoon" parent="." instance=ExtResource("4_2pptp")]
+position = Vector2(448, 144)
