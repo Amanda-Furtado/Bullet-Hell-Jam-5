@@ -23,7 +23,8 @@ size = Vector2(8, 8)
 
 [node name="PlayerBullet" instance=ExtResource("1_kvr3s")]
 direction = 0
-speed = 5.0
+behavior = 0
+speed = 2
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_px51a")

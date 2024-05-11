@@ -88,10 +88,12 @@ shape = SubResource("RectangleShape2D_r4cjq")
 debug_color = Color(0.154645, 0.617607, 0.529035, 0.42)
 
 [node name="Spawner" type="Node2D" parent="."]
+position = Vector2(8, -8)
 script = ExtResource("11_s3px0")
 scene = ExtResource("12_o07yb")
 
 [node name="AtkTimer" type="Timer" parent="."]
+wait_time = 0.2
 autostart = true
 
 [connection signal="timeout" from="AtkTimer" to="." method="_on_atk_timer_timeout"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgwifd333bbxf"]
+
+[ext_resource type="PackedScene" uid="uid://ddxg15egd2mbt" path="res://Game/Entities/Bullets/Base/Bullet.tscn" id="1_hffaq"]
+[ext_resource type="Texture2D" uid="uid://goovhlfkq713" path="res://Assets/Bosses/The Moon/bullets/queso.png" id="2_coo13"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ami7j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_coo13")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jjn1b"]
+radius = 7.0
+
+[node name="lilStarBullet" instance=ExtResource("1_hffaq")]
+direction = 4
+speed = 3.0
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_ami7j")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_jjn1b")

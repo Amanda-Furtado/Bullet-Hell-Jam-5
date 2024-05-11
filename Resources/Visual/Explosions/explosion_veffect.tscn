@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkcb672ohnlf3"]
+
+[ext_resource type="Texture2D" uid="uid://davk0mlug17e" path="res://Assets/Visual Effects/explosion_sprite.png" id="1_n6itx"]
+[ext_resource type="Script" path="res://Resources/Visual/Explosions/Scripts/one_time_veffect.gd" id="2_mnwam"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jquwb"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_uis16"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.360656, 0.737705)
+colors = PackedColorArray(0.956863, 0.705882, 0.105882, 1, 0.901961, 0.282353, 0.180392, 1, 0.811765, 0.776471, 0.721569, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lb5p2"]
+gradient = SubResource("Gradient_uis16")
+
+[sub_resource type="Curve" id="Curve_g1nub"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tdn5y"]
+curve = SubResource("Curve_g1nub")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u7w4d"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 16.0
+angle_min = -90.0
+angle_max = 90.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_tdn5y")
+color_ramp = SubResource("GradientTexture1D_lb5p2")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+turbulence_noise_scale = 2.442
+
+[node name="ExplosionVeffect" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_jquwb")
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_u7w4d")
+texture = ExtResource("1_n6itx")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.6
+randomness = 0.3
+draw_order = 0
+script = ExtResource("2_mnwam")

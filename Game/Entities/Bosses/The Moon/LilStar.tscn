@@ -1,0 +1,104 @@
+[gd_scene load_steps=17 format=3 uid="uid://mh3cy68pxnsl"]
+
+[ext_resource type="Script" path="res://Game/Entities/Bosses/The Moon/LilStar.gd" id="1_1woqt"]
+[ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="1_20ms0"]
+[ext_resource type="Texture2D" uid="uid://brdj6m3jumatg" path="res://Assets/Bosses/The Moon/Lil Stars/lil_star_spr.png" id="1_i75qj"]
+[ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="2_jfn8a"]
+[ext_resource type="Script" path="res://Components/Damage/Hurtbox.gd" id="3_3dxwd"]
+[ext_resource type="Script" path="res://Components/Stats/Stats.gd" id="4_gq4kg"]
+[ext_resource type="Script" path="res://Components/Damage/Hurt.gd" id="5_tb7it"]
+[ext_resource type="Script" path="res://Components/Effects/destroyed_effect.gd" id="6_tetc1"]
+[ext_resource type="PackedScene" uid="uid://bkcb672ohnlf3" path="res://Resources/Visual/Explosions/explosion_veffect.tscn" id="8_2lmhh"]
+[ext_resource type="Script" path="res://Components/Effects/shake_effect.gd" id="9_i1dyk"]
+[ext_resource type="Script" path="res://Components/Effects/flash_effect.gd" id="10_momt3"]
+[ext_resource type="Material" uid="uid://c88q6pkhh3vl" path="res://Resources/Visual/Flashes/white_flash_material.tres" id="11_nrus1"]
+[ext_resource type="Script" path="res://Components/Effects/scale_effect.gd" id="12_kk7do"]
+[ext_resource type="PackedScene" uid="uid://bgwifd333bbxf" path="res://Game/Entities/Bullets/Boss Bullets/Moon Bullets/lil_star_bullet.tscn" id="14_pcgj5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aaq6s"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dl37f"]
+radius = 8.06226
+
+[node name="LilStar" type="CharacterBody2D" node_paths=PackedStringArray("barrel_origin")]
+motion_mode = 1
+script = ExtResource("1_1woqt")
+bullet = ExtResource("14_pcgj5")
+fire_rate = 1.0
+barrel_origin = NodePath("Marker")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_i75qj")
+
+[node name="lilStarHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("2_jfn8a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lilStarHitbox"]
+shape = SubResource("CircleShape2D_aaq6s")
+debug_color = Color(0.875917, 0.266809, 0.555277, 0.42)
+
+[node name="lilStarHurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_3dxwd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lilStarHurtbox"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_dl37f")
+debug_color = Color(0.302776, 0.614443, 0.375808, 0.42)
+
+[node name="lilStarStats" type="Node" parent="."]
+script = ExtResource("4_gq4kg")
+health = 50
+
+[node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
+script = ExtResource("5_tb7it")
+stats = NodePath("../lilStarStats")
+hurtbox = NodePath("../lilStarHurtbox")
+
+[node name="DestroyedEffect" type="Node" parent="." node_paths=PackedStringArray("actor", "stats", "dest_ef_spawner")]
+script = ExtResource("6_tetc1")
+actor = NodePath("..")
+stats = NodePath("../lilStarStats")
+dest_ef_spawner = NodePath("DestroyedSpawner")
+
+[node name="DestroyedSpawner" type="Node2D" parent="DestroyedEffect"]
+position = Vector2(-1, 0)
+script = ExtResource("1_20ms0")
+scene = ExtResource("8_2lmhh")
+
+[node name="ShakeEffect" type="Node" parent="." node_paths=PackedStringArray("node_to_shake")]
+script = ExtResource("9_i1dyk")
+node_to_shake = NodePath("../Sprite")
+
+[node name="FlashEffect" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("10_momt3")
+flash_material = ExtResource("11_nrus1")
+sprite = NodePath("../Sprite")
+flash_duration = 0.05
+
+[node name="ScaleEffect" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("12_kk7do")
+sprite = NodePath("../Sprite")
+
+[node name="lilStarSpawner" type="Node2D" parent="." node_paths=PackedStringArray("ray_cast")]
+script = ExtResource("1_20ms0")
+scene = ExtResource("14_pcgj5")
+ray_cast = NodePath("../RayCast")
+
+[node name="AtkTimer" type="Timer" parent="."]
+wait_time = 0.8
+autostart = true
+
+[node name="RayCast" type="RayCast2D" parent="."]
+collision_mask = 0
+
+[node name="Marker" type="Marker2D" parent="."]
+position = Vector2(-8, 0)
+
+[connection signal="timeout" from="AtkTimer" to="." method="_on_atk_timer_timeout"]

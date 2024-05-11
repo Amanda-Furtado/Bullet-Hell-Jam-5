@@ -2,6 +2,7 @@ class_name Level extends Node2D
 
 
 @onready var player = $Player
+@onready var label = $CanvasLayer/Label
 
 
 func _ready():
@@ -9,4 +10,4 @@ func _ready():
 
 
 func _process(delta: float) -> void:
-	pass
+	label.text = str("FPS: ", Engine.get_frames_per_second())   
