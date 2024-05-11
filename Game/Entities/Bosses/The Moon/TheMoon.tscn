@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://qhcex4ei7jh"]
+[gd_scene load_steps=20 format=3 uid="uid://qhcex4ei7jh"]
 
 [ext_resource type="Script" path="res://Game/Entities/Bosses/The Moon/TheMoon.gd" id="1_8ocbu"]
 [ext_resource type="Texture2D" uid="uid://bga0rpnysawmj" path="res://Assets/Bosses/The Moon/moon_spr.png" id="1_t1xvu"]
@@ -7,6 +7,13 @@
 [ext_resource type="Script" path="res://Components/Damage/Hurtbox.gd" id="4_bvep4"]
 [ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="5_jswo6"]
 [ext_resource type="PackedScene" uid="uid://ba8mf1gb1n7gw" path="res://Game/Entities/Bullets/Boss Bullets/Moon Bullets/quesso_bullet.tscn" id="6_17dpp"]
+[ext_resource type="Script" path="res://Components/Stats/Stats.gd" id="8_3lrma"]
+[ext_resource type="Script" path="res://Components/Damage/Hurt.gd" id="9_7g424"]
+[ext_resource type="Script" path="res://Components/Effects/destroyed_effect.gd" id="10_rnx65"]
+[ext_resource type="Script" path="res://Components/Effects/shake_effect.gd" id="11_qw47l"]
+[ext_resource type="Script" path="res://Components/Effects/flash_effect.gd" id="12_h2nin"]
+[ext_resource type="Material" uid="uid://c88q6pkhh3vl" path="res://Resources/Visual/Flashes/white_flash_material.tres" id="13_utv8u"]
+[ext_resource type="Script" path="res://Components/Effects/scale_effect.gd" id="13_xqe7b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fe72r"]
 atlas = ExtResource("1_t1xvu")
@@ -46,26 +53,59 @@ position = Vector2(-1, 0)
 motion_mode = 1
 script = ExtResource("1_8ocbu")
 
-[node name="Sprites" type="AnimatedSprite2D" parent="."]
+[node name="bossSprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bpiej")
 animation = &"phase1"
 autoplay = "phase1"
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="bossHitbox" type="Area2D" parent="."]
 script = ExtResource("3_it85t")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bossHitbox"]
 shape = SubResource("CircleShape2D_7xmcv")
 debug_color = Color(0.875917, 0.266809, 0.555277, 0.42)
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="bossHurtbox" type="Area2D" parent="."]
 script = ExtResource("4_bvep4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bossHurtbox"]
 shape = SubResource("CircleShape2D_lx3dh")
 debug_color = Color(0.302776, 0.614443, 0.375808, 0.42)
 
-[node name="Spawner" type="Node2D" parent="."]
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("8_3lrma")
+health = 20
+
+[node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
+script = ExtResource("9_7g424")
+stats = NodePath("../Stats")
+hurtbox = NodePath("../bossHurtbox")
+
+[node name="bossSpawner" type="Node2D" parent="."]
 position = Vector2(-32, 0)
 script = ExtResource("5_jswo6")
 scene = ExtResource("6_17dpp")
+
+[node name="DestroyedEffect" type="Node" parent="." node_paths=PackedStringArray("actor", "stats", "dest_ef_spawner")]
+script = ExtResource("10_rnx65")
+actor = NodePath("..")
+stats = NodePath("../Stats")
+dest_ef_spawner = NodePath("DestroyedSpawner")
+
+[node name="DestroyedSpawner" type="Node2D" parent="DestroyedEffect"]
+position = Vector2(-1, 0)
+script = ExtResource("5_jswo6")
+
+[node name="ShakeEffect" type="Node" parent="." node_paths=PackedStringArray("node_to_shake")]
+script = ExtResource("11_qw47l")
+node_to_shake = NodePath("../bossSprites")
+
+[node name="FlashEffect" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("12_h2nin")
+flash_material = ExtResource("13_utv8u")
+sprite = NodePath("../bossSprites")
+flash_duration = 0.05
+
+[node name="ScaleEffect" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("13_xqe7b")
+sprite = NodePath("../bossSprites")
