@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
 
+signal touch_top
+signal touch_bot
+
+
 @onready var player = get_tree().get_first_node_in_group("players")
 @onready var boss_hurtbox = $bossHurtbox
 @onready var boss_sprites = $bossSprites
@@ -28,10 +32,11 @@ func _physics_process(delta: float) -> void:
 	#rotate_to_target(player, delta)
 	if global_position.y <= max_y:
 		moon_dir = Vector2.DOWN
-		
+		touch_top.emit()
 	
 	elif global_position.y >= min_y:
 		moon_dir = Vector2.UP
+		touch_bot.emit()
 	
 	velocity = moon_speed * moon_dir
 	move_and_slide()

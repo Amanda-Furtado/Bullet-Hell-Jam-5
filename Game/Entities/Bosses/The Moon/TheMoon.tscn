@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://Components/Effects/flash_effect.gd" id="12_h2nin"]
 [ext_resource type="Material" uid="uid://c88q6pkhh3vl" path="res://Resources/Visual/Flashes/white_flash_material.tres" id="13_utv8u"]
 [ext_resource type="Script" path="res://Components/Effects/scale_effect.gd" id="13_xqe7b"]
-[ext_resource type="PackedScene" uid="uid://mh3cy68pxnsl" path="res://Game/Entities/Bosses/The Moon/LilStar.tscn" id="16_fsf21"]
+[ext_resource type="PackedScene" uid="uid://mh3cy68pxnsl" path="res://Game/Entities/Bosses/The Moon/Minions/LilStar.tscn" id="16_pub0o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fe72r"]
 atlas = ExtResource("1_t1xvu")
@@ -124,25 +124,25 @@ sprite = NodePath("../bossSprites")
 
 [node name="Stars" type="Node2D" parent="."]
 
-[node name="LilStar" parent="Stars" instance=ExtResource("16_fsf21")]
+[node name="LilStar" parent="Stars" instance=ExtResource("16_pub0o")]
 position = Vector2(-47, -48)
 bullet_count = 2
 arc = 45.0
 
-[node name="LilStar2" parent="Stars" instance=ExtResource("16_fsf21")]
+[node name="LilStar2" parent="Stars" instance=ExtResource("16_pub0o")]
 position = Vector2(1, -64)
 arc = 60.0
 
-[node name="LilStar3" parent="Stars" instance=ExtResource("16_fsf21")]
+[node name="LilStar3" parent="Stars" instance=ExtResource("16_pub0o")]
 position = Vector2(-79, 0)
 bullet_count = 1
 arc = 0.0
 
-[node name="LilStar4" parent="Stars" instance=ExtResource("16_fsf21")]
+[node name="LilStar4" parent="Stars" instance=ExtResource("16_pub0o")]
 position = Vector2(-47, 32)
 bullet_count = 2
 arc = 45.0
 
-[node name="LilStar5" parent="Stars" instance=ExtResource("16_fsf21")]
+[node name="LilStar5" parent="Stars" instance=ExtResource("16_pub0o")]
 position = Vector2(1, 64)
 arc = 60.0

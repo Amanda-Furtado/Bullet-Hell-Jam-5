@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwl8kv7e6l4rl"]
+
+[ext_resource type="PackedScene" uid="uid://ddxg15egd2mbt" path="res://Game/Entities/Bullets/Base/Bullet.tscn" id="1_qt4u5"]
+[ext_resource type="Texture2D" uid="uid://b3ltvhc8yi8nr" path="res://Assets/Bosses/The Moon/bullets/sea_bullet.png" id="2_6vvcw"]
+[ext_resource type="PackedScene" uid="uid://bgwifd333bbxf" path="res://Game/Entities/Bullets/Boss Bullets/Moon Bullets/lil_star_bullet.tscn" id="2_tavax"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyqq6"]
+atlas = ExtResource("2_6vvcw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n3c7n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyqq6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8e7gu"]
+
+[node name="MoonSeaBullet" node_paths=PackedStringArray("barrel_origin") instance=ExtResource("1_qt4u5")]
+has_bullets = true
+bullet = ExtResource("2_tavax")
+bullet_count = 8
+arc = 360.0
+fire_rate = 1.0
+barrel_origin = NodePath(".")
+expire = true
+life_time = 1.0
+direction = 0
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_n3c7n")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_8e7gu")

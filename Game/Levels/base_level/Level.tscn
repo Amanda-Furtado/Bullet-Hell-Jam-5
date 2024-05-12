@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmafyevf4c6fj"]
+[gd_scene load_steps=8 format=3 uid="uid://dmafyevf4c6fj"]
 
 [ext_resource type="Texture2D" uid="uid://dixiqobk8vsih" path="res://Assets/Tilesets/generictiles_spr.png" id="1_037gs"]
 [ext_resource type="Script" path="res://Game/Levels/base_level/Level.gd" id="1_rm52v"]
 [ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Entities/Player/Player.tscn" id="2_rxb33"]
 [ext_resource type="PackedScene" uid="uid://qhcex4ei7jh" path="res://Game/Entities/Bosses/The Moon/TheMoon.tscn" id="4_2pptp"]
+[ext_resource type="PackedScene" uid="uid://c7uf6qtxcabm7" path="res://Game/Entities/Bosses/The Moon/Minions/MoonSea.tscn" id="5_2j3ej"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s457o"]
 texture = ExtResource("1_037gs")
@@ -84,6 +85,11 @@ layer_1/tile_data = PackedInt32Array()
 [node name="TheMoon" parent="." instance=ExtResource("4_2pptp")]
 position = Vector2(448, 144)
 
+[node name="MoonSea" parent="." instance=ExtResource("5_2j3ej")]
+
+[node name="Player" parent="." instance=ExtResource("2_rxb33")]
+position = Vector2(81, 151)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
@@ -92,6 +98,3 @@ offset_top = 16.0
 offset_right = 56.0
 offset_bottom = 39.0
 text = "FPS:"
-
-[node name="Player" parent="." instance=ExtResource("2_rxb33")]
-position = Vector2(81, 151)
