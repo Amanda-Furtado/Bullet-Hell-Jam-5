@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://qhcex4ei7jh"]
+[gd_scene load_steps=23 format=3 uid="uid://qhcex4ei7jh"]
 
 [ext_resource type="Script" path="res://Game/Entities/Bosses/The Moon/TheMoon.gd" id="1_8ocbu"]
 [ext_resource type="Texture2D" uid="uid://bga0rpnysawmj" path="res://Assets/Bosses/The Moon/moon_spr.png" id="1_t1xvu"]
+[ext_resource type="PackedScene" uid="uid://bgwifd333bbxf" path="res://Game/Entities/Bullets/Boss Bullets/Moon Bullets/lil_star_bullet.tscn" id="2_ltdxk"]
 [ext_resource type="Texture2D" uid="uid://cnrqg5jsx6jwx" path="res://Assets/Bosses/The Moon/moon2_spr.png" id="2_wfw7e"]
 [ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="3_it85t"]
 [ext_resource type="Script" path="res://Components/Damage/Hurtbox.gd" id="4_bvep4"]
@@ -50,13 +51,18 @@ radius = 31.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_lx3dh"]
 radius = 32.0156
 
-[node name="TheMoon" type="CharacterBody2D"]
+[node name="TheMoon" type="CharacterBody2D" node_paths=PackedStringArray("barrel_origin")]
 position = Vector2(-1, 0)
 motion_mode = 1
 script = ExtResource("1_8ocbu")
 moon_speed = Vector2(0, 64)
 max_y = 80
 min_y = 208
+bullet = ExtResource("2_ltdxk")
+bullet_count = 10
+arc = 30.0
+fire_rate = 5.0
+barrel_origin = NodePath(".")
 
 [node name="bossSprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bpiej")

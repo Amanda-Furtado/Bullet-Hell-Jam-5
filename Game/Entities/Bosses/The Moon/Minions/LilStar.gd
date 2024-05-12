@@ -21,7 +21,7 @@ extends CharacterBody2D
 @export_range(0, 20) var fire_rate: float = 2.0
 @export var barrel_origin: Node2D
 
-var can_shoot: bool = true
+var can_shoot: bool = false
 
 
 func _ready() -> void:

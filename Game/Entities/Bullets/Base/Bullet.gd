@@ -83,3 +83,5 @@ func spawn_bullets():
 func _on_screen_notifier_screen_exited():
 	set_process(false)
 	hide()
+	await get_tree().create_timer(randf_range(0.5, 1.5)).timeout
+	queue_free()

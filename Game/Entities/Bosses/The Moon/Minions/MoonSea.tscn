@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Game/Entities/Bosses/The Moon/Minions/MoonSea.gd" id="1_il4hq"]
 [ext_resource type="Texture2D" uid="uid://c30v4m4nwea2d" path="res://Assets/Bosses/The Moon/Sea/sea.png" id="2_6h3ty"]
 [ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="3_0mihq"]
-[ext_resource type="PackedScene" uid="uid://bwl8kv7e6l4rl" path="res://Game/Entities/Bullets/Boss Bullets/Moon Bullets/moon_sea_bullet.tscn" id="4_eerm4"]
+[ext_resource type="PackedScene" uid="uid://bwl8kv7e6l4rl" path="res://Game/Entities/Bullets/Boss Bullets/Moon Bullets/sea_bullet.tscn" id="4_eerm4"]
 
 [node name="MoonSea" type="Node2D"]
 script = ExtResource("1_il4hq")

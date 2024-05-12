@@ -22,6 +22,7 @@ animations = [{
 size = Vector2(8, 8)
 
 [node name="PlayerBullet" instance=ExtResource("1_kvr3s")]
+fire_rate = 1.0
 direction = 0
 speed = 5.0
 
