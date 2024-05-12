@@ -1,10 +1,11 @@
 class_name Level extends Node2D
 
 
-@onready var player = $Player
+@onready var player: Player = $Player
 @onready var label = $CanvasLayer/Label
 @onready var moon_sea = $MoonSea
 @onready var the_moon = $TheMoon
+@onready var hud = $CanvasLayer/Hud
 
 
 func _ready():
@@ -12,8 +13,12 @@ func _ready():
 		moon_sea.pull_top_ocean())
 	the_moon.touch_bot.connect(func():
 		moon_sea.pull_bot_ocean())
-	#await get_tree().create_timer(3.0).timeout
-
+	
+	player.stats.health_changed.connect(func():
+		hud.update_health_bar(player.stats.health))
+	
+	the_moon.stats.health_changed.connect(func():
+		hud.update_boss_health_bar(the_moon.stats.health))
 
 func _process(delta: float) -> void:
 	label.text = str("FPS: ", Engine.get_frames_per_second())   

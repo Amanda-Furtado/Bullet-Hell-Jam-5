@@ -8,6 +8,7 @@ signal touch_bot
 @onready var player = get_tree().get_first_node_in_group("players")
 @onready var boss_hurtbox = $bossHurtbox
 @onready var boss_sprites = $bossSprites
+@onready var stats = $Stats
 
 #visual ef
 @onready var shake_effect = $ShakeEffect
@@ -27,7 +28,7 @@ var rotation_speed: float = 2.0
 @export_range(0, 20) var fire_rate: float = 2.0
 @export var barrel_origin: Node2D
 
-var can_shoot: bool = true
+var can_shoot: bool = false
 
 
 func _ready() -> void:

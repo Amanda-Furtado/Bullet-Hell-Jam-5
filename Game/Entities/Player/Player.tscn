@@ -69,7 +69,7 @@ idle_state = NodePath("../Idle")
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("10_4pdqy")
-health = 3
+health = 20
 
 [node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
 script = ExtResource("9_yd7qh")
