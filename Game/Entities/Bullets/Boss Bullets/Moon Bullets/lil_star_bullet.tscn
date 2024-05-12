@@ -18,7 +18,7 @@ animations = [{
 radius = 7.0
 
 [node name="lilStarBullet" instance=ExtResource("1_hffaq")]
-direction = 4
+direction = 5
 speed = 3.0
 
 [node name="Sprite" parent="." index="0"]

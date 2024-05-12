@@ -28,15 +28,10 @@ func _physics_process(delta: float) -> void:
 	#rotate_to_target(player, delta)
 	if global_position.y <= max_y:
 		moon_dir = Vector2.DOWN
+		
 	
 	elif global_position.y >= min_y:
 		moon_dir = Vector2.UP
 	
 	velocity = moon_speed * moon_dir
 	move_and_slide()
-
-
-func rotate_to_target(target: Node2D, delta: float) -> void:
-	var direction = (target.global_position - global_position)
-	var angle_to = transform.x.angle_to(direction)
-	boss_sprites.rotate(sign(angle_to) * min(delta * rotation_speed, abs(angle_to)))

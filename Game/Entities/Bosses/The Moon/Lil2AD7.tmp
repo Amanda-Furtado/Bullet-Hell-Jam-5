@@ -92,5 +92,11 @@ sprite = NodePath("../Sprite")
 position = Vector2(8, 0)
 
 [node name="AtkTimer" type="Timer" parent="."]
-wait_time = 0.5
 autostart = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(35, 0)
+collision_mask = 0
+collide_with_bodies = false
+
+[connection signal="timeout" from="AtkTimer" to="." method="_on_atk_timer_timeout"]

@@ -5,7 +5,7 @@ class_name Bullet extends CharacterBody2D
 @onready var hitbox: Hitbox = $Hitbox
 @onready var screen_notifier = $ScreenNotifier
 
-@export_enum("Right", "Left", "Down", "Up", "Follower") var direction
+@export_enum("Right", "Left", "Down", "Up", "Follower", "Adpt") var direction
 
 @export var speed: float = 1.0
 var dir_vector: Vector2 = Vector2.ZERO
@@ -28,6 +28,8 @@ func _ready() -> void:
 			dir_vector = Vector2.UP
 		4:
 			dir_vector = Vector2.RIGHT.rotated(global_rotation)
+		5:
+			dir_vector = Vector2.RIGHT.rotated(global_rotation)
 		_:
 			print("direction not set")
 
@@ -35,10 +37,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	velocity = dir_vector * speed
 	var collision = move_and_collide(velocity)
-	
-	if collision:
-		is_dying = true
-		queue_free()
 
 
 func _on_screen_notifier_screen_exited():

@@ -4,9 +4,8 @@ extends CharacterBody2D
 #nodes
 @onready var player = get_tree().get_first_node_in_group("players")
 @onready var sprite = $Sprite
-@onready var atk_timer = $AtkTimer
-@onready var lil_star_spawner = $lilStarSpawner
 @onready var marker = $Marker
+@onready var atk_timer = $AtkTimer
 
 #damage
 @onready var stats = $lilStarStats
@@ -37,10 +36,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	look_at(player.global_position)
-
-
-func _physics_process(delta: float) -> void:
+	sprite.look_at(player.global_position)
 	shoot()
 
 

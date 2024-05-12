@@ -55,8 +55,8 @@ position = Vector2(-1, 0)
 motion_mode = 1
 script = ExtResource("1_8ocbu")
 moon_speed = Vector2(0, 64)
-max_y = 112
-min_y = 160
+max_y = 80
+min_y = 208
 
 [node name="bossSprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bpiej")
@@ -125,16 +125,24 @@ sprite = NodePath("../bossSprites")
 [node name="Stars" type="Node2D" parent="."]
 
 [node name="LilStar" parent="Stars" instance=ExtResource("16_fsf21")]
-position = Vector2(-47, -32)
+position = Vector2(49, -48)
+bullet_count = 2
+arc = 45.0
 
 [node name="LilStar2" parent="Stars" instance=ExtResource("16_fsf21")]
-position = Vector2(-15, -48)
+position = Vector2(1, -64)
+arc = 60.0
 
 [node name="LilStar3" parent="Stars" instance=ExtResource("16_fsf21")]
-position = Vector2(-63, 0)
+position = Vector2(81, 0)
+bullet_count = 1
+arc = 0.0
 
 [node name="LilStar4" parent="Stars" instance=ExtResource("16_fsf21")]
-position = Vector2(-47, 32)
+position = Vector2(49, 32)
+bullet_count = 2
+arc = 45.0
 
 [node name="LilStar5" parent="Stars" instance=ExtResource("16_fsf21")]
-position = Vector2(-15, 48)
+position = Vector2(1, 64)
+arc = 60.0
