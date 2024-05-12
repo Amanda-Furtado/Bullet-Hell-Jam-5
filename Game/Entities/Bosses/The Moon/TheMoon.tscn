@@ -125,7 +125,7 @@ sprite = NodePath("../bossSprites")
 [node name="Stars" type="Node2D" parent="."]
 
 [node name="LilStar" parent="Stars" instance=ExtResource("16_fsf21")]
-position = Vector2(49, -48)
+position = Vector2(-47, -48)
 bullet_count = 2
 arc = 45.0
 
@@ -134,12 +134,12 @@ position = Vector2(1, -64)
 arc = 60.0
 
 [node name="LilStar3" parent="Stars" instance=ExtResource("16_fsf21")]
-position = Vector2(81, 0)
+position = Vector2(-79, 0)
 bullet_count = 1
 arc = 0.0
 
 [node name="LilStar4" parent="Stars" instance=ExtResource("16_fsf21")]
-position = Vector2(49, 32)
+position = Vector2(-47, 32)
 bullet_count = 2
 arc = 45.0
 

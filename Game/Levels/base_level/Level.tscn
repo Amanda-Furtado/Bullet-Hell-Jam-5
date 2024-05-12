@@ -82,7 +82,7 @@ layer_1/name = "front"
 layer_1/tile_data = PackedInt32Array()
 
 [node name="TheMoon" parent="." instance=ExtResource("4_2pptp")]
-position = Vector2(64, 144)
+position = Vector2(448, 144)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -94,4 +94,4 @@ offset_bottom = 39.0
 text = "FPS:"
 
 [node name="Player" parent="." instance=ExtResource("2_rxb33")]
-position = Vector2(425, 144)
+position = Vector2(81, 151)

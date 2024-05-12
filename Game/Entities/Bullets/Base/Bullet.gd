@@ -29,7 +29,7 @@ func _ready() -> void:
 		4:
 			dir_vector = Vector2.RIGHT.rotated(global_rotation)
 		5:
-			dir_vector = Vector2.RIGHT.rotated(global_rotation)
+			dir_vector = Vector2.LEFT.rotated(global_rotation)
 		_:
 			print("direction not set")
 

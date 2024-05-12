@@ -89,7 +89,7 @@ script = ExtResource("12_kk7do")
 sprite = NodePath("../Sprite")
 
 [node name="Marker" type="Marker2D" parent="."]
-position = Vector2(8, 0)
+position = Vector2(-8, 0)
 
 [node name="AtkTimer" type="Timer" parent="."]
 wait_time = 0.5
