@@ -6,6 +6,7 @@ class_name Level extends Node2D
 @onready var moon_sea = $MoonSea
 @onready var the_moon = $TheMoon
 @onready var hud = $CanvasLayer/Hud
+@onready var easter_egg = $CanvasLayer/easter_egg
 
 
 func _ready():
@@ -19,6 +20,10 @@ func _ready():
 	
 	the_moon.stats.health_changed.connect(func():
 		hud.update_boss_health_bar(the_moon.stats.health))
+	
+	the_moon.stats.no_health.connect(func():
+		easter_egg.show())
+
 
 func _process(delta: float) -> void:
 	label.text = str("FPS: ", Engine.get_frames_per_second())   

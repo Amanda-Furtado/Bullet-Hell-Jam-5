@@ -131,24 +131,29 @@ sprite = NodePath("../bossSprites")
 [node name="Stars" type="Node2D" parent="."]
 
 [node name="LilStar" parent="Stars" instance=ExtResource("16_pub0o")]
-position = Vector2(-47, -48)
+position = Vector2(-31, -32)
 bullet_count = 2
-arc = 45.0
+arc = 30.0
+fire_rate = 0.6
 
 [node name="LilStar2" parent="Stars" instance=ExtResource("16_pub0o")]
 position = Vector2(1, -64)
-arc = 60.0
+bullet_count = 3
+arc = 45.0
+fire_rate = 0.6
 
 [node name="LilStar3" parent="Stars" instance=ExtResource("16_pub0o")]
-position = Vector2(-79, 0)
-bullet_count = 1
-arc = 0.0
+position = Vector2(-63, 0)
+fire_rate = 0.6
 
 [node name="LilStar4" parent="Stars" instance=ExtResource("16_pub0o")]
-position = Vector2(-47, 32)
+position = Vector2(-31, 32)
 bullet_count = 2
-arc = 45.0
+arc = 30.0
+fire_rate = 0.6
 
 [node name="LilStar5" parent="Stars" instance=ExtResource("16_pub0o")]
 position = Vector2(1, 64)
-arc = 60.0
+bullet_count = 3
+arc = 45.0
+fire_rate = 0.6

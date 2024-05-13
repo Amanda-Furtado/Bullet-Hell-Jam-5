@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c78ehdrxbyqf0"]
 
+[ext_resource type="Script" path="res://Game/User Interface/Scripts/HUD.gd" id="1_glb3a"]
 [ext_resource type="Texture2D" uid="uid://dxy855yk0iih4" path="res://Assets/UI/HUD/health_over.png" id="1_javle"]
-[ext_resource type="Script" path="res://Game/User Interface/HUD.gd" id="1_pa7n1"]
 [ext_resource type="Texture2D" uid="uid://br1gex333cumg" path="res://Assets/UI/HUD/health_progress.png" id="2_1tuam"]
 [ext_resource type="Texture2D" uid="uid://xlqfa34gfyvc" path="res://Assets/UI/HUD/karma_over.png" id="3_ve36h"]
 [ext_resource type="Texture2D" uid="uid://h580rlkd1jmy" path="res://Assets/UI/HUD/karma_progress.png" id="4_gp7s5"]
@@ -16,7 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pa7n1")
+script = ExtResource("1_glb3a")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
