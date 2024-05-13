@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bmmrexin7bc1w"]
+
+[node name="ShootingStars" type="CharacterBody2D"]

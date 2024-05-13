@@ -1,14 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmafyevf4c6fj"]
+[gd_scene load_steps=8 format=3 uid="uid://u2iwyorybvbb"]
 
-[ext_resource type="Texture2D" uid="uid://dixiqobk8vsih" path="res://Assets/Tilesets/generictiles_spr.png" id="1_037gs"]
-[ext_resource type="Script" path="res://Game/Levels/base_level/Level.gd" id="1_rm52v"]
-[ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Entities/Player/Player.tscn" id="2_rxb33"]
-[ext_resource type="PackedScene" uid="uid://qhcex4ei7jh" path="res://Game/Entities/Bosses/The Moon/TheMoon.tscn" id="4_2pptp"]
-[ext_resource type="PackedScene" uid="uid://c7uf6qtxcabm7" path="res://Game/Entities/Bosses/The Moon/Minions/MoonSea.tscn" id="5_2j3ej"]
-[ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="6_8gods"]
+[ext_resource type="Script" path="res://Game/Levels/Scripts/TheStarLevel.gd" id="1_a1i37"]
+[ext_resource type="Texture2D" uid="uid://dixiqobk8vsih" path="res://Assets/Tilesets/generictiles_spr.png" id="2_hkhng"]
+[ext_resource type="PackedScene" uid="uid://bhpew12gj1k16" path="res://Game/Entities/Bosses/The Star/TheStar.tscn" id="3_vycij"]
+[ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Entities/Player/Player.tscn" id="3_xnqh7"]
+[ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="4_758gv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s457o"]
-texture = ExtResource("1_037gs")
+texture = ExtResource("2_hkhng")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -67,30 +66,28 @@ texture = ExtResource("1_037gs")
 3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:3/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSet" id="TileSet_r7jav"]
+[sub_resource type="TileSet" id="TileSet_rdv72"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_s457o")
 
-[node name="Level" type="Node2D"]
-script = ExtResource("1_rm52v")
+[node name="TheStarLevel" type="Node2D" node_paths=PackedStringArray("boss", "label")]
+script = ExtResource("1_a1i37")
+boss = NodePath("TheStar")
+label = NodePath("CanvasLayer/Label")
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_r7jav")
+tile_set = SubResource("TileSet_rdv72")
 format = 2
 layer_0/name = "bg"
 layer_0/tile_data = PackedInt32Array(1179648, 65536, 2, 1179649, 65536, 2, 1179650, 65536, 2, 1179651, 65536, 2, 1179652, 65536, 2, 1179653, 65536, 2, 1179654, 65536, 2, 1179655, 65536, 2, 1179656, 65536, 2, 1179657, 65536, 2, 1179658, 65536, 2, 1179659, 65536, 2, 1179660, 65536, 2, 1179661, 65536, 2, 1179662, 65536, 2, 1179663, 65536, 2, 1179664, 65536, 2, 1179665, 65536, 2, 1179666, 65536, 2, 1179667, 65536, 2, 1179668, 65536, 2, 1179669, 65536, 2, 1179670, 65536, 2, 1179671, 65536, 2, 1179672, 65536, 2, 1179673, 65536, 2, 1179674, 65536, 2, 1179675, 65536, 2, 1179676, 65536, 2, 1179677, 65536, 2, 1179678, 65536, 2, 1179679, 65536, 2, 65568, 131072, 1, 131104, 131072, 1, 196640, 131072, 1, 262176, 131072, 1, 327712, 131072, 1, 393248, 131072, 1, 458784, 131072, 1, 524320, 131072, 1, 589856, 131072, 1, 655392, 131072, 1, 720928, 131072, 1, 786464, 131072, 1, 852000, 131072, 1, 917536, 131072, 1, 983072, 131072, 1, 1048608, 131072, 1, 1114144, 131072, 1, -65536, 65536, 0, -65535, 65536, 0, -65534, 65536, 0, -65533, 65536, 0, -65532, 65536, 0, -65531, 65536, 0, -65530, 65536, 0, -65529, 65536, 0, -65528, 65536, 0, -65527, 65536, 0, -65526, 65536, 0, -65525, 65536, 0, -65524, 65536, 0, -65523, 65536, 0, -65522, 65536, 0, -65521, 65536, 0, -65520, 65536, 0, -65519, 65536, 0, -65518, 65536, 0, -65517, 65536, 0, -65516, 65536, 0, -65515, 65536, 0, -65514, 65536, 0, -65513, 65536, 0, -65512, 65536, 0, -65511, 65536, 0, -65510, 65536, 0, -65509, 65536, 0, -65508, 65536, 0, -65507, 65536, 0, -65506, 65536, 0, 131071, 0, 1, 196607, 0, 1, 262143, 0, 1, 327679, 0, 1, 393215, 0, 1, 458751, 0, 1, 524287, 0, 1, 589823, 0, 1, 655359, 0, 1, 720895, 0, 1, 786431, 0, 1, 851967, 0, 1, 917503, 0, 1, 983039, 0, 1, 1048575, 0, 1, 1114111, 0, 1, -65505, 65536, 0, 1179647, 0, 1, 65535, 0, 1, 32, 131072, 1, -65504, 131072, 0, 1179680, 131072, 2, 1245183, 0, 2, -1, 0, 0)
 layer_1/name = "front"
 layer_1/tile_data = PackedInt32Array()
 
-[node name="TheMoon" parent="." instance=ExtResource("4_2pptp")]
-position = Vector2(448, 144)
-bullet_count = 2
-fire_rate = 1.0
+[node name="TheStar" parent="." instance=ExtResource("3_vycij")]
+position = Vector2(472, 160)
 
-[node name="MoonSea" parent="." instance=ExtResource("5_2j3ej")]
-
-[node name="Player" parent="." instance=ExtResource("2_rxb33")]
+[node name="Player" parent="." instance=ExtResource("3_xnqh7")]
 position = Vector2(81, 151)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -100,23 +97,7 @@ offset_top = 32.0
 offset_right = 40.0
 offset_bottom = 55.0
 text = "FPS:"
+metadata/_edit_use_anchors_ = true
 
-[node name="Hud" parent="CanvasLayer" instance=ExtResource("6_8gods")]
-
-[node name="easter_egg" type="Label" parent="CanvasLayer"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Parabéns, vc é gay!
-:D"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("4_758gv")]
+metadata/_edit_use_anchors_ = true

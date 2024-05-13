@@ -1,0 +1,100 @@
+[gd_scene load_steps=18 format=3 uid="uid://bhpew12gj1k16"]
+
+[ext_resource type="Texture2D" uid="uid://0cp1xthklkuq" path="res://Assets/Bosses/The Star/star_spr.png" id="1_kmppx"]
+[ext_resource type="Script" path="res://Game/Entities/Bosses/The Star/TheStar.gd" id="1_nqwj5"]
+[ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="3_cjn4h"]
+[ext_resource type="Script" path="res://Components/Damage/Hurtbox.gd" id="4_j0eok"]
+[ext_resource type="Script" path="res://Components/Stats/Stats.gd" id="5_wsf4h"]
+[ext_resource type="Script" path="res://Components/Damage/Hurt.gd" id="6_272wf"]
+[ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="7_ivngn"]
+[ext_resource type="PackedScene" uid="uid://ba8mf1gb1n7gw" path="res://Game/Entities/Bullets/Boss Bullets/Moon Bullets/quesso_bullet.tscn" id="8_il70g"]
+[ext_resource type="Script" path="res://Components/Effects/destroyed_effect.gd" id="9_cqr2n"]
+[ext_resource type="PackedScene" uid="uid://bkcb672ohnlf3" path="res://Resources/Visual/Explosions/explosion_veffect.tscn" id="10_tkv1f"]
+[ext_resource type="Script" path="res://Components/Effects/shake_effect.gd" id="11_rd0n8"]
+[ext_resource type="Script" path="res://Components/Effects/flash_effect.gd" id="12_awh7r"]
+[ext_resource type="Material" uid="uid://c88q6pkhh3vl" path="res://Resources/Visual/Flashes/white_flash_material.tres" id="13_y5vji"]
+[ext_resource type="Script" path="res://Components/Effects/scale_effect.gd" id="14_gxeb1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_soug2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kmppx")
+}],
+"loop": false,
+"name": &"phase1",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tixbs"]
+radius = 31.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_is1r1"]
+radius = 32.0156
+
+[node name="TheStar" type="CharacterBody2D"]
+script = ExtResource("1_nqwj5")
+
+[node name="bossSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_soug2")
+animation = &"phase1"
+autoplay = "phase1"
+
+[node name="bossHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("3_cjn4h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bossHitbox"]
+shape = SubResource("CircleShape2D_tixbs")
+debug_color = Color(0.875917, 0.266809, 0.555277, 0.42)
+
+[node name="bossHurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_j0eok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bossHurtbox"]
+shape = SubResource("CircleShape2D_is1r1")
+debug_color = Color(0.302776, 0.614443, 0.375808, 0.42)
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("5_wsf4h")
+health = 100
+
+[node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
+script = ExtResource("6_272wf")
+stats = NodePath("../Stats")
+hurtbox = NodePath("../bossHurtbox")
+
+[node name="bossSpawner" type="Node2D" parent="."]
+position = Vector2(-32, 0)
+script = ExtResource("7_ivngn")
+scene = ExtResource("8_il70g")
+
+[node name="DestroyedEffect" type="Node" parent="." node_paths=PackedStringArray("actor", "stats", "dest_ef_spawner")]
+script = ExtResource("9_cqr2n")
+actor = NodePath("..")
+stats = NodePath("../Stats")
+dest_ef_spawner = NodePath("DestroyedSpawner")
+
+[node name="DestroyedSpawner" type="Node2D" parent="DestroyedEffect"]
+position = Vector2(-1, 0)
+script = ExtResource("7_ivngn")
+scene = ExtResource("10_tkv1f")
+
+[node name="ShakeEffect" type="Node" parent="." node_paths=PackedStringArray("node_to_shake")]
+script = ExtResource("11_rd0n8")
+node_to_shake = NodePath("../bossSprites")
+
+[node name="FlashEffect" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("12_awh7r")
+flash_material = ExtResource("13_y5vji")
+sprite = NodePath("../bossSprites")
+flash_duration = 0.05
+
+[node name="ScaleEffect" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("14_gxeb1")
+sprite = NodePath("../bossSprites")
