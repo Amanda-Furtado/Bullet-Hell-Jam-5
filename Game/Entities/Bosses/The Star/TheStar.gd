@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 func _on_atk_cooldown_timer_timeout():
 	atk_timer.start()
 	var counter = 0
-	while counter < 6:
+	while counter < 10:
 		await atk_timer.timeout
 		for child in vertical.get_children():
 			child.shoot()

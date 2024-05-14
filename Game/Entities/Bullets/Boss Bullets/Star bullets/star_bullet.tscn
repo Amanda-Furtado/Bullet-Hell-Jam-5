@@ -25,6 +25,7 @@ size = Vector2(16, 16)
 expire = true
 life_time = 3.0
 direction = 5
+speed = 1.1
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ixrvc")

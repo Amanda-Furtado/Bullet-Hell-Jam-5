@@ -33,7 +33,6 @@ func _physics_process(delta: float) -> void:
 
 
 func on_top() -> void:
-	print("on top")
 	is_on_top = true
 	is_on_bot = false
 	
@@ -47,7 +46,6 @@ func on_top() -> void:
 
 
 func on_bot() -> void:
-	print("on bot")
 	is_on_top = false
 	is_on_bot = true
 	

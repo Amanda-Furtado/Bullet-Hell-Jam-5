@@ -104,29 +104,29 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_use_anchors_ = true
 
 [node name="ShootingStars" parent="." instance=ExtResource("6_agcun")]
-position = Vector2(80, 0)
+position = Vector2(32, 0)
 dir_vector = Vector2(0, 1)
 
 [node name="ShootingStars2" parent="." instance=ExtResource("6_agcun")]
-position = Vector2(112, 320)
+position = Vector2(64, 320)
 
 [node name="ShootingStars3" parent="." instance=ExtResource("6_agcun")]
-position = Vector2(144, 0)
+position = Vector2(96, 0)
 dir_vector = Vector2(0, 1)
 
 [node name="ShootingStars4" parent="." instance=ExtResource("6_agcun")]
-position = Vector2(176, 320)
+position = Vector2(128, 320)
 
 [node name="ShootingStars5" parent="." instance=ExtResource("6_agcun")]
-position = Vector2(208, 0)
+position = Vector2(160, 0)
 dir_vector = Vector2(0, 1)
 
 [node name="ShootingStars6" parent="." instance=ExtResource("6_agcun")]
-position = Vector2(240, 320)
+position = Vector2(192, 320)
 
 [node name="ShootingStars7" parent="." instance=ExtResource("6_agcun")]
-position = Vector2(272, 0)
+position = Vector2(224, 0)
 dir_vector = Vector2(0, 1)
 
 [node name="ShootingStars8" parent="." instance=ExtResource("6_agcun")]
-position = Vector2(304, 320)
+position = Vector2(256, 320)

@@ -19,6 +19,7 @@ monitoring = false
 script = ExtResource("2_4ji87")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox"]
+visible = false
 position = Vector2(24, 24)
 polygon = PackedVector2Array(0, 0, 0, -24, -40, -40, -24, 0)
 
@@ -29,6 +30,7 @@ monitorable = false
 script = ExtResource("3_fx5ie")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+visible = false
 position = Vector2(24, 24)
 polygon = PackedVector2Array(0, 0, 0, -24, -40, -40, -24, 0)
 
