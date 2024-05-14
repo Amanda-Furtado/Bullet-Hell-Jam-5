@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://x0kk1jvwp5e3"]
+
+[ext_resource type="Texture2D" uid="uid://p3nhif25lw74" path="res://Assets/Bosses/The Star/members/x_part_spr.png" id="1_g1iyw"]
+[ext_resource type="Script" path="res://Components/Damage/Hurtbox.gd" id="2_4ji87"]
+[ext_resource type="Script" path="res://Game/Entities/Bosses/The Star/x_member.gd" id="2_17gjs"]
+[ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="3_fx5ie"]
+[ext_resource type="PackedScene" uid="uid://b7ru77250j4n0" path="res://Game/Entities/Bullets/Boss Bullets/Star bullets/star_bullet.tscn" id="5_afhy8"]
+
+[node name="X" type="Sprite2D"]
+position = Vector2(-24, -24)
+texture = ExtResource("1_g1iyw")
+script = ExtResource("2_17gjs")
+bullet = ExtResource("5_afhy8")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_4ji87")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox"]
+position = Vector2(24, 24)
+polygon = PackedVector2Array(0, 0, 0, -24, -40, -40, -24, 0)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("3_fx5ie")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+position = Vector2(24, 24)
+polygon = PackedVector2Array(0, 0, 0, -24, -40, -40, -24, 0)
+
+[node name="BulletMarker" type="Marker2D" parent="."]
+position = Vector2(-16, -16)

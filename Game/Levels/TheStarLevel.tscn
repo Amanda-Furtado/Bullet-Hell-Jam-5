@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://u2iwyorybvbb"]
+[gd_scene load_steps=9 format=3 uid="uid://u2iwyorybvbb"]
 
 [ext_resource type="Script" path="res://Game/Levels/Scripts/TheStarLevel.gd" id="1_a1i37"]
 [ext_resource type="Texture2D" uid="uid://dixiqobk8vsih" path="res://Assets/Tilesets/generictiles_spr.png" id="2_hkhng"]
 [ext_resource type="PackedScene" uid="uid://bhpew12gj1k16" path="res://Game/Entities/Bosses/The Star/TheStar.tscn" id="3_vycij"]
 [ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Entities/Player/Player.tscn" id="3_xnqh7"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="4_758gv"]
+[ext_resource type="PackedScene" uid="uid://bmmrexin7bc1w" path="res://Game/Entities/Bosses/The Star/minions/ShootingStar.tscn" id="6_agcun"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s457o"]
 texture = ExtResource("2_hkhng")
@@ -85,7 +86,7 @@ layer_1/name = "front"
 layer_1/tile_data = PackedInt32Array()
 
 [node name="TheStar" parent="." instance=ExtResource("3_vycij")]
-position = Vector2(472, 160)
+position = Vector2(448, 160)
 
 [node name="Player" parent="." instance=ExtResource("3_xnqh7")]
 position = Vector2(81, 151)
@@ -101,3 +102,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("4_758gv")]
 metadata/_edit_use_anchors_ = true
+
+[node name="ShootingStars" parent="." instance=ExtResource("6_agcun")]
+position = Vector2(168, 152)

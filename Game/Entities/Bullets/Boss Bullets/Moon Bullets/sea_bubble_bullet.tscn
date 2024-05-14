@@ -22,6 +22,8 @@ animations = [{
 radius = 8.0
 
 [node name="Bullet" instance=ExtResource("1_o8yyf")]
+expire = true
+life_time = 2.0
 direction = 5
 
 [node name="Sprite" parent="." index="0"]

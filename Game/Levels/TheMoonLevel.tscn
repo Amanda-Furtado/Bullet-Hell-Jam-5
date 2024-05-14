@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmafyevf4c6fj"]
+[gd_scene load_steps=8 format=3 uid="uid://dmafyevf4c6fj"]
 
 [ext_resource type="Script" path="res://Game/Levels/Scripts/TheMoonLevel.gd" id="1_5rmj7"]
 [ext_resource type="PackedScene" uid="uid://qhcex4ei7jh" path="res://Game/Entities/Bosses/The Moon/TheMoon.tscn" id="2_lhcvt"]
+[ext_resource type="PackedScene" uid="uid://u2iwyorybvbb" path="res://Game/Levels/TheStarLevel.tscn" id="2_n3bsi"]
 [ext_resource type="PackedScene" uid="uid://c7uf6qtxcabm7" path="res://Game/Entities/Bosses/The Moon/Minions/MoonSea.tscn" id="3_t7i8k"]
 [ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Entities/Player/Player.tscn" id="4_gl2if"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="5_xptiv"]
@@ -12,6 +13,7 @@ physics_layer_0/collision_mask = 0
 
 [node name="TheMoonLevel" type="Node2D" node_paths=PackedStringArray("boss", "label")]
 script = ExtResource("1_5rmj7")
+next_level = ExtResource("2_n3bsi")
 boss = NodePath("TheMoon")
 label = NodePath("CanvasLayer/Label")
 
