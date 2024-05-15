@@ -52,7 +52,7 @@ position = Vector2(-48, 0)
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("2_8qa4k")
-health = 20
+health = 25
 
 [node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
 script = ExtResource("3_yn76u")

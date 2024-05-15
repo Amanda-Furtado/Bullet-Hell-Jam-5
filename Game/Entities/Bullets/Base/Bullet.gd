@@ -53,8 +53,10 @@ func _ready() -> void:
 			spawn_bullets()
 		queue_free()
 
+
 func _physics_process(_delta: float) -> void:
 	velocity = dir_vector * speed
+	
 	move_and_collide(velocity)
 
 

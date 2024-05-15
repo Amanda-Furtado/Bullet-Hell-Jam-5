@@ -9,17 +9,21 @@ extends CharacterBody2D
 @onready var atk_cooldown_timer = $AtkCooldownTimer
 @onready var atk_timer = $AtkTimer
 
+@onready var rotate_incr: float = 0.0
+
 
 func _ready() -> void:
 	for child in vertical.get_children():
 		child.stats.health_changed.connect(update_total_health)
+		child.stats.no_health.connect(rotate_manager)
 	for child in diagonal.get_children():
 		child.stats.health_changed.connect(update_total_health)
+		child.stats.no_health.connect(rotate_manager)
 
 
 func _physics_process(_delta: float) -> void:
-	diagonal.rotate(0.01)
-	vertical.rotate(-0.01)
+	diagonal.rotate(min(0.01 + rotate_incr, 0.04))
+	vertical.rotate(max(-0.01 - rotate_incr, -0.04))
 
 
 func _on_atk_cooldown_timer_timeout() -> void:
@@ -44,3 +48,8 @@ func update_total_health() -> void:
 	for child in diagonal.get_children():
 		total_health += child.stats.health
 	stats.health = total_health
+	stats.health_changed.emit()
+
+
+func rotate_manager() -> void:
+	rotate_incr += 0.01

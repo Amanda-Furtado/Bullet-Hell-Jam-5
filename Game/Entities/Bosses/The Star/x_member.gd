@@ -16,7 +16,6 @@ signal got_hitted
 @onready var destroyed_effect = $DestroyedEffect
 
 
-
 func _ready() -> void:
 	stats.health_changed.connect(func():
 		got_hitted.emit()

@@ -23,9 +23,9 @@ size = Vector2(16, 16)
 
 [node name="StarBullet" instance=ExtResource("1_0bvuy")]
 expire = true
-life_time = 3.0
+life_time = 4.0
 direction = 5
-speed = 1.1
+speed = 2.0
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ixrvc")
