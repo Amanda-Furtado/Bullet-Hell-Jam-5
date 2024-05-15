@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bullet Hell Consequences"
-run/main_scene="res://Game/Levels/TheStarLevel.tscn"
+run/main_scene="res://Game/Worlds/TheStarLevel.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -27,10 +27,12 @@ window/stretch/mode="viewport"
 
 folder_colors={
 "res://Components/": "blue",
-"res://Game/Entities/": "purple",
-"res://Game/Entities/Player/": "pink",
-"res://Game/Levels/": "orange",
-"res://Game/User Interface/": "green"
+"res://Game/Bosses/": "red",
+"res://Game/Bullets/": "purple",
+"res://Game/Minions/": "purple",
+"res://Game/Player/": "pink",
+"res://Game/User Interface/": "green",
+"res://Game/Worlds/": "orange"
 }
 
 [input]

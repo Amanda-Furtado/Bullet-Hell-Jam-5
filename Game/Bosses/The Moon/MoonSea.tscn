@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7uf6qtxcabm7"]
+
+[ext_resource type="Script" path="res://Game/Bosses/The Moon/Scripts/MoonSea.gd" id="1_hqy2g"]
+[ext_resource type="Texture2D" uid="uid://c30v4m4nwea2d" path="res://Assets/Bosses/The Moon/sea.png" id="2_kj1fx"]
+[ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="3_8ooqk"]
+[ext_resource type="PackedScene" uid="uid://bwl8kv7e6l4rl" path="res://Game/Bullets/boss moon bullets/sea_bullet.tscn" id="4_jmbis"]
+
+[node name="MoonSea" type="Node2D"]
+script = ExtResource("1_hqy2g")
+
+[node name="general_ocean" type="ColorRect" parent="."]
+offset_right = 48.0
+offset_bottom = 288.0
+color = Color(0.258824, 0.305882, 1, 1)
+
+[node name="top_ocean" type="Sprite2D" parent="."]
+position = Vector2(0, 32)
+scale = Vector2(1.5, 1)
+texture = ExtResource("2_kj1fx")
+
+[node name="TopSpawner" type="Node2D" parent="top_ocean"]
+position = Vector2(32, 0)
+scale = Vector2(0.666667, 1)
+script = ExtResource("3_8ooqk")
+scene = ExtResource("4_jmbis")
+
+[node name="bot_ocean" type="Sprite2D" parent="."]
+position = Vector2(0, 256)
+scale = Vector2(1.5, 1)
+texture = ExtResource("2_kj1fx")
+
+[node name="BotSpawner" type="Node2D" parent="bot_ocean"]
+position = Vector2(32, 0)
+scale = Vector2(0.666667, 1)
+script = ExtResource("3_8ooqk")
+scene = ExtResource("4_jmbis")

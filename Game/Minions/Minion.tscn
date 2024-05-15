@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbaie4i6dn3x5"]
+
+[ext_resource type="Script" path="res://Game/Minions/Minion.gd" id="1_gbtba"]
+[ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="2_08s2u"]
+
+[node name="Minion" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_gbtba")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("2_08s2u")

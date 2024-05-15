@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhpew12gj1k16"]
+
+[ext_resource type="Script" path="res://Game/Bosses/The Star/Scripts/TheStar.gd" id="1_nqwj5"]
+[ext_resource type="PackedScene" uid="uid://f82jftruq2wd" path="res://Game/Bosses/The Star/vertical_member.tscn" id="2_3y313"]
+[ext_resource type="PackedScene" uid="uid://x0kk1jvwp5e3" path="res://Game/Bosses/The Star/x_member.tscn" id="3_2386m"]
+[ext_resource type="Script" path="res://Components/Stats/Stats.gd" id="5_wsf4h"]
+
+[node name="TheStar" type="CharacterBody2D"]
+script = ExtResource("1_nqwj5")
+
+[node name="Diagonal" type="Node2D" parent="."]
+
+[node name="X" parent="Diagonal" instance=ExtResource("3_2386m")]
+
+[node name="X2" parent="Diagonal" instance=ExtResource("3_2386m")]
+rotation = 1.57079
+
+[node name="X3" parent="Diagonal" instance=ExtResource("3_2386m")]
+rotation = -3.14159
+
+[node name="X4" parent="Diagonal" instance=ExtResource("3_2386m")]
+rotation = -1.57079
+
+[node name="Vertical" type="Node2D" parent="."]
+
+[node name="VLeft" parent="Vertical" instance=ExtResource("2_3y313")]
+
+[node name="VUp" parent="Vertical" instance=ExtResource("2_3y313")]
+rotation = 1.5708
+
+[node name="VRight" parent="Vertical" instance=ExtResource("2_3y313")]
+rotation = -3.14159
+
+[node name="VDown" parent="Vertical" instance=ExtResource("2_3y313")]
+rotation = -1.57079
+
+[node name="AtkTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="AtkCooldownTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("5_wsf4h")
+health = 200
+
+[connection signal="timeout" from="AtkCooldownTimer" to="." method="_on_atk_cooldown_timer_timeout"]
