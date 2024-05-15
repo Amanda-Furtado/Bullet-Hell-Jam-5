@@ -27,7 +27,7 @@ var dir_vector: Vector2 = Vector2.ZERO
 var is_dying: bool = false
 
 func _ready() -> void:
-	hitbox.hit_hurtbox.connect(func(hurtbox: Hurtbox):
+	hitbox.hit_hurtbox.connect(func(_hurtbox: Hurtbox):
 		is_dying = true
 		queue_free())
 	
@@ -53,9 +53,9 @@ func _ready() -> void:
 			spawn_bullets()
 		queue_free()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity = dir_vector * speed
-	var collision = move_and_collide(velocity)
+	move_and_collide(velocity)
 
 
 func spawn_bullets():

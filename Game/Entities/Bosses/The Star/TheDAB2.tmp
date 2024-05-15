@@ -45,6 +45,6 @@ autostart = true
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("5_wsf4h")
-health = 200
+health = 400
 
 [connection signal="timeout" from="AtkCooldownTimer" to="." method="_on_atk_cooldown_timer_timeout"]

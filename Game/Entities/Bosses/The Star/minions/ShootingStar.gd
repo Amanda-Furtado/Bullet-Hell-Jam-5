@@ -22,7 +22,7 @@ func _ready() -> void:
 	bot_touched.connect(on_bot)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if global_position.y <= 0 and !is_on_top:
 			top_touched.emit()
 	if global_position.y >= 320 and !is_on_bot:
