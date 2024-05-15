@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://tpy4sgisqdiw"]
+
+[ext_resource type="PackedScene" uid="uid://cbaie4i6dn3x5" path="res://Game/Minions/Minion.tscn" id="1_hpgul"]
+[ext_resource type="Texture2D" uid="uid://vm7ut8bu3f1d" path="res://Assets/Bosses/The Moon/sea_bublle.png" id="2_35sj5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r33m1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_35sj5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BubbleMini" instance=ExtResource("1_hpgul")]
+expire = true
+life_time = 2.0
+direction = 5
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_r33m1")
+autoplay = "default"

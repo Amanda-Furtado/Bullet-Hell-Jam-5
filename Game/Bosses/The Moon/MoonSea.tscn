@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Game/Bosses/The Moon/Scripts/MoonSea.gd" id="1_hqy2g"]
 [ext_resource type="Texture2D" uid="uid://c30v4m4nwea2d" path="res://Assets/Bosses/The Moon/sea.png" id="2_kj1fx"]
 [ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="3_8ooqk"]
-[ext_resource type="PackedScene" uid="uid://bwl8kv7e6l4rl" path="res://Game/Bullets/boss moon bullets/sea_bullet.tscn" id="4_jmbis"]
+[ext_resource type="PackedScene" uid="uid://r1upo61132j3" path="res://Game/Minions/boss moon minions/teste_minion.tscn" id="4_vt2dw"]
 
 [node name="MoonSea" type="Node2D"]
 script = ExtResource("1_hqy2g")
@@ -22,7 +22,7 @@ texture = ExtResource("2_kj1fx")
 position = Vector2(32, 0)
 scale = Vector2(0.666667, 1)
 script = ExtResource("3_8ooqk")
-scene = ExtResource("4_jmbis")
+scene = ExtResource("4_vt2dw")
 
 [node name="bot_ocean" type="Sprite2D" parent="."]
 position = Vector2(0, 256)
@@ -33,4 +33,4 @@ texture = ExtResource("2_kj1fx")
 position = Vector2(32, 0)
 scale = Vector2(0.666667, 1)
 script = ExtResource("3_8ooqk")
-scene = ExtResource("4_jmbis")
+scene = ExtResource("4_vt2dw")

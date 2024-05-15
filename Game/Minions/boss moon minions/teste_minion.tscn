@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://r1upo61132j3"]
+
+[ext_resource type="PackedScene" uid="uid://cbaie4i6dn3x5" path="res://Game/Minions/Minion.tscn" id="1_1jg3q"]
+[ext_resource type="Texture2D" uid="uid://vm7ut8bu3f1d" path="res://Assets/Bosses/The Moon/sea_bublle.png" id="2_22fmr"]
+[ext_resource type="PackedScene" uid="uid://b5ix4pquht2as" path="res://Game/Bullets/boss moon bullets/bubble_bullet.tscn" id="2_77jo0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p1eqa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_22fmr")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1dou"]
+size = Vector2(32, 32)
+
+[node name="TesteMinion" node_paths=PackedStringArray("barrel_origin") instance=ExtResource("1_1jg3q")]
+expire = true
+life_time = 1.0
+direction = 0
+bullet = ExtResource("2_77jo0")
+bullet_count = 8
+arc = 314.0
+fire_rate = 1.0
+barrel_origin = NodePath("Sprite")
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_p1eqa")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_d1dou")
