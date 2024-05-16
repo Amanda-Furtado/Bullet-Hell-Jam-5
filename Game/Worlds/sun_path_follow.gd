@@ -32,7 +32,6 @@ func _ready() -> void:
 		print("m"))
 
 
-
 func _process(delta: float) -> void:
 	if progress_ratio == 0.0:
 		right_point()
