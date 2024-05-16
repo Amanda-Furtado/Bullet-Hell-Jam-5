@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://5eta8ma416jg"]
+
+[ext_resource type="PackedScene" uid="uid://ddxg15egd2mbt" path="res://Game/Bullets/Bullet.tscn" id="1_t0f8p"]
+[ext_resource type="Texture2D" uid="uid://c2rhmti16oj4y" path="res://Assets/Bosses/The Sun/sun_bullet.png" id="2_d5tpr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_er0gk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d5tpr")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SunBullet" instance=ExtResource("1_t0f8p")]
+expire = true
+life_time = 10.0
+direction = 5
+speed = 3.0
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_er0gk")
+autoplay = "default"

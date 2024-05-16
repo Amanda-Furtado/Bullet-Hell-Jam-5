@@ -1,0 +1,100 @@
+[gd_scene load_steps=18 format=3 uid="uid://bdjjd164d8wkp"]
+
+[ext_resource type="Script" path="res://Game/Bosses/The Sun/Scripts/TheSun.gd" id="1_armbd"]
+[ext_resource type="Texture2D" uid="uid://c5guvlq1paktf" path="res://Assets/Bosses/The Sun/the_sun_spr.png" id="1_g8y6g"]
+[ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="2_17tsh"]
+[ext_resource type="PackedScene" uid="uid://5eta8ma416jg" path="res://Game/Bullets/boss sun bullets/sun_bullet.tscn" id="2_32rh5"]
+[ext_resource type="Script" path="res://Components/Damage/Hurtbox.gd" id="3_53ufp"]
+[ext_resource type="Script" path="res://Components/Stats/Stats.gd" id="4_gl2ej"]
+[ext_resource type="Script" path="res://Components/Damage/Hurt.gd" id="5_cgnge"]
+[ext_resource type="Script" path="res://Components/Effects/destroyed_effect.gd" id="6_3rayb"]
+[ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="7_u3s7b"]
+[ext_resource type="PackedScene" uid="uid://bkcb672ohnlf3" path="res://Resources/Visual/Explosions/explosion_veffect.tscn" id="8_s6j8j"]
+[ext_resource type="Script" path="res://Components/Effects/shake_effect.gd" id="9_jemqy"]
+[ext_resource type="Script" path="res://Components/Effects/flash_effect.gd" id="10_bxscl"]
+[ext_resource type="Material" uid="uid://c88q6pkhh3vl" path="res://Resources/Visual/Flashes/white_flash_material.tres" id="11_lqcfe"]
+[ext_resource type="Script" path="res://Components/Effects/scale_effect.gd" id="12_36ffa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fd87p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g8y6g")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tnafc"]
+radius = 31.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7c4st"]
+radius = 32.0156
+
+[node name="TheSun" type="CharacterBody2D" node_paths=PackedStringArray("barrel_origin")]
+script = ExtResource("1_armbd")
+bullet = ExtResource("2_32rh5")
+bullet_count = 10
+arc = 90.0
+fire_rate = 5.0
+barrel_origin = NodePath(".")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fd87p")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("2_17tsh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_tnafc")
+debug_color = Color(0.875917, 0.266809, 0.555277, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_53ufp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_7c4st")
+debug_color = Color(0.302776, 0.614443, 0.375808, 0.42)
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("4_gl2ej")
+health = 100
+
+[node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
+script = ExtResource("5_cgnge")
+stats = NodePath("../Stats")
+hurtbox = NodePath("../Hurtbox")
+
+[node name="DestroyedEffect" type="Node" parent="." node_paths=PackedStringArray("actor", "stats", "dest_ef_spawner")]
+script = ExtResource("6_3rayb")
+actor = NodePath("..")
+stats = NodePath("../Stats")
+dest_ef_spawner = NodePath("DestroyedSpawner")
+
+[node name="DestroyedSpawner" type="Node2D" parent="DestroyedEffect"]
+position = Vector2(-1, 0)
+script = ExtResource("7_u3s7b")
+scene = ExtResource("8_s6j8j")
+
+[node name="ShakeEffect" type="Node" parent="." node_paths=PackedStringArray("node_to_shake")]
+script = ExtResource("9_jemqy")
+node_to_shake = NodePath("../Sprite")
+
+[node name="FlashEffect" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("10_bxscl")
+flash_material = ExtResource("11_lqcfe")
+sprite = NodePath("../Sprite")
+flash_duration = 0.05
+
+[node name="ScaleEffect" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("12_36ffa")
+sprite = NodePath("../Sprite")
+scale_amount = Vector2(1.1, 1.1)
+scale_duration = 0.2
