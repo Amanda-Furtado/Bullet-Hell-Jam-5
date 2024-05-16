@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 #DAMAGE CONTROL
 @onready var stats = $Stats
+@onready var fire_sprite = $FireSprite
 
 #EFFECTS
 @onready var destroyed_effect = $DestroyedEffect
@@ -21,15 +22,25 @@ extends CharacterBody2D
 @export var barrel_origin: Node2D
 
 var can_shoot: bool = true
+var number_of_shoots: int = 12
+
+#MOVEMENT
+var rotate_way: float = 0.01
 
 
 func _ready() -> void:
 	get_parent().in_right.connect(func():
-		round_shoot())
+		rotate_way = 0.01
+		straight_shoot()
+		)
 	get_parent().in_mid.connect(func():
-		round_shoot())
+		rotate_way = 0
+		straight_shoot()
+		)
 	get_parent().in_left.connect(func():
-		round_shoot())
+		rotate_way = -0.01
+		straight_shoot()
+		)
 
 
 func _process(delta: float) -> void:
@@ -38,11 +49,10 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	#rotate(0.05)
-	pass
+	fire_sprite.rotate(rotate_way)
 
 
-func round_shoot() -> void:
+func shoot() -> void:
 	if can_shoot:
 		can_shoot = false
 		for i in bullet_count:
@@ -50,12 +60,14 @@ func round_shoot() -> void:
 			new_bullet.position = barrel_origin.global_position if barrel_origin else global_position
 			
 			if bullet_count == 1:
-				new_bullet.rotation = global_rotation
+				# new_bullet.rotation = global_rotation -> reto sempre
+				new_bullet.rotation = fire_sprite.global_rotation
 			else:
 				var arc_rad = deg_to_rad(arc)
 				var increment = arc_rad / (bullet_count - 1)
 				new_bullet.global_rotation = (
-					global_rotation +
+					# global_rotation + -> reto sempre
+					fire_sprite.global_rotation +
 					increment * i -
 					arc_rad / 2
 				)
@@ -63,3 +75,16 @@ func round_shoot() -> void:
 		await get_tree().create_timer(1 / fire_rate).timeout
 		can_shoot = true
 
+
+func straight_shoot() -> void:
+	var counter = 0
+	while counter < number_of_shoots:
+		await shoot() 
+		counter += 1
+
+
+func zig_zag_shoot() -> void:
+	var counter = 0
+	while counter < number_of_shoots:
+		await shoot() 
+		counter += 1

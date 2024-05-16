@@ -113,7 +113,7 @@ rotation = -1.5708
 rotates = false
 loop = false
 script = ExtResource("5_swusq")
-speed = 0.12
+speed = 0.15
 
 [node name="TheSun" parent="Path2D/PathFollow2D" instance=ExtResource("3_n28pe")]
 rotation = 1.5708
