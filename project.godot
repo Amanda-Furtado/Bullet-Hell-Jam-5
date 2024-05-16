@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bullet Hell Consequences"
-run/main_scene="res://Game/Worlds/TheMoonLevel.tscn"
+run/main_scene="res://Game/Worlds/TheSunLevel.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 

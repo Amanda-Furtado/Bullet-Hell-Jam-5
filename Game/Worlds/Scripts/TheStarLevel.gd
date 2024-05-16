@@ -22,10 +22,3 @@ func _ready():
 
 func _process(_delta: float) -> void:
 	label.text = str("FPS: ", Engine.get_frames_per_second())   
-
-
-func go_to_next_level(level: PackedScene):
-	if not level is PackedScene:
-		print("NO LEVEL SELECTED")
-		return
-	get_tree().change_scene_to_packed(level)

@@ -23,9 +23,18 @@ extends CharacterBody2D
 var can_shoot: bool = true
 
 
+func _ready() -> void:
+	get_parent().in_right.connect(func():
+		round_shoot())
+	get_parent().in_mid.connect(func():
+		round_shoot())
+	get_parent().in_left.connect(func():
+		round_shoot())
+
+
 func _process(delta: float) -> void:
-	
-	round_shoot()
+	#round_shoot()
+	pass
 
 
 func _physics_process(delta: float) -> void:
@@ -36,7 +45,6 @@ func _physics_process(delta: float) -> void:
 func round_shoot() -> void:
 	if can_shoot:
 		can_shoot = false
-		#scale_effect.tween_scale()
 		for i in bullet_count:
 			var new_bullet = bullet.instantiate()
 			new_bullet.position = barrel_origin.global_position if barrel_origin else global_position
@@ -55,6 +63,3 @@ func round_shoot() -> void:
 		await get_tree().create_timer(1 / fire_rate).timeout
 		can_shoot = true
 
-
-func ray_shoot() -> void:
-	pass
