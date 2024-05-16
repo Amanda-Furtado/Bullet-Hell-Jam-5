@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://u2iwyorybvbb"]
+[gd_scene load_steps=10 format=3 uid="uid://u2iwyorybvbb"]
 
 [ext_resource type="Script" path="res://Game/Worlds/Scripts/TheStarLevel.gd" id="1_a1i37"]
 [ext_resource type="Texture2D" uid="uid://dixiqobk8vsih" path="res://Assets/Tilesets/generictiles_spr.png" id="2_hkhng"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Player/Player.tscn" id="3_xnqh7"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="4_758gv"]
 [ext_resource type="PackedScene" uid="uid://bmmrexin7bc1w" path="res://Game/Bosses/The Star/ShootingStar.tscn" id="6_agcun"]
+[ext_resource type="PackedScene" uid="uid://bxe5nh2ej1176" path="res://Game/User Interface/DebugMenu.tscn" id="6_j0dqb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s457o"]
 texture = ExtResource("2_hkhng")
@@ -101,6 +102,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("4_758gv")]
 metadata/_edit_use_anchors_ = true
+
+[node name="DebugMenu" parent="CanvasLayer" instance=ExtResource("6_j0dqb")]
 
 [node name="ShootingStars" parent="." instance=ExtResource("6_agcun")]
 position = Vector2(16, 0)

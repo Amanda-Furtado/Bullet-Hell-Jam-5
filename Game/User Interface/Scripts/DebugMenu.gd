@@ -13,12 +13,12 @@ func _ready() -> void:
 
 
 func _on_moon_button_pressed():
-	get_tree().change_scene_to_packed(moon_scene)
+	SceneManager.load_new_scene(moon_scene.resource_path)
 
 
 func _on_star_button_pressed():
-	get_tree().change_scene_to_packed(star_scene)
+	SceneManager.load_new_scene(star_scene.resource_path)
 
 
 func _on_sun_button_pressed():
-	get_tree().change_scene_to_packed(sun_scene)
+	SceneManager.load_new_scene(sun_scene.resource_path)

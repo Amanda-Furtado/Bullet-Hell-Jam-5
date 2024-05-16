@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cb4follb366yw"]
+[gd_scene load_steps=11 format=3 uid="uid://cb4follb366yw"]
 
 [ext_resource type="Script" path="res://Game/Worlds/Scripts/TheSunLevel.gd" id="1_8e8kc"]
 [ext_resource type="Texture2D" uid="uid://dixiqobk8vsih" path="res://Assets/Tilesets/generictiles_spr.png" id="1_i6l0t"]
 [ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Player/Player.tscn" id="3_8til5"]
 [ext_resource type="PackedScene" uid="uid://bdjjd164d8wkp" path="res://Game/Bosses/The Sun/TheSun.tscn" id="3_n28pe"]
+[ext_resource type="PackedScene" uid="uid://bxe5nh2ej1176" path="res://Game/User Interface/DebugMenu.tscn" id="3_o37nm"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="4_4txsr"]
 [ext_resource type="Script" path="res://Game/Worlds/sun_path_follow.gd" id="5_swusq"]
 
@@ -93,6 +94,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("4_4txsr")]
 metadata/_edit_use_anchors_ = true
+
+[node name="DebugMenu" parent="CanvasLayer" instance=ExtResource("3_o37nm")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_v4uvb")
