@@ -11,11 +11,9 @@
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 
-[node name="TheMoonLevel" type="Node2D" node_paths=PackedStringArray("boss", "label")]
+[node name="TheMoonLevel" type="Node2D"]
 script = ExtResource("1_5rmj7")
-next_level = ExtResource("2_n3bsi")
-boss = NodePath("TheMoon")
-label = NodePath("CanvasLayer/Label")
+n_lvl = ExtResource("2_n3bsi")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_r7jav")
