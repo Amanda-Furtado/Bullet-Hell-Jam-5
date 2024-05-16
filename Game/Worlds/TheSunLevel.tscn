@@ -78,8 +78,9 @@ _data = {
 }
 point_count = 3
 
-[node name="TheSunLevel" type="Node2D"]
+[node name="TheSunLevel" type="Node2D" node_paths=PackedStringArray("boss")]
 script = ExtResource("1_8e8kc")
+boss = NodePath("Path2D/PathFollow2D/TheSun")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

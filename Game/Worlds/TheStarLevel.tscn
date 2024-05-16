@@ -72,10 +72,9 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_s457o")
 
-[node name="TheStarLevel" type="Node2D" node_paths=PackedStringArray("boss", "label")]
+[node name="TheStarLevel" type="Node2D" node_paths=PackedStringArray("boss")]
 script = ExtResource("1_a1i37")
 boss = NodePath("TheStar")
-label = NodePath("CanvasLayer/Label")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_rdv72")
