@@ -38,6 +38,10 @@ func _ready() -> void:
 		_:
 			print("direction not set")
 	
+	await get_tree().create_timer(2.0).timeout
+	#global_rotation = global_rotation
+	
+	
 	if expire:
 		await get_tree().create_timer(life_time).timeout
 		queue_free()

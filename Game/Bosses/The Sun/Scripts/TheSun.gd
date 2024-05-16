@@ -29,7 +29,8 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	rotate(0.05)
+	#rotate(0.05)
+	pass
 
 
 func round_shoot() -> void:

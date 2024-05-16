@@ -33,10 +33,11 @@ radius = 31.0
 radius = 32.0156
 
 [node name="TheSun" type="CharacterBody2D" node_paths=PackedStringArray("barrel_origin")]
+z_index = 1
 script = ExtResource("1_armbd")
 bullet = ExtResource("2_32rh5")
-bullet_count = 10
-arc = 90.0
+bullet_count = 16
+arc = 360.0
 fire_rate = 5.0
 barrel_origin = NodePath(".")
 
