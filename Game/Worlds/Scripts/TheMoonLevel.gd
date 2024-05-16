@@ -8,6 +8,8 @@ extends Node2D
 #Interface
 @onready var label = $CanvasLayer/Label
 @onready var hud = $CanvasLayer/Hud
+@onready var debug_menu = $DebugMenu
+
 
 
 func _ready() -> void:
@@ -21,7 +23,8 @@ func _ready() -> void:
 	#Scene Change
 	boss.stats.no_health.connect(func():
 		await get_tree().create_timer(2.0).timeout
-		get_tree().change_scene_to_packed(n_lvl)
+		#get_tree().change_scene_to_packed(n_lvl)
+		pass
 		)
 	
 	#boss related

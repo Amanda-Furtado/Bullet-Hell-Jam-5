@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmafyevf4c6fj"]
+[gd_scene load_steps=9 format=3 uid="uid://dmafyevf4c6fj"]
 
 [ext_resource type="Script" path="res://Game/Worlds/Scripts/TheMoonLevel.gd" id="1_5rmj7"]
 [ext_resource type="PackedScene" uid="uid://qhcex4ei7jh" path="res://Game/Bosses/The Moon/TheMoon.tscn" id="2_lhcvt"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c7uf6qtxcabm7" path="res://Game/Bosses/The Moon/MoonSea.tscn" id="3_t7i8k"]
 [ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Player/Player.tscn" id="4_gl2if"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="5_xptiv"]
+[ext_resource type="PackedScene" uid="uid://bxe5nh2ej1176" path="res://Game/User Interface/DebugMenu.tscn" id="7_vksdh"]
 
 [sub_resource type="TileSet" id="TileSet_r7jav"]
 physics_layer_0/collision_layer = 1
@@ -14,6 +15,20 @@ physics_layer_0/collision_mask = 0
 [node name="TheMoonLevel" type="Node2D"]
 script = ExtResource("1_5rmj7")
 n_lvl = ExtResource("2_n3bsi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DebugMenu" parent="CanvasLayer" instance=ExtResource("7_vksdh")]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_top = 32.0
+offset_right = 40.0
+offset_bottom = 55.0
+text = "FPS:"
+metadata/_edit_use_anchors_ = true
+
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("5_xptiv")]
+metadata/_edit_use_anchors_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_r7jav")
@@ -32,15 +47,3 @@ fire_rate = 1.0
 
 [node name="Player" parent="." instance=ExtResource("4_gl2if")]
 position = Vector2(81, 151)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_top = 32.0
-offset_right = 40.0
-offset_bottom = 55.0
-text = "FPS:"
-metadata/_edit_use_anchors_ = true
-
-[node name="Hud" parent="CanvasLayer" instance=ExtResource("5_xptiv")]
-metadata/_edit_use_anchors_ = true

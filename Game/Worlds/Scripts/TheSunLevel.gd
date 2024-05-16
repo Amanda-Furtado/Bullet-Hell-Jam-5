@@ -8,6 +8,7 @@ extends Node2D
 @onready var label = $CanvasLayer/Label
 @onready var hud = $CanvasLayer/Hud
 
+
 func _ready():
 	player.stats.health_changed.connect(func():
 		hud.update_health_bar(player.stats.health))
