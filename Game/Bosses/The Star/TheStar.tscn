@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhpew12gj1k16"]
+[gd_scene load_steps=10 format=3 uid="uid://bhpew12gj1k16"]
 
 [ext_resource type="Script" path="res://Game/Bosses/The Star/Scripts/TheStar.gd" id="1_nqwj5"]
 [ext_resource type="PackedScene" uid="uid://f82jftruq2wd" path="res://Game/Bosses/The Star/vertical_member.tscn" id="2_3y313"]
 [ext_resource type="PackedScene" uid="uid://x0kk1jvwp5e3" path="res://Game/Bosses/The Star/x_member.tscn" id="3_2386m"]
+[ext_resource type="Texture2D" uid="uid://cu8wi40tva7vm" path="res://Assets/Bosses/The Star/star_center.png" id="4_du8cr"]
+[ext_resource type="Script" path="res://Components/Damage/Hurt.gd" id="5_88ntx"]
 [ext_resource type="Script" path="res://Components/Stats/Stats.gd" id="5_wsf4h"]
+[ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="6_sqm3f"]
+[ext_resource type="Script" path="res://Components/Damage/Hurtbox.gd" id="7_qranm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gt4cg"]
+radius = 24.0
 
 [node name="TheStar" type="CharacterBody2D"]
 script = ExtResource("1_nqwj5")
@@ -34,6 +41,9 @@ rotation = -3.14159
 [node name="VDown" parent="Vertical" instance=ExtResource("2_3y313")]
 rotation = -1.57079
 
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("4_du8cr")
+
 [node name="AtkTimer" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
@@ -46,5 +56,28 @@ autostart = true
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("5_wsf4h")
 health = 200
+
+[node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
+script = ExtResource("5_88ntx")
+stats = NodePath("../Stats")
+hurtbox = NodePath("../Hurtbox")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("6_sqm3f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_gt4cg")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("7_qranm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_gt4cg")
 
 [connection signal="timeout" from="AtkCooldownTimer" to="." method="_on_atk_cooldown_timer_timeout"]

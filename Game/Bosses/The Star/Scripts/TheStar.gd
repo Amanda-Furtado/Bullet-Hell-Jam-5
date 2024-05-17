@@ -1,8 +1,6 @@
 extends CharacterBody2D
 
 @onready var stats = $Stats
-@onready var total_health: int = 0
-
 
 @onready var diagonal = $Diagonal
 @onready var vertical = $Vertical
@@ -14,11 +12,21 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	for child in vertical.get_children():
-		child.stats.health_changed.connect(update_total_health)
-		child.stats.no_health.connect(rotate_manager)
+		child.stats.no_health.connect(func():
+			rotate_manager()
+			health_manager()
+			)
 	for child in diagonal.get_children():
-		child.stats.health_changed.connect(update_total_health)
-		child.stats.no_health.connect(rotate_manager)
+		child.stats.no_health.connect(func():
+			rotate_manager()
+			health_manager()
+			)
+
+
+func health_manager() -> void:
+	stats.health -= 15
+	print(stats.health)
+	stats.health_changed.emit()
 
 
 func _physics_process(_delta: float) -> void:
@@ -35,20 +43,9 @@ func _on_atk_cooldown_timer_timeout() -> void:
 			child.shoot()
 		for child in diagonal.get_children():
 			child.shoot()
-			pass
 		counter += 1
 		atk_timer.start()
 	atk_cooldown_timer.start()
-
-
-func update_total_health() -> void:
-	total_health = 0
-	for child in vertical.get_children():
-		total_health += child.stats.health
-	for child in diagonal.get_children():
-		total_health += child.stats.health
-	stats.health = total_health
-	stats.health_changed.emit()
 
 
 func rotate_manager() -> void:

@@ -105,36 +105,38 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DebugMenu" parent="CanvasLayer" instance=ExtResource("6_j0dqb")]
 
-[node name="ShootingStars" parent="." instance=ExtResource("6_agcun")]
+[node name="Starts" type="Node2D" parent="."]
+
+[node name="ShootingStars" parent="Starts" instance=ExtResource("6_agcun")]
 position = Vector2(16, 0)
 dir_vector = Vector2(0, 1)
 
-[node name="ShootingStars2" parent="." instance=ExtResource("6_agcun")]
+[node name="ShootingStars2" parent="Starts" instance=ExtResource("6_agcun")]
 position = Vector2(48, 320)
 
-[node name="ShootingStars3" parent="." instance=ExtResource("6_agcun")]
+[node name="ShootingStars3" parent="Starts" instance=ExtResource("6_agcun")]
 position = Vector2(80, 0)
 dir_vector = Vector2(0, 1)
 
-[node name="ShootingStars4" parent="." instance=ExtResource("6_agcun")]
+[node name="ShootingStars4" parent="Starts" instance=ExtResource("6_agcun")]
 position = Vector2(112, 320)
 
-[node name="ShootingStars5" parent="." instance=ExtResource("6_agcun")]
+[node name="ShootingStars5" parent="Starts" instance=ExtResource("6_agcun")]
 position = Vector2(144, 0)
 dir_vector = Vector2(0, 1)
 
-[node name="ShootingStars6" parent="." instance=ExtResource("6_agcun")]
+[node name="ShootingStars6" parent="Starts" instance=ExtResource("6_agcun")]
 position = Vector2(176, 320)
 
-[node name="ShootingStars7" parent="." instance=ExtResource("6_agcun")]
+[node name="ShootingStars7" parent="Starts" instance=ExtResource("6_agcun")]
 position = Vector2(208, 0)
 dir_vector = Vector2(0, 1)
 
-[node name="ShootingStars8" parent="." instance=ExtResource("6_agcun")]
+[node name="ShootingStars8" parent="Starts" instance=ExtResource("6_agcun")]
 position = Vector2(240, 320)
 
-[node name="ShootingStars9" parent="." instance=ExtResource("6_agcun")]
+[node name="ShootingStars9" parent="Starts" instance=ExtResource("6_agcun")]
 position = Vector2(272, 0)
 
-[node name="ShootingStars10" parent="." instance=ExtResource("6_agcun")]
+[node name="ShootingStars10" parent="Starts" instance=ExtResource("6_agcun")]
 position = Vector2(304, 320)

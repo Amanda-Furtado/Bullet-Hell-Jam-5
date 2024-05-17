@@ -1,6 +1,5 @@
 extends Node2D
 
-signal got_hitted
 
 #BULLET
 @export var bullet: PackedScene
@@ -18,7 +17,6 @@ signal got_hitted
 
 func _ready() -> void:
 	stats.health_changed.connect(func():
-		got_hitted.emit()
 		shake_effect.tween_shake()
 		flash_effect.flash())
 	

@@ -83,7 +83,7 @@ debug_color = Color(0.302776, 0.614443, 0.375808, 0.42)
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("4_gl2ej")
-health = 100
+health = 200
 
 [node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
 script = ExtResource("5_cgnge")
