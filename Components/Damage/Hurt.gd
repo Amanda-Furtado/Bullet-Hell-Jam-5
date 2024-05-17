@@ -1,7 +1,7 @@
 class_name Hurt extends Node
 
 
-@export var stats: Node
+@export var stats: Stats
 @export var hurtbox: Hurtbox
 
 func _ready() -> void:

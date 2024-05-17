@@ -45,6 +45,7 @@ func on_bot_point() -> void:
 func on_point_stop() -> void:
 	if point_timer.time_left == 0:
 		point_touch.emit()
+		
 		set_process(false)
 		await get_tree().create_timer(point_interval).timeout
 		set_process(true)

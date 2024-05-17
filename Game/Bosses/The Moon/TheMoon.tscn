@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bga0rpnysawmj" path="res://Assets/Bosses/The Moon/moon_spr.png" id="1_t1xvu"]
 [ext_resource type="Texture2D" uid="uid://cnrqg5jsx6jwx" path="res://Assets/Bosses/The Moon/moon2_spr.png" id="2_wfw7e"]
 [ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="3_it85t"]
-[ext_resource type="Script" path="res://Components/Stats/BossStats.gd" id="3_lxsjc"]
 [ext_resource type="Script" path="res://Components/Damage/Hurtbox.gd" id="4_bvep4"]
+[ext_resource type="Script" path="res://Components/Stats/Stats.gd" id="5_hv6s8"]
 [ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="5_jswo6"]
 [ext_resource type="PackedScene" uid="uid://ba8mf1gb1n7gw" path="res://Game/Bullets/boss moon bullets/quesso_bullet.tscn" id="6_17dpp"]
 [ext_resource type="Script" path="res://Components/Damage/Hurt.gd" id="9_7g424"]
@@ -50,14 +50,14 @@ radius = 31.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_lx3dh"]
 radius = 32.0156
 
-[node name="TheMoon" type="CharacterBody2D"]
+[node name="TheMoon" type="CharacterBody2D" node_paths=PackedStringArray("barrel_origin")]
 position = Vector2(-1, 0)
 motion_mode = 1
 script = ExtResource("1_8ocbu")
-
-[node name="BossStats" type="Node" parent="."]
-script = ExtResource("3_lxsjc")
-health = 50
+bullet = ExtResource("6_17dpp")
+bullet_count = 12
+arc = 180.0
+barrel_origin = NodePath(".")
 
 [node name="bossSprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bpiej")
@@ -84,20 +84,19 @@ script = ExtResource("4_bvep4")
 shape = SubResource("CircleShape2D_lx3dh")
 debug_color = Color(0.302776, 0.614443, 0.375808, 0.42)
 
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("5_hv6s8")
+health = 200
+
 [node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
 script = ExtResource("9_7g424")
-stats = NodePath("../BossStats")
+stats = NodePath("../Stats")
 hurtbox = NodePath("../bossHurtbox")
-
-[node name="bossSpawner" type="Node2D" parent="."]
-position = Vector2(-32, 0)
-script = ExtResource("5_jswo6")
-scene = ExtResource("6_17dpp")
 
 [node name="DestroyedEffect" type="Node" parent="." node_paths=PackedStringArray("actor", "stats", "dest_ef_spawner")]
 script = ExtResource("10_rnx65")
 actor = NodePath("..")
-stats = NodePath("../BossStats")
+stats = NodePath("../Stats")
 dest_ef_spawner = NodePath("DestroyedSpawner")
 
 [node name="DestroyedSpawner" type="Node2D" parent="DestroyedEffect"]
@@ -122,29 +121,29 @@ sprite = NodePath("../bossSprites")
 [node name="Stars" type="Node2D" parent="."]
 
 [node name="LilStar" parent="Stars" instance=ExtResource("16_pub0o")]
-position = Vector2(-31, -32)
+position = Vector2(-39, -32)
 bullet_count = 2
 arc = 30.0
 fire_rate = 0.6
 
 [node name="LilStar2" parent="Stars" instance=ExtResource("16_pub0o")]
-position = Vector2(1, -64)
+position = Vector2(-7, -48)
 bullet_count = 3
 arc = 45.0
 fire_rate = 0.6
 
 [node name="LilStar3" parent="Stars" instance=ExtResource("16_pub0o")]
-position = Vector2(-63, 0)
+position = Vector2(-55, 0)
 fire_rate = 0.6
 
 [node name="LilStar4" parent="Stars" instance=ExtResource("16_pub0o")]
-position = Vector2(-31, 32)
+position = Vector2(-39, 32)
 bullet_count = 2
 arc = 30.0
 fire_rate = 0.6
 
 [node name="LilStar5" parent="Stars" instance=ExtResource("16_pub0o")]
-position = Vector2(1, 64)
+position = Vector2(-7, 48)
 bullet_count = 3
 arc = 45.0
 fire_rate = 0.6

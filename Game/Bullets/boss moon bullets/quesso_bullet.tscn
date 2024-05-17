@@ -22,7 +22,8 @@ animations = [{
 radius = 7.0
 
 [node name="QuessoBullet" instance=ExtResource("1_tm60x")]
-direction = 1
+direction = 5
+speed = 2.0
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ylr2x")

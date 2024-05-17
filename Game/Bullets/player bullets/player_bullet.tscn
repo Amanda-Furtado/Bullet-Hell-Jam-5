@@ -22,9 +22,8 @@ animations = [{
 size = Vector2(8, 8)
 
 [node name="PlayerBullet" instance=ExtResource("1_kvr3s")]
-fire_rate = 1.0
 direction = 0
-speed = 5.0
+speed = 3.0
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_px51a")
@@ -32,7 +31,6 @@ autoplay = "default"
 
 [node name="Hitbox" parent="." index="1"]
 collision_mask = 16
-damage = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("RectangleShape2D_ooo4g")

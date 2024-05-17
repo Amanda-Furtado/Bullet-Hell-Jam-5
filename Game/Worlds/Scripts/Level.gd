@@ -3,12 +3,16 @@ class_name Level extends Node2D
 @export var boss: CharacterBody2D
 
 @onready var player: Player = $Player
-@onready var hud = $CanvasLayer/Hud
+@onready var hud: HUD = $CanvasLayer/Hud
 @onready var label = $CanvasLayer/Label
 
 
 func _ready() -> void:
 	#Interface
+	hud.boss_health_bar.max_value = boss.stats.health
+	hud.boss_health_bar.value = boss.stats.health
+	
+	
 	player.stats.health_changed.connect(func():
 		hud.update_health_bar(player.stats.health))
 	

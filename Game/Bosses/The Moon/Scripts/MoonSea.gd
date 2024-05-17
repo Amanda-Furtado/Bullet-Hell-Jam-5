@@ -8,10 +8,10 @@ extends Node2D
 
 
 func ocean_phase2():
-	#while 
-	#await get_tree().create_timer(2.0).timeout
+	
 	ocean_up(top_ocean, top_spawner)
 	ocean_up(bot_ocean, bot_spawner)
+
 
 func pull_top_ocean():
 	ocean_up(top_ocean, top_spawner)
