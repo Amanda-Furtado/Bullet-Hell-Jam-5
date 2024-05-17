@@ -7,6 +7,12 @@ extends Node2D
 @onready var bot_spawner = $bot_ocean/BotSpawner
 
 
+func ocean_phase2():
+	#while 
+	#await get_tree().create_timer(2.0).timeout
+	ocean_up(top_ocean, top_spawner)
+	ocean_up(bot_ocean, bot_spawner)
+
 func pull_top_ocean():
 	ocean_up(top_ocean, top_spawner)
 	await get_tree().create_timer(2.0).timeout

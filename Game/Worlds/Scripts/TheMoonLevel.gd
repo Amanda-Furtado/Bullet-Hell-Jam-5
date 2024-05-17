@@ -11,13 +11,14 @@ func _ready() -> void:
 	#boss related
 	boss.touch_top.connect(func():
 		if boss.on_phase2:
-			return
+			moon_sea.ocean_phase2()
 		else:
 			moon_sea.pull_top_ocean()
 		)
 	boss.touch_bot.connect(func():
 		if boss.on_phase2:
-			return
+			moon_sea.ocean_phase2()
 		else:
 			moon_sea.pull_bot_ocean()
 		)
+	
