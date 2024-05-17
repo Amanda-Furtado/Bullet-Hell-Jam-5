@@ -29,19 +29,18 @@ var down_diag: float = -30
 var diag: float = 0.0
 
 func _ready() -> void:
+	
 	diag = up_diag
 	hurtbox.hurt.connect(func(hitbox: Hitbox):
 		flash_effect.flash()
 		shake_effect.tween_shake()
-		scale_effect.tween_scale()
 		)
 	stats.no_health.connect(func():
 		atk_timer.stop()
 		)
 	
-	
-	
-	
+	get_parent().get_parent().get_parent().point_touch.connect(func():
+		shoot())
 	
 	#boss.touch_top.connect(func():
 		#diag = up_diag)
@@ -51,9 +50,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	sprite.look_at(player.global_position)
-	
-	shoot()
+	if player != null:
+		sprite.look_at(player.global_position)
 
 
 #func shoot(diag) -> void:
@@ -93,6 +91,7 @@ func _process(delta: float) -> void:
 
 func shoot() -> void:
 	if can_shoot:
+		scale_effect.tween_scale()
 		can_shoot = false
 		for i in bullet_count:
 			var new_bullet = bullet.instantiate()

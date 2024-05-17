@@ -2,7 +2,7 @@ class_name DestroyedEffect extends Node
 
 
 @export var actor: Node2D
-@export var stats: Stats
+@export var stats: Node
 @export var dest_ef_spawner: Spawner
 
 

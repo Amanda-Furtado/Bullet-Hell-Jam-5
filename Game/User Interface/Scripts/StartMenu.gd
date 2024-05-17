@@ -10,6 +10,7 @@ func _ready() -> void:
 
 
 func _on_start_button_pressed() -> void:
+	start_button.disabled = true
 	SceneManager.load_new_scene(first_level.resource_path)
 
 

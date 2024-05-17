@@ -2,6 +2,7 @@ class_name Minion extends CharacterBody2D
 
 #OUTSIDE NODES
 @onready var player = get_tree().get_first_node_in_group("players")
+@onready var scale_effect = $ScaleEffect
 
 #DAMAGE CONTROL
 @onready var hitbox: Hitbox = $Hitbox
@@ -53,6 +54,7 @@ func _ready() -> void:
 	if expire:
 		await get_tree().create_timer(life_time).timeout
 		spawn_bullets()
+		await get_tree().create_timer(0.2).timeout
 		queue_free()
 
 
@@ -64,6 +66,7 @@ func _physics_process(_delta: float) -> void:
 
 func spawn_bullets():
 	if can_shoot:
+		scale_effect.tween_scale()
 		can_shoot = false
 		for i in bullet_count:
 			var new_bullet = bullet.instantiate()

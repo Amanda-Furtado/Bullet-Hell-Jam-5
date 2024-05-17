@@ -1,33 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmafyevf4c6fj"]
+[gd_scene load_steps=10 format=3 uid="uid://dmafyevf4c6fj"]
 
 [ext_resource type="Script" path="res://Game/Worlds/Scripts/TheMoonLevel.gd" id="1_5rmj7"]
 [ext_resource type="PackedScene" uid="uid://qhcex4ei7jh" path="res://Game/Bosses/The Moon/TheMoon.tscn" id="2_lhcvt"]
 [ext_resource type="PackedScene" uid="uid://c7uf6qtxcabm7" path="res://Game/Bosses/The Moon/MoonSea.tscn" id="3_t7i8k"]
 [ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Player/Player.tscn" id="4_gl2if"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="5_xptiv"]
+[ext_resource type="Script" path="res://Game/Worlds/moon_path_follow.gd" id="6_fg75b"]
 [ext_resource type="PackedScene" uid="uid://bxe5nh2ej1176" path="res://Game/User Interface/DebugMenu.tscn" id="7_vksdh"]
 
 [sub_resource type="TileSet" id="TileSet_r7jav"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 
+[sub_resource type="Curve2D" id="Curve2D_qbk3n"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 256, 32, 0, 0, 0, 0, 208, 96, 0, 0, 0, 0, 304, 192, 0, 0, 0, 0, 256, 256, 0, 0, 0, 0, 208, 192, 0, 0, 0, 0, 304, 96, 0, 0, 0, 0, 256, 32)
+}
+point_count = 7
+
 [node name="TheMoonLevel" type="Node2D" node_paths=PackedStringArray("boss")]
 script = ExtResource("1_5rmj7")
-boss = NodePath("TheMoon")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="DebugMenu" parent="CanvasLayer" instance=ExtResource("7_vksdh")]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_top = 32.0
-offset_right = 40.0
-offset_bottom = 55.0
-text = "FPS:"
-metadata/_edit_use_anchors_ = true
-
-[node name="Hud" parent="CanvasLayer" instance=ExtResource("5_xptiv")]
-metadata/_edit_use_anchors_ = true
+boss = NodePath("Path2D/MoonPathFollow/TheMoon")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_r7jav")
@@ -37,12 +30,43 @@ layer_0/tile_data = PackedInt32Array(1179648, 65536, 2, 1179649, 65536, 2, 11796
 layer_1/name = "front"
 layer_1/tile_data = PackedInt32Array()
 
-[node name="TheMoon" parent="." instance=ExtResource("2_lhcvt")]
-position = Vector2(448, 144)
-bullet_count = 2
-fire_rate = 1.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DebugMenu" parent="CanvasLayer" instance=ExtResource("7_vksdh")]
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_top = 32.0
+offset_right = 40.0
+offset_bottom = 55.0
+text = "FPS:"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("5_xptiv")]
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="MoonSea" parent="." instance=ExtResource("3_t7i8k")]
 
 [node name="Player" parent="." instance=ExtResource("4_gl2if")]
 position = Vector2(81, 151)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(176, 0)
+curve = SubResource("Curve2D_qbk3n")
+
+[node name="MoonPathFollow" type="PathFollow2D" parent="Path2D"]
+position = Vector2(256, 144)
+rotation = 2.2143
+progress = 147.882
+rotates = false
+script = ExtResource("6_fg75b")
+speed = 0.2
+
+[node name="TheMoon" parent="Path2D/MoonPathFollow" instance=ExtResource("2_lhcvt")]
+position = Vector2(3.09944e-06, 5.24521e-06)
+rotation = -2.2143
+
+[node name="PointTimer" type="Timer" parent="Path2D/MoonPathFollow"]
+one_shot = true

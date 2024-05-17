@@ -39,10 +39,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnafc"]
-radius = 31.0
+radius = 88.3629
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7c4st"]
-radius = 32.0156
+radius = 88.0
 
 [node name="TheSun" type="CharacterBody2D" node_paths=PackedStringArray("barrel_origin")]
 z_index = 1
