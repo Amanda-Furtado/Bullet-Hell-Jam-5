@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 signal touch_top
 signal touch_bot
-
+signal phase2_in_course
 
 @onready var player = get_tree().get_first_node_in_group("players")
 @onready var boss_hurtbox = $bossHurtbox
@@ -39,6 +39,7 @@ func _ready() -> void:
 		if on_phase2:
 			return
 		if stats.health <= og_health/2:
+			phase2_in_course.emit()
 			on_phase2 = true
 			boss_sprites.play("phase2"))
 

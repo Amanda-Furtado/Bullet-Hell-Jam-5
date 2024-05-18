@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cb4follb366yw"]
+[gd_scene load_steps=13 format=3 uid="uid://cb4follb366yw"]
 
 [ext_resource type="Script" path="res://Game/Worlds/Scripts/TheSunLevel.gd" id="1_8e8kc"]
 [ext_resource type="Texture2D" uid="uid://dixiqobk8vsih" path="res://Assets/Tilesets/generictiles_spr.png" id="1_i6l0t"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bxe5nh2ej1176" path="res://Game/User Interface/DebugMenu.tscn" id="3_o37nm"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="4_4txsr"]
 [ext_resource type="Script" path="res://Game/Worlds/sun_path_follow.gd" id="5_swusq"]
+[ext_resource type="AudioStream" uid="uid://201rxnbqqhux" path="res://Music and Sounds/Musics/another_phase1.mp3" id="8_v3cj6"]
+[ext_resource type="AudioStream" uid="uid://d0an7eluobvxf" path="res://Music and Sounds/Musics/another_phase2.mp3" id="9_xbmg4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s457o"]
 texture = ExtResource("1_i6l0t")
@@ -125,3 +127,10 @@ rotation = 1.5708
 [node name="pointTimer" type="Timer" parent="Path2D/PathFollow2D"]
 wait_time = 2.0
 one_shot = true
+
+[node name="Phase1Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_v3cj6")
+bus = &"Music"
+
+[node name="Phase2Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_xbmg4")

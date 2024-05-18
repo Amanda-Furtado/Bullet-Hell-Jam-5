@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/phase1.mp3-3d6359fae14aa9018f9d9a12679093e9.m
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
