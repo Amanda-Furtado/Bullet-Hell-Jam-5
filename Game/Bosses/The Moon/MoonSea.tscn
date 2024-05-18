@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7uf6qtxcabm7"]
+[gd_scene load_steps=6 format=3 uid="uid://c7uf6qtxcabm7"]
 
 [ext_resource type="Script" path="res://Game/Bosses/The Moon/Scripts/MoonSea.gd" id="1_hqy2g"]
 [ext_resource type="Texture2D" uid="uid://c30v4m4nwea2d" path="res://Assets/Bosses/The Moon/sea.png" id="2_kj1fx"]
 [ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="3_8ooqk"]
 [ext_resource type="PackedScene" uid="uid://r1upo61132j3" path="res://Game/Minions/boss moon minions/teste_minion.tscn" id="4_vt2dw"]
+[ext_resource type="AudioStream" uid="uid://duvt1lpf6ku25" path="res://Music and Sounds/Sound Effects/ocean_wave1.mp3" id="5_pb60y"]
 
 [node name="MoonSea" type="Node2D"]
 script = ExtResource("1_hqy2g")
@@ -34,3 +35,8 @@ position = Vector2(32, 0)
 scale = Vector2(0.666667, 1)
 script = ExtResource("3_8ooqk")
 scene = ExtResource("4_vt2dw")
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_pb60y")
+volume_db = -10.0
+bus = &"Sound Effects"

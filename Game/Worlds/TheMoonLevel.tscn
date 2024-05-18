@@ -39,12 +39,6 @@ layer_1/tile_data = PackedInt32Array()
 [node name="Player" parent="." instance=ExtResource("4_gl2if")]
 position = Vector2(81, 151)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-limit_left = 0
-limit_top = 0
-limit_right = 512
-limit_bottom = 288
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DebugMenu" parent="CanvasLayer" instance=ExtResource("7_vksdh")]
@@ -91,28 +85,28 @@ bus = &"Music"
 stream = ExtResource("9_vp0mj")
 bus = &"Music"
 
-[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("10_qu23y")
 
-[node name="Backcolor" type="ParallaxLayer" parent="ParallaxBackground2"]
+[node name="Backcolor" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/Backcolor"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Backcolor"]
 texture = ExtResource("10_4t24y")
 centered = false
 
-[node name="Stars" type="ParallaxLayer" parent="ParallaxBackground2"]
+[node name="Stars" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(512, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/Stars"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Stars"]
 texture = ExtResource("11_684hl")
 centered = false
 
-[node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground2"]
+[node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(2, 2)
 motion_mirroring = Vector2(512, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/Clouds"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Clouds"]
 texture = ExtResource("12_iv0ee")
 centered = false

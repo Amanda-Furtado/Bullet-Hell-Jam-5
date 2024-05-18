@@ -55,7 +55,7 @@ autostart = true
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("5_wsf4h")
-health = 200
+health = 120
 
 [node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
 script = ExtResource("5_88ntx")
