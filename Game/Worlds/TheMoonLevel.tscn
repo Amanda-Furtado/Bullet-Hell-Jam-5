@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmafyevf4c6fj"]
+[gd_scene load_steps=10 format=3 uid="uid://dmafyevf4c6fj"]
 
 [ext_resource type="Script" path="res://Game/Worlds/Scripts/TheMoonLevel.gd" id="1_5rmj7"]
 [ext_resource type="PackedScene" uid="uid://qhcex4ei7jh" path="res://Game/Bosses/The Moon/TheMoon.tscn" id="2_lhcvt"]
 [ext_resource type="PackedScene" uid="uid://c7uf6qtxcabm7" path="res://Game/Bosses/The Moon/MoonSea.tscn" id="3_t7i8k"]
-[ext_resource type="PackedScene" uid="uid://cfel48hscmbn4" path="res://Game/User Interface/PurgeAbsolve.tscn" id="4_canj3"]
 [ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Player/Player.tscn" id="4_gl2if"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="5_xptiv"]
 [ext_resource type="Script" path="res://Game/Worlds/moon_path_follow.gd" id="6_fg75b"]
@@ -48,9 +47,6 @@ metadata/_edit_lock_ = true
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="PurgeAbsolve" parent="CanvasLayer" instance=ExtResource("4_canj3")]
-visible = false
-
 [node name="MoonSea" parent="." instance=ExtResource("3_t7i8k")]
 
 [node name="Player" parent="." instance=ExtResource("4_gl2if")]
@@ -74,3 +70,6 @@ rotation = -2.2143
 
 [node name="PointTimer" type="Timer" parent="Path2D/MoonPathFollow"]
 one_shot = true
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+bus = &"Music"

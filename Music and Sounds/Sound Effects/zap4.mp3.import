@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cegthfrxctsdv"
+path="res://.godot/imported/zap4.mp3-0d45d0b0435722ce095c9cfb02d5c10d.mp3str"
+
+[deps]
+
+source_file="res://Music and Sounds/Sound Effects/zap4.mp3"
+dest_files=["res://.godot/imported/zap4.mp3-0d45d0b0435722ce095c9cfb02d5c10d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

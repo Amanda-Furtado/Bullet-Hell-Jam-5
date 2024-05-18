@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dveig3qs3d6o7"]
+[gd_scene load_steps=5 format=3 uid="uid://dveig3qs3d6o7"]
 
 [ext_resource type="Script" path="res://Game/User Interface/Scripts/StartMenu.gd" id="1_43uim"]
 [ext_resource type="PackedScene" uid="uid://dmafyevf4c6fj" path="res://Game/Worlds/TheMoonLevel.tscn" id="2_xm04w"]
+[ext_resource type="AudioStream" uid="uid://n3uau84lk7mu" path="res://Music and Sounds/Sound Effects/blip1.mp3" id="3_3w27u"]
+[ext_resource type="AudioStream" uid="uid://bgbdnmrx20ga4" path="res://Music and Sounds/Musics/StartMenu.mp3" id="4_nrqne"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -36,6 +38,17 @@ text = "START"
 unique_name_in_owner = true
 layout_mode = 2
 text = "QUIT"
+
+[node name="ButtonAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3w27u")
+mix_target = 2
+bus = &"Sound Effects"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nrqne")
+autoplay = true
+mix_target = 1
+bus = &"Music"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

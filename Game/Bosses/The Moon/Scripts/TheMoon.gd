@@ -13,6 +13,8 @@ signal touch_bot
 @onready var shake_effect = $ShakeEffect
 @onready var flash_effect = $FlashEffect
 @onready var scale_effect = $ScaleEffect
+@onready var audio_effect = $AudioEffect
+
 #movement
 var rotation_speed: float = 2.0
 #phase2
@@ -52,6 +54,8 @@ func phase2_shoot() -> void:
 
 func shoot() -> void:
 	if can_shoot:
+		audio_effect.pitch_scale = randf_range(1.0, 1.2)
+		audio_effect.play()
 		can_shoot = false
 		for i in bullet_count:
 			var new_bullet = bullet.instantiate()

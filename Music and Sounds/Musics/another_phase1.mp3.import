@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://201rxnbqqhux"
+path="res://.godot/imported/another_phase1.mp3-ce82ce93a12f0454e37a6d11cced0cf7.mp3str"
+
+[deps]
+
+source_file="res://Music and Sounds/Musics/another_phase1.mp3"
+dest_files=["res://.godot/imported/another_phase1.mp3-ce82ce93a12f0454e37a6d11cced0cf7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

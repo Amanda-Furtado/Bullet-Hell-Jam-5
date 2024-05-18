@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://istj8uvrxoes"
+path="res://.godot/imported/ocean_waves.mp3-a25730cfd4f45d8be36a14695b6c0d9b.mp3str"
+
+[deps]
+
+source_file="res://Music and Sounds/ocean_waves.mp3"
+dest_files=["res://.godot/imported/ocean_waves.mp3-a25730cfd4f45d8be36a14695b6c0d9b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

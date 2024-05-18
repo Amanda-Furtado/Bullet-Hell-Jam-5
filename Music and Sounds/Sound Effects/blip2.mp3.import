@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://g3vs8fowfagr"
+path="res://.godot/imported/blip2.mp3-5dc32bdd154401675753fd6dd628f0d1.mp3str"
+
+[deps]
+
+source_file="res://Music and Sounds/Sound Effects/blip2.mp3"
+dest_files=["res://.godot/imported/blip2.mp3-5dc32bdd154401675753fd6dd628f0d1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

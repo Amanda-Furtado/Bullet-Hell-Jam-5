@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://daxbrmyaoxn4o"
+path="res://.godot/imported/hurt3.mp3-d7e0b00651e3c65865693061ce6b2b3e.mp3str"
+
+[deps]
+
+source_file="res://Music and Sounds/Sound Effects/hurt3.mp3"
+dest_files=["res://.godot/imported/hurt3.mp3-d7e0b00651e3c65865693061ce6b2b3e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

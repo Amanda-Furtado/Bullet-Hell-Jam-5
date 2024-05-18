@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://u2iwyorybvbb"]
+[gd_scene load_steps=11 format=3 uid="uid://u2iwyorybvbb"]
 
 [ext_resource type="Script" path="res://Game/Worlds/Scripts/TheStarLevel.gd" id="1_a1i37"]
 [ext_resource type="Texture2D" uid="uid://dixiqobk8vsih" path="res://Assets/Tilesets/generictiles_spr.png" id="2_hkhng"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="4_758gv"]
 [ext_resource type="PackedScene" uid="uid://bmmrexin7bc1w" path="res://Game/Bosses/The Star/ShootingStar.tscn" id="6_agcun"]
 [ext_resource type="PackedScene" uid="uid://bxe5nh2ej1176" path="res://Game/User Interface/DebugMenu.tscn" id="6_j0dqb"]
-[ext_resource type="PackedScene" uid="uid://cfel48hscmbn4" path="res://Game/User Interface/PurgeAbsolve.tscn" id="7_qtc0o"]
 [ext_resource type="PackedScene" uid="uid://8ea6gacj1x01" path="res://Game/Bosses/The Star/Fragment.tscn" id="8_2ard4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s457o"]
@@ -106,9 +105,6 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_use_anchors_ = true
 
 [node name="DebugMenu" parent="CanvasLayer" instance=ExtResource("6_j0dqb")]
-
-[node name="PurgeAbsolve" parent="CanvasLayer" instance=ExtResource("7_qtc0o")]
-visible = false
 
 [node name="ShootingStars" parent="." instance=ExtResource("6_agcun")]
 position = Vector2(16, 0)

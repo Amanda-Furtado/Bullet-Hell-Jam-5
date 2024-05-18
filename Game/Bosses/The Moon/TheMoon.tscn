@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://qhcex4ei7jh"]
+[gd_scene load_steps=23 format=3 uid="uid://qhcex4ei7jh"]
 
 [ext_resource type="Script" path="res://Game/Bosses/The Moon/Scripts/TheMoon.gd" id="1_8ocbu"]
 [ext_resource type="Texture2D" uid="uid://bga0rpnysawmj" path="res://Assets/Bosses/The Moon/moon_spr.png" id="1_t1xvu"]
@@ -16,6 +16,7 @@
 [ext_resource type="Material" uid="uid://c88q6pkhh3vl" path="res://Resources/Visual/Flashes/white_flash_material.tres" id="13_utv8u"]
 [ext_resource type="Script" path="res://Components/Effects/scale_effect.gd" id="13_xqe7b"]
 [ext_resource type="PackedScene" uid="uid://mh3cy68pxnsl" path="res://Game/Bosses/The Moon/LilStar.tscn" id="16_pub0o"]
+[ext_resource type="AudioStream" uid="uid://cegthfrxctsdv" path="res://Music and Sounds/Sound Effects/zap4.mp3" id="17_7m7nt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fe72r"]
 atlas = ExtResource("1_t1xvu")
@@ -147,3 +148,7 @@ position = Vector2(-7, 48)
 bullet_count = 3
 arc = 45.0
 fire_rate = 0.6
+
+[node name="AudioEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_7m7nt")
+bus = &"Sound Effects"
