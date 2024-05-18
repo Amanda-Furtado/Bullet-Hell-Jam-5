@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dah7d6xgexmgi"]
+
+[ext_resource type="Texture2D" uid="uid://cnht8sulglcj0" path="res://Assets/Backgrounds/PH/color_bg.png" id="1_08yu1"]
+[ext_resource type="Texture2D" uid="uid://s5ln8im8xbky" path="res://Assets/Backgrounds/PH/stars_bg.png" id="2_wd2ka"]
+[ext_resource type="Texture2D" uid="uid://cc3i05abiwlb3" path="res://Assets/Backgrounds/PH/clouds_bg.png" id="3_8ob5u"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="Backcolor" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backcolor"]
+texture = ExtResource("1_08yu1")
+centered = false
+
+[node name="Stars" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(512, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Stars"]
+texture = ExtResource("2_wd2ka")
+centered = false
+
+[node name="Clouds" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(2, 2)
+motion_mirroring = Vector2(512, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds"]
+texture = ExtResource("3_8ob5u")
+centered = false

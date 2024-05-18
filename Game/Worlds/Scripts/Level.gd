@@ -2,7 +2,8 @@ class_name Level extends Node2D
 
 @export var boss: CharacterBody2D
 
-@onready var player: Player = $Player
+@onready var player = $Player
+
 @onready var hud: HUD = $CanvasLayer/Hud
 @onready var label = $CanvasLayer/Label
 
