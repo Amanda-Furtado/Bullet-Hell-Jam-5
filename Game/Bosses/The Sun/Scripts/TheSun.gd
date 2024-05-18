@@ -135,6 +135,6 @@ func zig_zag_shoot() -> void:
 
 
 func _on_pashe_2_turn_timer_timeout():
-	rotate_way *= -1
 	curve_shoot()
-	pashe_2_turn_timer.start()
+	rotate_way *= -1
+	pashe_2_turn_timer.start(randf_range(0.2, 0.5))
