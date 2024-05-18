@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cfel48hscmbn4"]
+[gd_scene load_steps=2 format=3 uid="uid://cfel48hscmbn4"]
+
+[ext_resource type="Script" path="res://Game/User Interface/PurgeAbsolve.gd" id="1_kn2al"]
 
 [node name="PurgeAbsolve" type="Control"]
 layout_mode = 3
@@ -7,26 +9,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_kn2al")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -34.5
-offset_top = -33.0
-offset_right = 34.5
-offset_bottom = 33.0
+offset_left = -63.5
+offset_top = -15.5
+offset_right = 63.5
+offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PurgeButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Purge
 "
 
 [node name="AbsolveButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Absolve"
+
+[connection signal="pressed" from="VBoxContainer/PurgeButton" to="." method="_on_purge_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/AbsolveButton" to="." method="_on_absolve_button_pressed"]

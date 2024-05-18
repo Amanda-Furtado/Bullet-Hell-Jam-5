@@ -6,7 +6,7 @@ class_name Player extends CharacterBody2D
 @onready var movement_state_machine = $MovementStateMachine
 @onready var move_control = $MoveControl
 @onready var stats = $Stats
-@onready var spawner = $Spawner
+@onready var weapon = $Weapon
 
 
 func _ready() -> void:
@@ -23,7 +23,4 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	movement_state_machine.process_frame(delta)
-
-
-func _on_atk_timer_timeout() -> void:
-	spawner.spawn()
+	weapon.shoot()

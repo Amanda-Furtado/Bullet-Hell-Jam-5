@@ -24,7 +24,7 @@ var og_health: int
 @export_range(0, 360) var arc: float = 0.0
 @export_range(0, 20) var fire_rate: float = 2.0
 @export var barrel_origin: Node2D
-
+##USAR O CAN SHOOT NO PATH PRA CONCERTAR OS BUGS EY B AGUENTO MAIS SOCRRO
 var can_shoot: bool = true
 var number_of_shoots: int = 12
 
