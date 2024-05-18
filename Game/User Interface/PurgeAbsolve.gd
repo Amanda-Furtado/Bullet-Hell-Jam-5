@@ -13,19 +13,11 @@ func disable_buttons():
 	absolve_button.disabled = true
 
 
-func purge_boss() -> void:
-	pass
-
-
-func absolve_boss() -> void:
-	pass
-
-
 func _on_purge_button_pressed():
 	disable_buttons()
-	purge_boss()
+	boss.purge()
 
 
 func _on_absolve_button_pressed():
 	disable_buttons()
-	absolve_boss()
+	boss.absolve()
