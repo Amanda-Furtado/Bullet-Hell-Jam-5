@@ -134,3 +134,4 @@ bus = &"Music"
 
 [node name="Phase2Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_xbmg4")
+bus = &"Music"
