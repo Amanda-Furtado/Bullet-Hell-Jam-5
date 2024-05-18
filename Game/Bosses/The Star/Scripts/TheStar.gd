@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal start_phase2
+
 @onready var stats = $Stats
 
 @onready var diagonal = $Diagonal
@@ -9,8 +11,11 @@ extends CharacterBody2D
 
 @onready var rotate_incr: float = 0.0
 
+var og_health: int
+var on_phase2: bool = false
 
 func _ready() -> void:
+	og_health = stats.health
 	for child in vertical.get_children():
 		child.stats.no_health.connect(func():
 			rotate_manager()
@@ -21,7 +26,15 @@ func _ready() -> void:
 			rotate_manager()
 			health_manager()
 			)
-
+	
+	stats.health_changed.connect(func():
+		if on_phase2:
+			return
+		if stats.health <= og_health/2:
+			on_phase2 = true
+			start_phase2.emit()
+			#boss_sprites.play("phase2")
+		)
 
 func health_manager() -> void:
 	stats.health -= 15
