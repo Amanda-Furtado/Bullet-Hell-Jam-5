@@ -83,7 +83,7 @@ debug_color = Color(0.302776, 0.614443, 0.375808, 0.42)
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("4_gl2ej")
-health = 200
+health = 100
 
 [node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
 script = ExtResource("5_cgnge")
@@ -116,3 +116,9 @@ script = ExtResource("12_36ffa")
 sprite = NodePath("../FaceSprite")
 scale_amount = Vector2(1.1, 1.1)
 scale_duration = 0.2
+
+[node name="Pashe2TurnTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Pashe2TurnTimer" to="." method="_on_pashe_2_turn_timer_timeout"]

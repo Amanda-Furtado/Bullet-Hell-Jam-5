@@ -6,6 +6,7 @@ signal in_mid
 signal in_left
 
 @onready var point_timer = $pointTimer
+@onready var the_sun = $TheSun
 
 @export var speed: float = 0.1
 
@@ -36,6 +37,9 @@ func _process(delta: float) -> void:
 	if progress_ratio == 0.0:
 		right_point()
 	if snappedf(progress_ratio, 0.01) == 0.50:
+		if the_sun.on_phase2:
+			set_process(false)
+			return
 		mid_point()
 	if progress_ratio == 1.0:
 		left_point()

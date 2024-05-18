@@ -1,12 +1,16 @@
 extends CharacterBody2D
 
+signal start_phase2
 
 #OUTSIDE
 @onready var player = get_tree().get_first_node_in_group("players")
-
+var on_phase2: bool = false
+var og_health: int
 #DAMAGE CONTROL
 @onready var stats = $Stats
 @onready var fire_sprite = $FireSprite
+@onready var face_sprite = $FaceSprite
+@onready var pashe_2_turn_timer = $Pashe2TurnTimer
 
 #EFFECTS
 @onready var destroyed_effect = $DestroyedEffect
@@ -29,30 +33,70 @@ var rotate_way: float = 0.01
 
 
 func _ready() -> void:
+	og_health = stats.health
+	
 	get_parent().in_right.connect(func():
 		rotate_way = 0.01
-		straight_shoot()
+		zig_zag_shoot()
 		)
 	get_parent().in_mid.connect(func():
+		if on_phase2:
+			rotate_way = 1.1
+			return
 		rotate_way = 0
 		straight_shoot()
 		)
 	get_parent().in_left.connect(func():
 		rotate_way = -0.01
-		straight_shoot()
+		zig_zag_shoot()
 		)
-
-
-func _process(delta: float) -> void:
-	#round_shoot()
-	pass
+	
+	stats.health_changed.connect(func():
+		if on_phase2:
+			return
+		if stats.health <= og_health/2:
+			on_phase2 = true
+			start_phase2.emit()
+			#boss_sprites.play("phase2")
+			)
+	
+	start_phase2.connect(func():
+		pashe_2_turn_timer.start()
+		#while stats.health > 0:
+			#await curve_shoot()
+			#rotate_way *= -1
+			)
 
 
 func _physics_process(delta: float) -> void:
 	fire_sprite.rotate(rotate_way)
 
 
-func shoot() -> void:
+func line_shoot() -> void:
+	if can_shoot:
+		can_shoot = false
+		for i in bullet_count:
+			var new_bullet = bullet.instantiate()
+			new_bullet.position = barrel_origin.global_position if barrel_origin else global_position
+			
+			if bullet_count == 1:
+				# new_bullet.rotation = global_rotation -> reto sempre
+				new_bullet.rotation = face_sprite.global_rotation
+			else:
+				var arc_rad = deg_to_rad(arc)
+				var increment = arc_rad / (bullet_count - 1)
+				new_bullet.global_rotation = (
+					# global_rotation + -> reto sempre
+					face_sprite.global_rotation +
+					increment * i -
+					arc_rad / 2
+				)
+			get_tree().root.call_deferred("add_child", new_bullet)
+		await get_tree().create_timer(1 / fire_rate).timeout
+		can_shoot = true
+
+
+func curve_shoot() -> void:
 	if can_shoot:
 		can_shoot = false
 		for i in bullet_count:
@@ -79,12 +123,18 @@ func shoot() -> void:
 func straight_shoot() -> void:
 	var counter = 0
 	while counter < number_of_shoots:
-		await shoot() 
+		await line_shoot() 
 		counter += 1
 
 
 func zig_zag_shoot() -> void:
 	var counter = 0
 	while counter < number_of_shoots:
-		await shoot() 
+		await curve_shoot() 
 		counter += 1
+
+
+func _on_pashe_2_turn_timer_timeout():
+	rotate_way *= -1
+	curve_shoot()
+	pashe_2_turn_timer.start()
