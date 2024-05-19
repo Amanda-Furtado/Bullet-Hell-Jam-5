@@ -13,10 +13,14 @@ signal point_touch
 func _ready() -> void:
 	the_moon.stats.no_health.connect(func():
 		queue_free())
+	
 	point_touch.connect(func():
 		point_timer.start(point_interval + 0.5)
 		on_point_stop()
 		)
+	
+	the_moon.phase2_in_course.connect(func():
+		point_interval = 1.0)
 
 
 func _process(delta: float) -> void:
@@ -28,6 +32,19 @@ func _process(delta: float) -> void:
 	if snappedf(progress_ratio, 0.01) == 0.50:
 		on_bot_point()
 		on_point_stop()
+	
+	
+	if the_moon.on_phase2 == true:
+		if snappedf(progress_ratio, 0.01) == 0.15:
+			on_point_stop()
+		if snappedf(progress_ratio, 0.01) == 0.35:
+			on_point_stop()
+		if snappedf(progress_ratio, 0.01) == 0.65:
+			on_point_stop()
+		if snappedf(progress_ratio, 0.01) == 0.85:
+			on_point_stop()
+		if snappedf(progress_ratio, 0.01) == 0.85:
+			on_point_stop()
 	
 	progress_ratio += speed * delta
 

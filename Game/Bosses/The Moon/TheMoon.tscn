@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Game/Bosses/The Moon/Scripts/TheMoon.gd" id="1_8ocbu"]
 [ext_resource type="Texture2D" uid="uid://bga0rpnysawmj" path="res://Assets/Bosses/The Moon/moon_spr.png" id="1_t1xvu"]
+[ext_resource type="PackedScene" uid="uid://qdclgjwiv2t3" path="res://Game/Bullets/boss moon bullets/quesso_2_bullet.tscn" id="2_s7qy8"]
 [ext_resource type="Texture2D" uid="uid://cnrqg5jsx6jwx" path="res://Assets/Bosses/The Moon/moon2_spr.png" id="2_wfw7e"]
 [ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="3_it85t"]
 [ext_resource type="Script" path="res://Components/Damage/Hurtbox.gd" id="4_bvep4"]
 [ext_resource type="Script" path="res://Components/Stats/Stats.gd" id="5_hv6s8"]
 [ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="5_jswo6"]
-[ext_resource type="PackedScene" uid="uid://ba8mf1gb1n7gw" path="res://Game/Bullets/boss moon bullets/quesso_bullet.tscn" id="6_17dpp"]
 [ext_resource type="Script" path="res://Components/Damage/Hurt.gd" id="9_7g424"]
 [ext_resource type="Script" path="res://Components/Effects/destroyed_effect.gd" id="10_rnx65"]
 [ext_resource type="Script" path="res://Components/Effects/shake_effect.gd" id="11_qw47l"]
@@ -55,7 +55,7 @@ radius = 32.0156
 position = Vector2(-1, 0)
 motion_mode = 1
 script = ExtResource("1_8ocbu")
-bullet = ExtResource("6_17dpp")
+bullet = ExtResource("2_s7qy8")
 bullet_count = 12
 arc = 180.0
 barrel_origin = NodePath(".")

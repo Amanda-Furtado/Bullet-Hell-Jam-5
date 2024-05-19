@@ -9,6 +9,8 @@ signal phase2_in_course
 @onready var boss_hurtbox = $bossHurtbox
 @onready var boss_sprites = $bossSprites
 @onready var stats = $Stats
+@onready var stars = $Stars
+
 #visual ef
 @onready var shake_effect = $ShakeEffect
 @onready var flash_effect = $FlashEffect
@@ -42,11 +44,17 @@ func _ready() -> void:
 			phase2_in_course.emit()
 			on_phase2 = true
 			boss_sprites.play("phase2"))
+	
+	get_parent().point_touch.connect(func():
+		if stars.get_child_count() == 0:
+			shoot()
+		)
 
 
 func _physics_process(delta: float) -> void:
 	if player != null:
 		boss_sprites.look_at(player.global_position)
+
 
 
 func phase2_shoot() -> void:

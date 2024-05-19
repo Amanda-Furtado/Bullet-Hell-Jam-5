@@ -65,7 +65,7 @@ curve = SubResource("Curve2D_qbk3n")
 [node name="MoonPathFollow" type="PathFollow2D" parent="Path2D"]
 position = Vector2(256, 144)
 rotation = 2.2143
-progress = 147.882
+progress = 443.647
 rotates = false
 script = ExtResource("6_fg75b")
 speed = 0.2

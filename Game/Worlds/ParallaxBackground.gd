@@ -4,6 +4,6 @@ extends ParallaxBackground
 @onready var stars = $Stars
 @onready var backcolor = $Backcolor
 
-
-func _process(delta: float) -> void:
-	clouds.position.x += scale.x
+#
+#func _process(delta: float) -> void:
+	#clouds.position.x += scale.x

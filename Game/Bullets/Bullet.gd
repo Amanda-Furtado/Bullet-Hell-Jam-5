@@ -5,7 +5,7 @@ class_name Bullet extends CharacterBody2D
 @onready var hitbox: Hitbox = $Hitbox
 @onready var screen_notifier = $ScreenNotifier
 
-
+@export var turn_back: bool = false
 @export var expire: bool = false
 @export var life_time: float = 0.0
 
@@ -40,6 +40,10 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(2.0).timeout
 	#global_rotation = global_rotation
+	
+	if turn_back:
+		await get_tree().create_timer(1.0).timeout
+		dir_vector = Vector2.RIGHT.rotated(global_rotation)
 	
 	
 	if expire:
