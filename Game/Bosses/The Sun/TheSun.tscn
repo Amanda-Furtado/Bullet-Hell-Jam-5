@@ -46,6 +46,7 @@ radius = 88.0
 
 [node name="TheSun" type="CharacterBody2D" node_paths=PackedStringArray("barrel_origin")]
 z_index = 1
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_armbd")
 bullet = ExtResource("2_32rh5")
 bullet_count = 16
@@ -83,7 +84,7 @@ debug_color = Color(0.302776, 0.614443, 0.375808, 0.42)
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("4_gl2ej")
-health = 140
+health = 200
 
 [node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
 script = ExtResource("5_cgnge")

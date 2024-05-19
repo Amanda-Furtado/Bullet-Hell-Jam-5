@@ -60,6 +60,8 @@ func _ready() -> void:
 		)
 	
 	stats.health_changed.connect(func():
+		if scale < Vector2(1.5, 1.5):
+			scale += Vector2(0.005, 0.005)
 		if on_phase2:
 			return
 		if stats.health <= og_health/2:
