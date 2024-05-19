@@ -30,23 +30,31 @@ var number_of_shoots: int = 12
 
 #MOVEMENT
 var rotate_way: float = 0.01
-
+var is_health_mid: bool = false
+var is_mid: bool = false
 
 func _ready() -> void:
 	og_health = stats.health
 	
 	get_parent().in_right.connect(func():
+		if on_phase2:
+			return
 		rotate_way = 0.01
 		zig_zag_shoot()
 		)
+	
 	get_parent().in_mid.connect(func():
-		if on_phase2:
-			rotate_way = 1.1
+		if is_health_mid:
+			on_phase2 = true
+			start_phase2.emit()
 			return
 		rotate_way = 0
 		straight_shoot()
 		)
+	
 	get_parent().in_left.connect(func():
+		if on_phase2:
+			return
 		rotate_way = -0.01
 		zig_zag_shoot()
 		)
@@ -55,16 +63,14 @@ func _ready() -> void:
 		if on_phase2:
 			return
 		if stats.health <= og_health/2:
+			rotate_way = 0.01
 			on_phase2 = true
-			start_phase2.emit()
+			is_health_mid = true
 			#boss_sprites.play("phase2")
 			)
 	
 	start_phase2.connect(func():
 		pashe_2_turn_timer.start()
-		#while stats.health > 0:
-			#await curve_shoot()
-			#rotate_way *= -1
 			)
 
 
@@ -135,6 +141,6 @@ func zig_zag_shoot() -> void:
 
 
 func _on_pashe_2_turn_timer_timeout():
-	curve_shoot()
 	rotate_way *= -1
-	pashe_2_turn_timer.start(randf_range(0.2, 0.5))
+	await curve_shoot()
+	pashe_2_turn_timer.start(randf_range(0.05, 0.2))

@@ -24,25 +24,31 @@ func _ready() -> void:
 	
 	in_right.connect(func():
 		point_timer.start()
-		print("r"))
+	)
 	in_left.connect(func():
 		point_timer.start()
-		print("l"))
+	)
 	in_mid.connect(func():
 		point_timer.start(mid_interval + 0.5)
-		print("m"))
+	)
 
 
 func _process(delta: float) -> void:
 	if progress_ratio == 0.0:
 		right_point()
+	
 	if snappedf(progress_ratio, 0.01) == 0.50:
 		if the_sun.on_phase2:
+			in_mid.emit()
 			set_process(false)
 			return
 		mid_point()
+	
 	if progress_ratio == 1.0:
 		left_point()
+	
+	if the_sun.on_phase2:
+		speed = 0.2
 	
 	progress_ratio += speed * delta
 
