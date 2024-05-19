@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://8mt6u1ylndly"]
+[gd_scene load_steps=10 format=3 uid="uid://8mt6u1ylndly"]
 
 [ext_resource type="Script" path="res://Game/User Interface/Scripts/LoadingScreen.gd" id="1_68mha"]
 
@@ -261,11 +261,15 @@ tracks/6/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_567pa"]
+resource_name = "moon_defeated"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_opyqn"]
 _data = {
 "RESET": SubResource("Animation_b6jue"),
 "fade_from_black": SubResource("Animation_cc0gm"),
-"fade_to_black": SubResource("Animation_hb6w2")
+"fade_to_black": SubResource("Animation_hb6w2"),
+"moon_defeated": SubResource("Animation_567pa")
 }
 
 [node name="LoadingScreen" type="CanvasLayer"]
@@ -285,8 +289,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 320.0
-offset_bottom = 160.0
+offset_right = -192.0
+offset_bottom = -128.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dodef")
