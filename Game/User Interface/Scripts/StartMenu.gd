@@ -5,8 +5,7 @@ extends Control
 
 @onready var start_button = %StartButton
 @onready var exit_button = %ExitButton
-
-@onready var loading_screen = preload("res://Game/User Interface/LoadingScreen.tscn")
+@onready var config_button = %ConfigButton
 
 @onready var button_audio = $ButtonAudio
 
@@ -21,5 +20,11 @@ func _on_start_button_pressed() -> void:
 	SceneManager.load_new_scene(first_level.resource_path)
 
 
+func _on_config_button_pressed():
+	pass # Replace with function body.
+
+
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
+
+
