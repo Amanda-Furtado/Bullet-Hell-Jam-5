@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgwifd333bbxf"]
 
-[ext_resource type="PackedScene" uid="uid://ddxg15egd2mbt" path="res://Game/Bullets/Bullet.tscn" id="1_hffaq"]
-[ext_resource type="Texture2D" uid="uid://goovhlfkq713" path="res://Assets/Bosses/The Moon/queso.png" id="2_coo13"]
+[ext_resource type="PackedScene" uid="uid://ddxg15egd2mbt" path="res://Game/Bullets/Bullet.tscn" id="1_hlwhj"]
+[ext_resource type="Texture2D" uid="uid://cgvdg4q1fteo5" path="res://Assets/Bosses/The Moon/meteor_bullet_spr.png" id="2_3aehg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ami7j"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_coo13")
+"texture": ExtResource("2_3aehg")
 }],
 "loop": false,
 "name": &"default",
@@ -17,7 +17,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_jjn1b"]
 radius = 7.0
 
-[node name="lilStarBullet" instance=ExtResource("1_hffaq")]
+[node name="MeteorBullet" instance=ExtResource("1_hlwhj")]
 direction = 5
 speed = 3.0
 

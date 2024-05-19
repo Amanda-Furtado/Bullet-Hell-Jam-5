@@ -1,11 +1,12 @@
 [gd_scene load_steps=23 format=3 uid="uid://qhcex4ei7jh"]
 
 [ext_resource type="Script" path="res://Game/Bosses/The Moon/Scripts/TheMoon.gd" id="1_8ocbu"]
-[ext_resource type="Texture2D" uid="uid://bga0rpnysawmj" path="res://Assets/Bosses/The Moon/moon_spr.png" id="1_t1xvu"]
-[ext_resource type="PackedScene" uid="uid://qdclgjwiv2t3" path="res://Game/Bullets/boss moon bullets/quesso_2_bullet.tscn" id="2_s7qy8"]
-[ext_resource type="Texture2D" uid="uid://cnrqg5jsx6jwx" path="res://Assets/Bosses/The Moon/moon2_spr.png" id="2_wfw7e"]
+[ext_resource type="PackedScene" uid="uid://dsgew30aw6bek" path="res://Game/Bullets/boss moon bullets/quesso_phase1_bullet.tscn" id="2_m5b1o"]
 [ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="3_it85t"]
+[ext_resource type="Texture2D" uid="uid://3ifbvlorak4p" path="res://Assets/Bosses/The Moon/full_moon.png" id="3_thfs5"]
+[ext_resource type="PackedScene" uid="uid://qdclgjwiv2t3" path="res://Game/Bullets/boss moon bullets/quesso_phase2_bullet.tscn" id="3_wmqjt"]
 [ext_resource type="Script" path="res://Components/Damage/Hurtbox.gd" id="4_bvep4"]
+[ext_resource type="Texture2D" uid="uid://ddi3tts7iq27k" path="res://Assets/Bosses/The Moon/half_moon.png" id="4_qcs4y"]
 [ext_resource type="Script" path="res://Components/Stats/Stats.gd" id="5_hv6s8"]
 [ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="5_jswo6"]
 [ext_resource type="Script" path="res://Components/Damage/Hurt.gd" id="9_7g424"]
@@ -15,22 +16,14 @@
 [ext_resource type="Script" path="res://Components/Effects/flash_effect.gd" id="12_h2nin"]
 [ext_resource type="Material" uid="uid://c88q6pkhh3vl" path="res://Resources/Visual/Flashes/white_flash_material.tres" id="13_utv8u"]
 [ext_resource type="Script" path="res://Components/Effects/scale_effect.gd" id="13_xqe7b"]
-[ext_resource type="PackedScene" uid="uid://mh3cy68pxnsl" path="res://Game/Bosses/The Moon/LilStar.tscn" id="16_pub0o"]
+[ext_resource type="PackedScene" uid="uid://mh3cy68pxnsl" path="res://Game/Bosses/The Moon/Meteor.tscn" id="16_21rcd"]
 [ext_resource type="AudioStream" uid="uid://cegthfrxctsdv" path="res://Music and Sounds/Sound Effects/zap4.mp3" id="17_7m7nt"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fe72r"]
-atlas = ExtResource("1_t1xvu")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5tres"]
-atlas = ExtResource("2_wfw7e")
-region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bpiej"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fe72r")
+"texture": ExtResource("3_thfs5")
 }],
 "loop": false,
 "name": &"phase1",
@@ -38,10 +31,21 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5tres")
+"texture": ExtResource("3_thfs5")
 }],
 "loop": true,
 "name": &"phase2",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_evp6f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qcs4y")
+}],
+"loop": false,
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -55,15 +59,20 @@ radius = 32.0156
 position = Vector2(-1, 0)
 motion_mode = 1
 script = ExtResource("1_8ocbu")
-bullet = ExtResource("2_s7qy8")
+bullet_phase1 = ExtResource("2_m5b1o")
+bullet_phase2 = ExtResource("3_wmqjt")
 bullet_count = 12
 arc = 180.0
 barrel_origin = NodePath(".")
 
 [node name="bossSprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bpiej")
-animation = &"phase2"
+animation = &"phase1"
 autoplay = "phase1"
+
+[node name="HalfSprites" type="AnimatedSprite2D" parent="bossSprites"]
+sprite_frames = SubResource("SpriteFrames_evp6f")
+autoplay = "default"
 
 [node name="bossHitbox" type="Area2D" parent="."]
 collision_layer = 0
@@ -119,31 +128,31 @@ flash_duration = 0.05
 script = ExtResource("13_xqe7b")
 sprite = NodePath("../bossSprites")
 
-[node name="Stars" type="Node2D" parent="."]
+[node name="Meteors" type="Node2D" parent="."]
 
-[node name="LilStar" parent="Stars" instance=ExtResource("16_pub0o")]
+[node name="Meteor1" parent="Meteors" instance=ExtResource("16_21rcd")]
 position = Vector2(-39, -32)
 bullet_count = 2
 arc = 30.0
 fire_rate = 0.6
 
-[node name="LilStar2" parent="Stars" instance=ExtResource("16_pub0o")]
+[node name="Meteor2" parent="Meteors" instance=ExtResource("16_21rcd")]
 position = Vector2(-7, -48)
 bullet_count = 3
 arc = 45.0
 fire_rate = 0.6
 
-[node name="LilStar3" parent="Stars" instance=ExtResource("16_pub0o")]
+[node name="Meteor3" parent="Meteors" instance=ExtResource("16_21rcd")]
 position = Vector2(-55, 0)
 fire_rate = 0.6
 
-[node name="LilStar4" parent="Stars" instance=ExtResource("16_pub0o")]
+[node name="Meteor4" parent="Meteors" instance=ExtResource("16_21rcd")]
 position = Vector2(-39, 32)
 bullet_count = 2
 arc = 30.0
 fire_rate = 0.6
 
-[node name="LilStar5" parent="Stars" instance=ExtResource("16_pub0o")]
+[node name="Meteor5" parent="Meteors" instance=ExtResource("16_21rcd")]
 position = Vector2(-7, 48)
 bullet_count = 3
 arc = 45.0
@@ -151,4 +160,3 @@ fire_rate = 0.6
 
 [node name="AudioEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_7m7nt")
-bus = &"Sound Effects"

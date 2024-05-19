@@ -32,13 +32,13 @@ func pull_bot_ocean():
 
 
 func ocean_down(ocean):
-	while ocean.position.x > 0:
+	while ocean.position.x > 32:
 		await get_tree().create_timer(0.05).timeout
 		ocean.position.x -= 8
 
 
 func ocean_up(ocean, spawner: Spawner):
-	while ocean.position.x < 48:
+	while ocean.position.x < 64:
 		await get_tree().create_timer(0.05).timeout
 		ocean.position.x += 8
 	spawner.spawn()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ba8mf1gb1n7gw"]
+[gd_scene load_steps=6 format=3 uid="uid://qdclgjwiv2t3"]
 
 [ext_resource type="PackedScene" uid="uid://ddxg15egd2mbt" path="res://Game/Bullets/Bullet.tscn" id="1_tm60x"]
 [ext_resource type="Texture2D" uid="uid://goovhlfkq713" path="res://Assets/Bosses/The Moon/queso.png" id="2_0k000"]
@@ -19,9 +19,12 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1fyyj"]
-radius = 7.0
+radius = 8.0
 
 [node name="QuessoBullet" instance=ExtResource("1_tm60x")]
+turn_back = true
+expire = true
+life_time = 4.0
 direction = 5
 speed = 2.0
 

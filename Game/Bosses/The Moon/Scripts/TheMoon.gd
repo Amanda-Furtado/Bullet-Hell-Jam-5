@@ -9,7 +9,7 @@ signal phase2_in_course
 @onready var boss_hurtbox = $bossHurtbox
 @onready var boss_sprites = $bossSprites
 @onready var stats = $Stats
-@onready var stars = $Stars
+@onready var meteors = $Meteors
 
 #visual ef
 @onready var shake_effect = $ShakeEffect
@@ -20,7 +20,8 @@ signal phase2_in_course
 #movement
 var rotation_speed: float = 2.0
 #phase2
-@export var bullet: PackedScene
+@export var bullet_phase1: PackedScene
+@export var bullet_phase2: PackedScene
 @export var bullet_count: int = 1
 @export_range(0, 360) var arc: float = 0.0
 @export_range(0, 20) var fire_rate: float = 2.0
@@ -46,7 +47,7 @@ func _ready() -> void:
 			boss_sprites.play("phase2"))
 	
 	get_parent().point_touch.connect(func():
-		if stars.get_child_count() == 0:
+		if meteors.get_child_count() == 0:
 			shoot()
 		)
 
@@ -67,7 +68,9 @@ func shoot() -> void:
 		audio_effect.play()
 		can_shoot = false
 		for i in bullet_count:
-			var new_bullet = bullet.instantiate()
+			var new_bullet = bullet_phase1.instantiate()
+			if on_phase2:
+				new_bullet = bullet_phase2.instantiate()
 			new_bullet.position = barrel_origin.global_position if barrel_origin else global_position
 			
 			if bullet_count == 1:

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Game/Bosses/The Star/FragmentTop.gd" id="1_b374v"]
 [ext_resource type="Texture2D" uid="uid://p3nhif25lw74" path="res://Assets/Bosses/The Star/x_part_spr.png" id="1_wqpwy"]
-[ext_resource type="PackedScene" uid="uid://bgwifd333bbxf" path="res://Game/Bullets/boss moon bullets/lil_star_bullet.tscn" id="2_7unb4"]
+[ext_resource type="PackedScene" uid="uid://bgwifd333bbxf" path="res://Game/Bullets/boss moon bullets/meteor_bullet.tscn" id="2_7unb4"]
 [ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="3_yxdau"]
 [ext_resource type="Script" path="res://Components/Stats/Stats.gd" id="4_te1y2"]
 [ext_resource type="Script" path="res://Components/Effects/scale_effect.gd" id="9_5mmyl"]

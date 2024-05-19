@@ -1,0 +1,94 @@
+[gd_scene load_steps=17 format=3 uid="uid://mh3cy68pxnsl"]
+
+[ext_resource type="Script" path="res://Game/Bosses/The Moon/Scripts/Meteor.gd" id="1_j10t1"]
+[ext_resource type="PackedScene" uid="uid://bgwifd333bbxf" path="res://Game/Bullets/boss moon bullets/meteor_bullet.tscn" id="2_kc1eg"]
+[ext_resource type="Texture2D" uid="uid://7tdu7ol20e52" path="res://Assets/Bosses/The Moon/meteor_spr.png" id="3_uqyem"]
+[ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="4_e4ayi"]
+[ext_resource type="Script" path="res://Components/Damage/Hurtbox.gd" id="5_xo5gx"]
+[ext_resource type="Script" path="res://Components/Stats/Stats.gd" id="6_aku2h"]
+[ext_resource type="Script" path="res://Components/Damage/Hurt.gd" id="7_fufs2"]
+[ext_resource type="Script" path="res://Components/Effects/destroyed_effect.gd" id="8_cw7fi"]
+[ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="9_wykhl"]
+[ext_resource type="PackedScene" uid="uid://bkcb672ohnlf3" path="res://Resources/Visual/Explosions/explosion_veffect.tscn" id="10_ej137"]
+[ext_resource type="Script" path="res://Components/Effects/shake_effect.gd" id="11_s4dkt"]
+[ext_resource type="Script" path="res://Components/Effects/flash_effect.gd" id="12_wrn3y"]
+[ext_resource type="Material" uid="uid://c88q6pkhh3vl" path="res://Resources/Visual/Flashes/white_flash_material.tres" id="13_rtkb6"]
+[ext_resource type="Script" path="res://Components/Effects/scale_effect.gd" id="14_d7c4u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aaq6s"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dl37f"]
+radius = 8.0
+
+[node name="Meteor" type="CharacterBody2D" node_paths=PackedStringArray("barrel_origin")]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_j10t1")
+bullet = ExtResource("2_kc1eg")
+fire_rate = 1.0
+barrel_origin = NodePath("Marker")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_uqyem")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("4_e4ayi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_aaq6s")
+debug_color = Color(0.875917, 0.266809, 0.555277, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("5_xo5gx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_dl37f")
+debug_color = Color(0.302776, 0.614443, 0.375808, 0.42)
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("6_aku2h")
+health = 5
+
+[node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
+script = ExtResource("7_fufs2")
+stats = NodePath("../Stats")
+hurtbox = NodePath("../Hurtbox")
+
+[node name="DestroyedEffect" type="Node" parent="." node_paths=PackedStringArray("actor", "stats", "dest_ef_spawner")]
+script = ExtResource("8_cw7fi")
+actor = NodePath("..")
+stats = NodePath("../Stats")
+dest_ef_spawner = NodePath("DestroyedSpawner")
+
+[node name="DestroyedSpawner" type="Node2D" parent="DestroyedEffect"]
+position = Vector2(-1, 0)
+script = ExtResource("9_wykhl")
+scene = ExtResource("10_ej137")
+
+[node name="ShakeEffect" type="Node" parent="." node_paths=PackedStringArray("node_to_shake")]
+script = ExtResource("11_s4dkt")
+node_to_shake = NodePath("../Sprite")
+
+[node name="FlashEffect" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("12_wrn3y")
+flash_material = ExtResource("13_rtkb6")
+sprite = NodePath("../Sprite")
+flash_duration = 0.05
+
+[node name="ScaleEffect" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("14_d7c4u")
+sprite = NodePath("../Sprite")
+
+[node name="Marker" type="Marker2D" parent="."]
+position = Vector2(-8, 0)
+
+[node name="AtkTimer" type="Timer" parent="."]
+autostart = true

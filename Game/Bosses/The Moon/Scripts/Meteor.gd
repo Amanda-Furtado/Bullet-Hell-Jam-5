@@ -9,8 +9,8 @@ extends CharacterBody2D
 @onready var atk_timer = $AtkTimer
 
 #damage
-@onready var stats = $lilStarStats
-@onready var hurtbox = $lilStarHurtbox
+@onready var stats = $Stats
+@onready var hurtbox = $Hurtbox
 #effect
 @onready var shake_effect = $ShakeEffect
 @onready var flash_effect = $FlashEffect
