@@ -9,7 +9,6 @@ extends Node2D
 
 
 func ocean_phase2():
-	
 	ocean_up(top_ocean, top_spawner)
 	ocean_up(bot_ocean, bot_spawner)
 
