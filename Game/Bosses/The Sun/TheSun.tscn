@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bdjjd164d8wkp"]
+[gd_scene load_steps=23 format=3 uid="uid://bdjjd164d8wkp"]
 
 [ext_resource type="Script" path="res://Game/Bosses/The Sun/Scripts/TheSun.gd" id="1_armbd"]
 [ext_resource type="Texture2D" uid="uid://c5guvlq1paktf" path="res://Assets/Bosses/The Sun/the_sun_spr.png" id="1_g8y6g"]
@@ -15,6 +15,9 @@
 [ext_resource type="Script" path="res://Components/Effects/flash_effect.gd" id="10_bxscl"]
 [ext_resource type="Material" uid="uid://c88q6pkhh3vl" path="res://Resources/Visual/Flashes/white_flash_material.tres" id="11_lqcfe"]
 [ext_resource type="Script" path="res://Components/Effects/scale_effect.gd" id="12_36ffa"]
+[ext_resource type="AudioStream" uid="uid://c7t3rdew31cjt" path="res://Music and Sounds/Sound Effects/explosion3.mp3" id="16_eyaui"]
+[ext_resource type="AudioStream" uid="uid://dojpgh1nenfj3" path="res://Music and Sounds/Sound Effects/hurt4.mp3" id="17_5xtct"]
+[ext_resource type="AudioStream" uid="uid://3siwqeo4o2cy" path="res://Music and Sounds/Sound Effects/debuff5.mp3" id="18_1ifho"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fd87p"]
 animations = [{
@@ -121,5 +124,17 @@ scale_duration = 0.2
 [node name="Pashe2TurnTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="AtkAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_eyaui")
+bus = &"SFX"
+
+[node name="HurtAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_5xtct")
+bus = &"SFX"
+
+[node name="DestroyedAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_1ifho")
+bus = &"SFX"
 
 [connection signal="timeout" from="Pashe2TurnTimer" to="." method="_on_pashe_2_turn_timer_timeout"]

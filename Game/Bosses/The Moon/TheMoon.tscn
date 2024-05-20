@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://qhcex4ei7jh"]
+[gd_scene load_steps=25 format=3 uid="uid://qhcex4ei7jh"]
 
 [ext_resource type="Script" path="res://Game/Bosses/The Moon/Scripts/TheMoon.gd" id="1_8ocbu"]
 [ext_resource type="PackedScene" uid="uid://dsgew30aw6bek" path="res://Game/Bullets/boss moon bullets/quesso_phase1_bullet.tscn" id="2_m5b1o"]
@@ -18,6 +18,8 @@
 [ext_resource type="Script" path="res://Components/Effects/scale_effect.gd" id="13_xqe7b"]
 [ext_resource type="PackedScene" uid="uid://mh3cy68pxnsl" path="res://Game/Bosses/The Moon/Meteor.tscn" id="16_21rcd"]
 [ext_resource type="AudioStream" uid="uid://cegthfrxctsdv" path="res://Music and Sounds/Sound Effects/zap4.mp3" id="17_7m7nt"]
+[ext_resource type="AudioStream" uid="uid://yb5spye8r0l" path="res://Music and Sounds/Sound Effects/hurt1.mp3" id="19_ig287"]
+[ext_resource type="AudioStream" uid="uid://b38jev586duya" path="res://Music and Sounds/Sound Effects/debuff1.mp3" id="20_v8gho"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bpiej"]
 animations = [{
@@ -172,5 +174,14 @@ bullet_count = 3
 arc = 45.0
 fire_rate = 0.6
 
-[node name="AudioEffect" type="AudioStreamPlayer" parent="."]
+[node name="AtkAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_7m7nt")
+bus = &"SFX"
+
+[node name="HurtAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_ig287")
+bus = &"SFX"
+
+[node name="DestroyedAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_v8gho")
+bus = &"SFX"

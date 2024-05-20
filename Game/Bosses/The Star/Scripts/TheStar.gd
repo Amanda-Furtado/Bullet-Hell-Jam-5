@@ -2,7 +2,15 @@ extends CharacterBody2D
 
 signal start_phase2
 
+
+@onready var hurt_audio = $HurtAudio
+@onready var destroyed_audio = $DestroyedAudio
+@onready var shake_effect = $ShakeEffect
+@onready var flash_effect = $FlashEffect
+
+
 @onready var stats = $Stats
+@onready var hurtbox = $Hurtbox
 
 @onready var diagonal = $Diagonal
 @onready var vertical = $Vertical
@@ -15,6 +23,13 @@ var og_health: int
 var on_phase2: bool = false
 
 func _ready() -> void:
+	
+	hurtbox.hurt.connect(func(hitbox: Hitbox):
+		hurt_audio.pitch_scale = randf_range(1.0, 1.2)
+		hurt_audio.play()
+		flash_effect.flash()
+		shake_effect.tween_shake())
+	
 	og_health = stats.health
 	for child in vertical.get_children():
 		child.stats.no_health.connect(func():
@@ -27,6 +42,7 @@ func _ready() -> void:
 			health_manager()
 			)
 	stats.no_health.connect(func():
+		destroyed_audio.play()
 		EventsManager.destroy_all_bullets.emit())
 	
 	stats.health_changed.connect(func():
@@ -38,6 +54,10 @@ func _ready() -> void:
 		)
 
 func health_manager() -> void:
+	hurt_audio.pitch_scale = randf_range(1.0, 1.2)
+	hurt_audio.play()
+	flash_effect.flash()
+	shake_effect.tween_shake()
 	stats.health -= 5
 	stats.health_changed.emit()
 

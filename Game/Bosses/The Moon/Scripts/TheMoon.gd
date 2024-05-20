@@ -16,7 +16,12 @@ signal phase2_in_course
 @onready var shake_effect = $ShakeEffect
 @onready var flash_effect = $FlashEffect
 @onready var scale_effect = $ScaleEffect
-@onready var audio_effect = $AudioEffect
+
+@onready var atk_audio = $AtkAudio
+@onready var hurt_audio = $HurtAudio
+@onready var destroyed_audio = $DestroyedAudio
+
+
 @onready var shake_effect_2 = $ShakeEffect2
 @onready var flash_effect_2 = $FlashEffect2
 #movement
@@ -38,6 +43,8 @@ func _ready() -> void:
 	
 	var og_health = stats.health
 	boss_hurtbox.hurt.connect(func(hitbox: Hitbox):
+		hurt_audio.pitch_scale = randf_range(1.0, 1.2)
+		hurt_audio.play()
 		flash_effect.flash()
 		shake_effect.tween_shake()
 		flash_effect_2.flash()
@@ -45,6 +52,7 @@ func _ready() -> void:
 		)
 	
 	stats.no_health.connect(func():
+		destroyed_audio.play()
 		EventsManager.destroy_all_bullets.emit())
 	
 	stats.health_changed.connect(func():
@@ -76,8 +84,8 @@ func phase2_shoot() -> void:
 
 func shoot() -> void:
 	if can_shoot:
-		audio_effect.pitch_scale = randf_range(1.0, 1.2)
-		audio_effect.play()
+		atk_audio.pitch_scale = randf_range(1.0, 1.2)
+		atk_audio.play()
 		can_shoot = false
 		for i in bullet_count:
 			var new_bullet = bullet_phase1.instantiate()

@@ -11,8 +11,14 @@ var og_health: int
 @onready var fire_sprite = $FireSprite
 @onready var face_sprite = $FaceSprite
 @onready var pashe_2_turn_timer = $Pashe2TurnTimer
+@onready var hurtbox = $Hurtbox
 
 #EFFECTS
+@onready var atk_audio = $AtkAudio
+@onready var hurt_audio = $HurtAudio
+@onready var destroyed_audio = $DestroyedAudio
+
+
 @onready var destroyed_effect = $DestroyedEffect
 @onready var shake_effect = $ShakeEffect
 @onready var flash_effect = $FlashEffect
@@ -60,6 +66,7 @@ func _ready() -> void:
 		)
 	
 	stats.no_health.connect(func():
+		destroyed_audio.play()
 		EventsManager.destroy_all_bullets.emit())
 	
 	stats.health_changed.connect(func():
@@ -74,6 +81,11 @@ func _ready() -> void:
 			#boss_sprites.play("phase2")
 			)
 	
+	hurtbox.hurt.connect(func(hitbox: Hitbox):
+		hurt_audio.pitch_scale = randf_range(1.0, 1.2)
+		hurt_audio.play()
+	)
+	
 	start_phase2.connect(func():
 		pashe_2_turn_timer.start()
 			)
@@ -85,6 +97,8 @@ func _physics_process(delta: float) -> void:
 
 func line_shoot() -> void:
 	if can_shoot:
+		atk_audio.pitch_scale = randf_range(1.0, 1.2)
+		atk_audio.play()
 		can_shoot = false
 		for i in bullet_count:
 			var new_bullet = bullet.instantiate()
@@ -109,6 +123,8 @@ func line_shoot() -> void:
 
 func curve_shoot() -> void:
 	if can_shoot:
+		atk_audio.pitch_scale = randf_range(1.0, 1.2)
+		atk_audio.play()
 		can_shoot = false
 		for i in bullet_count:
 			var new_bullet = bullet.instantiate()
