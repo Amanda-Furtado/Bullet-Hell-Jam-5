@@ -18,10 +18,14 @@ func _ready() -> void:
 func _on_start_button_pressed() -> void:
 	button_audio.play()
 	start_button.disabled = true
+	config_button.disabled = true
 	SceneManager.load_new_scene(first_level.resource_path)
 
 
 func _on_config_button_pressed():
+	button_audio.play()
+	start_button.disabled = true
+	config_button.disabled = true
 	SceneManager.load_new_scene(settings_scene.resource_path)
 
 

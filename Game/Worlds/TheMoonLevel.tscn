@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dc1577qcp3rxm" path="res://Game/User Interface/GameOverMenu.tscn" id="5_dronw"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="5_xptiv"]
 [ext_resource type="PackedScene" uid="uid://cjmdhblarenrq" path="res://Game/User Interface/NextLevelMenu.tscn" id="6_5cx0w"]
-[ext_resource type="Script" path="res://Game/Worlds/moon_path_follow.gd" id="6_fg75b"]
+[ext_resource type="Script" path="res://Game/Worlds/Scripts/moon_path_follow.gd" id="6_fg75b"]
 [ext_resource type="AudioStream" uid="uid://wfuut013riu8" path="res://Music and Sounds/Musics/phase1.mp3" id="8_woe1d"]
 [ext_resource type="AudioStream" uid="uid://dxp32e78qpvgd" path="res://Music and Sounds/Musics/phase2.mp3" id="9_vp0mj"]
 

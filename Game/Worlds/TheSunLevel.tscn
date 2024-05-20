@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dc1577qcp3rxm" path="res://Game/User Interface/GameOverMenu.tscn" id="3_nnleh"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="4_4txsr"]
 [ext_resource type="PackedScene" uid="uid://cjmdhblarenrq" path="res://Game/User Interface/NextLevelMenu.tscn" id="4_77ci1"]
-[ext_resource type="Script" path="res://Game/Worlds/sun_path_follow.gd" id="5_swusq"]
+[ext_resource type="Script" path="res://Game/Worlds/Scripts/sun_path_follow.gd" id="5_swusq"]
 [ext_resource type="AudioStream" uid="uid://201rxnbqqhux" path="res://Music and Sounds/Musics/another_phase1.mp3" id="8_v3cj6"]
 [ext_resource type="AudioStream" uid="uid://d0an7eluobvxf" path="res://Music and Sounds/Musics/another_phase2.mp3" id="9_xbmg4"]
 
