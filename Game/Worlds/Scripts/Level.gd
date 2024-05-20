@@ -2,6 +2,7 @@ class_name Level extends Node2D
 
 @export var boss: CharacterBody2D
 @export var next_level: PackedScene
+@export var same_level: PackedScene
 
 @onready var player = $Player
 
@@ -23,5 +24,5 @@ func _ready() -> void:
 	#Scene Change
 	boss.stats.no_health.connect(func():
 		await get_tree().create_timer(2.0).timeout
-		SceneManager.load_new_scene(next_level.resource_path)
+		#SceneManager.load_new_scene(next_level.resource_path)
 		)
