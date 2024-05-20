@@ -2,9 +2,11 @@ extends Control
 
 @onready var next_level_button = $NextLevelButton
 @onready var next_level_scene: PackedScene
+@onready var sound_effect = $SoundEffect
 
 
 func _ready() -> void:
+	
 	next_level_button.disabled = false
 	next_level_scene = get_parent().get_parent().next_level
 

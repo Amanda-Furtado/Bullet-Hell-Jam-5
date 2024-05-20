@@ -26,11 +26,13 @@ func _ready() -> void:
 	player.stats.no_health.connect(func():
 		await get_tree().create_timer(1.0).timeout
 		game_over_menu.show()
+		game_over_menu.sound_effect.play()
 		)
 	
 	boss.stats.no_health.connect(func():
 		await get_tree().create_timer(1.0).timeout
 		next_level_menu.show()
+		next_level_menu.sound_effect.play()
 		)
 	
 	get_tree().paused = false

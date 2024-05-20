@@ -2,6 +2,7 @@ extends Control
 
 @onready var restart_button = %RestartButton
 @export var repeat_level_path: String
+@onready var sound_effect = $SoundEffect
 
 
 func _ready() -> void:
