@@ -1,11 +1,14 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@export var main_menu = load("res://Game/User Interface/StartMenu.tscn")
+@onready var button_audio = $ButtonAudio
+@onready var music = $Music
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_return_button_pressed():
+	SceneManager.load_new_scene(main_menu.resource_path)
+
+
+func _on_sfx_audio_slider_drag_ended(value_changed):
+	button_audio.play()

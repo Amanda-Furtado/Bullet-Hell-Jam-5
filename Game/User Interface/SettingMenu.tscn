@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://tahgd141x81n"]
+[gd_scene load_steps=6 format=3 uid="uid://tahgd141x81n"]
 
 [ext_resource type="Script" path="res://Game/User Interface/HSlider.gd" id="1_mena6"]
 [ext_resource type="Script" path="res://Game/User Interface/SettingMenu.gd" id="1_ycsvf"]
 [ext_resource type="PackedScene" uid="uid://bt2huu5365yah" path="res://Game/User Interface/InputSettings.tscn" id="2_hp85i"]
+[ext_resource type="AudioStream" uid="uid://duwphl22db3o2" path="res://Music and Sounds/Sound Effects/explosion1.mp3" id="4_yqeur"]
+[ext_resource type="AudioStream" uid="uid://bgbdnmrx20ga4" path="res://Music and Sounds/Musics/StartMenu.mp3" id="5_acegc"]
 
 [node name="SettingMenu" type="Control"]
 layout_mode = 3
@@ -13,50 +15,86 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ycsvf")
 
-[node name="InputSettings" parent="." instance=ExtResource("2_hp85i")]
-layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 384.0
-offset_top = 48.0
-offset_right = 384.0
-offset_bottom = 185.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="AudioContainer" type="VBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-offset_right = 168.0
-offset_bottom = 137.0
 
-[node name="MasterAudioLabel" type="Label" parent="AudioContainer"]
+[node name="AudioContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="MasterAudioLabel" type="Label" parent="MarginContainer/HBoxContainer/AudioContainer"]
 layout_mode = 2
 text = "Master Volume"
 
-[node name="MasterAudioSlider" type="HSlider" parent="AudioContainer"]
+[node name="MasterAudioSlider" type="HSlider" parent="MarginContainer/HBoxContainer/AudioContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.001
 script = ExtResource("1_mena6")
 bus_name = "Master"
 
-[node name="MusicAudioLabel" type="Label" parent="AudioContainer"]
+[node name="MusicAudioLabel" type="Label" parent="MarginContainer/HBoxContainer/AudioContainer"]
 layout_mode = 2
 text = "Music Volume"
 
-[node name="MusicAudioSlider" type="HSlider" parent="AudioContainer"]
+[node name="MusicAudioSlider" type="HSlider" parent="MarginContainer/HBoxContainer/AudioContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.001
 script = ExtResource("1_mena6")
 bus_name = "Music"
 
-[node name="SFXAudioLabel" type="Label" parent="AudioContainer"]
+[node name="SFXAudioLabel" type="Label" parent="MarginContainer/HBoxContainer/AudioContainer"]
 layout_mode = 2
 text = "Sound Effects Volume"
 
-[node name="SFXAudioSlider" type="HSlider" parent="AudioContainer"]
+[node name="SFXAudioSlider" type="HSlider" parent="MarginContainer/HBoxContainer/AudioContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.001
 script = ExtResource("1_mena6")
 bus_name = "SFX"
+
+[node name="Space" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="InputSettings" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_hp85i")]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="ReturnButton" type="Button" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Return"
+
+[node name="ButtonAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yqeur")
+mix_target = 2
+bus = &"SFX"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_acegc")
+autoplay = true
+mix_target = 1
+bus = &"Music"
+
+[connection signal="drag_ended" from="MarginContainer/HBoxContainer/AudioContainer/SFXAudioSlider" to="." method="_on_sfx_audio_slider_drag_ended"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
