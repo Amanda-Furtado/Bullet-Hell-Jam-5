@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://cq2wk2137jwmv"]
+
+[ext_resource type="Script" path="res://Game/User Interface/WinMenu.gd" id="1_enksy"]
+[ext_resource type="Texture2D" uid="uid://cnht8sulglcj0" path="res://Assets/Backgrounds/PH/color_bg.png" id="1_ev2lp"]
+[ext_resource type="Texture2D" uid="uid://s5ln8im8xbky" path="res://Assets/Backgrounds/PH/stars_bg.png" id="2_1s8ut"]
+[ext_resource type="AudioStream" uid="uid://duwphl22db3o2" path="res://Music and Sounds/Sound Effects/explosion1.mp3" id="4_uy16p"]
+[ext_resource type="AudioStream" uid="uid://b8lk6agh6t6jk" path="res://Music and Sounds/Musics/win win.mp3" id="5_kxfuj"]
+
+[node name="WinMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_enksy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ev2lp")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_1s8ut")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.5
+offset_top = -25.5
+offset_right = 179.5
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "C O N G R A T S !
+Y o u  m a n a g e d  t o  m a k e  e a r t h 
+l i v e  i n  a  e t e r n a l  d a r k n e s s ."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReplayButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Do it again"
+
+[node name="ButtonAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uy16p")
+mix_target = 2
+bus = &"SFX"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kxfuj")
+autoplay = true
+mix_target = 1
+bus = &"Music"
+
+[connection signal="pressed" from="VBoxContainer/ReplayButton" to="." method="_on_replay_button_pressed"]
