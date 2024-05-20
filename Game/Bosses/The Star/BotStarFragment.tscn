@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtsfxyaf257i4"]
+
+[ext_resource type="Script" path="res://Game/Bosses/The Star/Scripts/FragmentTop.gd" id="1_nwuic"]
+[ext_resource type="PackedScene" uid="uid://bbltwp454x4oa" path="res://Game/Bullets/boss star bullets/bot_star_fragment_bullet.tscn" id="2_y6vfd"]
+[ext_resource type="Texture2D" uid="uid://b7rnpwm4elawv" path="res://Assets/Bosses/The Star/vert_part_spr.png" id="3_76jp6"]
+[ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="4_4otsc"]
+[ext_resource type="Script" path="res://Components/Effects/scale_effect.gd" id="5_ubauq"]
+[ext_resource type="Script" path="res://Components/Effects/destroyed_effect.gd" id="6_vvkea"]
+[ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="7_sgkt5"]
+[ext_resource type="PackedScene" uid="uid://bkcb672ohnlf3" path="res://Resources/Visual/Explosions/explosion_veffect.tscn" id="8_gm1ql"]
+[ext_resource type="Script" path="res://Components/Stats/Stats.gd" id="9_3l7jr"]
+
+[node name="BotStarFragment" type="Node2D" node_paths=PackedStringArray("barrel_origin")]
+script = ExtResource("1_nwuic")
+bullet = ExtResource("2_y6vfd")
+bullet_count = 10
+arc = 360.0
+fire_rate = 1.0
+barrel_origin = NodePath("BulletMarker")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("3_76jp6")
+offset = Vector2(-24, 6.10352e-05)
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(24, 24)
+rotation = 3.14159
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("4_4otsc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+position = Vector2(23.9999, 24.0001)
+polygon = PackedVector2Array(0, 0, -16, -16, -48, -0.000121689, -16, 16)
+
+[node name="BulletMarker" type="Marker2D" parent="."]
+position = Vector2(56, 0)
+
+[node name="ScaleEffect" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("5_ubauq")
+sprite = NodePath("../Sprite")
+scale_amount = Vector2(1.2, 1.2)
+scale_duration = 0.1
+
+[node name="DestroyedEffect" type="Node" parent="." node_paths=PackedStringArray("actor", "stats", "dest_ef_spawner")]
+script = ExtResource("6_vvkea")
+actor = NodePath("..")
+stats = NodePath("../Stats")
+dest_ef_spawner = NodePath("DestroyedSpawner")
+
+[node name="DestroyedSpawner" type="Node2D" parent="DestroyedEffect"]
+script = ExtResource("7_sgkt5")
+scene = ExtResource("8_gm1ql")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("9_3l7jr")
+
+[node name="ReverterTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="ReverterTimer" to="." method="_on_reverter_timer_timeout"]

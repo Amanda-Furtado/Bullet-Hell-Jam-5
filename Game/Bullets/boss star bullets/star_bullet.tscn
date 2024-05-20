@@ -23,7 +23,7 @@ size = Vector2(16, 16)
 
 [node name="StarBullet" instance=ExtResource("1_0bvuy")]
 expire = true
-life_time = 4.0
+life_time = 3.0
 direction = 5
 speed = 2.0
 

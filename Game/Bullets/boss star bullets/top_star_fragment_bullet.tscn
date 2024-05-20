@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dklik4uew04rs"]
+
+[ext_resource type="PackedScene" uid="uid://ddxg15egd2mbt" path="res://Game/Bullets/Bullet.tscn" id="1_dxnbj"]
+[ext_resource type="Texture2D" uid="uid://bldjc1oumonqh" path="res://Assets/Bosses/The Star/star_fragment_spr.png" id="2_r6xko"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pgpoa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r6xko")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1y0de"]
+radius = 8.0
+
+[node name="TopStarFragmentBullet" instance=ExtResource("1_dxnbj")]
+expire = true
+life_time = 2.0
+direction = 4
+speed = 2.0
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_pgpoa")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_1y0de")

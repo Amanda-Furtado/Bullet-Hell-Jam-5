@@ -52,7 +52,7 @@ bus_name = "Music"
 
 [node name="SFXAudioLabel" type="Label" parent="AudioContainer"]
 layout_mode = 2
-text = "Soudn Effects Volume"
+text = "Sound Effects Volume"
 
 [node name="SFXAudioSlider" type="HSlider" parent="AudioContainer"]
 layout_mode = 2

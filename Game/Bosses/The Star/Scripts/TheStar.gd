@@ -33,18 +33,16 @@ func _ready() -> void:
 		if stats.health <= og_health/2:
 			on_phase2 = true
 			start_phase2.emit()
-			#boss_sprites.play("phase2")
 		)
 
 func health_manager() -> void:
-	stats.health -= 15
-	print(stats.health)
+	stats.health -= 5
 	stats.health_changed.emit()
 
 
 func _physics_process(_delta: float) -> void:
-	diagonal.rotate(min(0.01 + rotate_incr, 0.04))
-	vertical.rotate(max(-0.01 - rotate_incr, -0.04))
+	diagonal.rotate(min(0.01 + rotate_incr, 0.02))
+	vertical.rotate(max(-0.01 - rotate_incr, -0.02))
 
 
 func _on_atk_cooldown_timer_timeout() -> void:
@@ -62,4 +60,4 @@ func _on_atk_cooldown_timer_timeout() -> void:
 
 
 func rotate_manager() -> void:
-	rotate_incr += 0.01
+	rotate_incr += 0.005

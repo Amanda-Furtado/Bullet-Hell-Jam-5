@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhpew12gj1k16"]
+[gd_scene load_steps=13 format=3 uid="uid://bhpew12gj1k16"]
 
 [ext_resource type="Script" path="res://Game/Bosses/The Star/Scripts/TheStar.gd" id="1_nqwj5"]
 [ext_resource type="PackedScene" uid="uid://f82jftruq2wd" path="res://Game/Bosses/The Star/vertical_member.tscn" id="2_3y313"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://Components/Stats/Stats.gd" id="5_wsf4h"]
 [ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="6_sqm3f"]
 [ext_resource type="Script" path="res://Components/Damage/Hurtbox.gd" id="7_qranm"]
+[ext_resource type="Script" path="res://Components/Effects/destroyed_effect.gd" id="9_awr7d"]
+[ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="10_40xm8"]
+[ext_resource type="PackedScene" uid="uid://bkcb672ohnlf3" path="res://Resources/Visual/Explosions/explosion_veffect.tscn" id="11_gqek6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gt4cg"]
 radius = 24.0
@@ -79,5 +82,15 @@ script = ExtResource("7_qranm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_gt4cg")
+
+[node name="DestroyedEffect" type="Node" parent="." node_paths=PackedStringArray("actor", "stats", "dest_ef_spawner")]
+script = ExtResource("9_awr7d")
+actor = NodePath("..")
+stats = NodePath("../Stats")
+dest_ef_spawner = NodePath("Spawner")
+
+[node name="Spawner" type="Node2D" parent="DestroyedEffect"]
+script = ExtResource("10_40xm8")
+scene = ExtResource("11_gqek6")
 
 [connection signal="timeout" from="AtkCooldownTimer" to="." method="_on_atk_cooldown_timer_timeout"]

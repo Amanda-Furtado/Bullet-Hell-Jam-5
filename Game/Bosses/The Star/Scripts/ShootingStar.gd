@@ -14,12 +14,22 @@ signal bot_touched
 @onready var is_on_top: bool = false
 @onready var is_on_bot: bool = false
 
+@onready var shake_effect = $ShakeEffect
+@onready var spawner = $Spawner
+
+
 
 func _ready() -> void:
 	speed = desired_speed
 	top_touched.connect(on_top)
 	
 	bot_touched.connect(on_bot)
+
+
+func destroy_self() -> void:
+	await shake_effect.tween_shake()
+	await spawner.spawn()
+	queue_free()
 
 
 func _physics_process(_delta: float) -> void:

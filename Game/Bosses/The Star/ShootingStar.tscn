@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmmrexin7bc1w"]
+[gd_scene load_steps=13 format=3 uid="uid://bmmrexin7bc1w"]
 
 [ext_resource type="Texture2D" uid="uid://bhmcvpycnshxi" path="res://Assets/Bosses/The Star/shooting_star.png" id="1_4i214"]
 [ext_resource type="Script" path="res://Game/Bosses/The Star/Scripts/ShootingStar.gd" id="1_lcfc5"]
 [ext_resource type="Texture2D" uid="uid://cx1stdk58gbe" path="res://Assets/Bosses/The Star/shooting_signal.png" id="3_0dcu1"]
+[ext_resource type="Script" path="res://Components/Effects/shake_effect.gd" id="4_eh20t"]
+[ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="5_amaji"]
+[ext_resource type="PackedScene" uid="uid://bkcb672ohnlf3" path="res://Resources/Visual/Explosions/explosion_veffect.tscn" id="6_rwgib"]
 
 [sub_resource type="Animation" id="Animation_nup3s"]
 length = 0.001
@@ -230,3 +233,11 @@ autoplay = "RESET"
 [node name="CooldownShooting" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="ShakeEffect" type="Node" parent="." node_paths=PackedStringArray("node_to_shake")]
+script = ExtResource("4_eh20t")
+node_to_shake = NodePath("../ShootingStar")
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("5_amaji")
+scene = ExtResource("6_rwgib")
