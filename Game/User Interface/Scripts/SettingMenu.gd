@@ -5,6 +5,11 @@ extends Control
 @onready var button_audio = $ButtonAudio
 @onready var music = $Music
 
+@onready var master_audio_slider = $MarginContainer/HBoxContainer/AudioContainer/MasterAudioSlider
+
+
+func _ready() -> void:
+	master_audio_slider.grab_focus()
 
 func _on_return_button_pressed():
 	SceneManager.load_new_scene(main_menu.resource_path)

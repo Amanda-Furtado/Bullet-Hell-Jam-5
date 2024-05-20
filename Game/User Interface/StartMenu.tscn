@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dveig3qs3d6o7"]
+[gd_scene load_steps=7 format=3 uid="uid://dveig3qs3d6o7"]
 
 [ext_resource type="Script" path="res://Game/User Interface/Scripts/StartMenu.gd" id="1_43uim"]
 [ext_resource type="PackedScene" uid="uid://dmafyevf4c6fj" path="res://Game/Worlds/TheMoonLevel.tscn" id="2_xm04w"]
 [ext_resource type="PackedScene" uid="uid://tahgd141x81n" path="res://Game/User Interface/SettingMenu.tscn" id="3_1skdg"]
 [ext_resource type="AudioStream" uid="uid://n3uau84lk7mu" path="res://Music and Sounds/Sound Effects/blip1.mp3" id="3_3w27u"]
 [ext_resource type="AudioStream" uid="uid://bgbdnmrx20ga4" path="res://Music and Sounds/Musics/StartMenu.mp3" id="4_nrqne"]
+[ext_resource type="Texture2D" uid="uid://odvyy1yo4cks" path="res://Assets/Backgrounds/PH/start_menu_bg.png" id="6_gfcb7"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -16,6 +17,10 @@ grow_vertical = 2
 script = ExtResource("1_43uim")
 first_level = ExtResource("2_xm04w")
 settings_scene = ExtResource("3_1skdg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(256, 144)
+texture = ExtResource("6_gfcb7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -46,6 +51,13 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "QUIT"
+
+[node name="commands" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "W, A, S, D to move
+space bar to select"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ButtonAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_3w27u")

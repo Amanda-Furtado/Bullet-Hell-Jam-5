@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://tahgd141x81n"]
+[gd_scene load_steps=8 format=3 uid="uid://tahgd141x81n"]
 
 [ext_resource type="Script" path="res://Game/User Interface/Scripts/HSlider.gd" id="1_mena6"]
 [ext_resource type="Script" path="res://Game/User Interface/Scripts/SettingMenu.gd" id="1_ycsvf"]
 [ext_resource type="PackedScene" uid="uid://bt2huu5365yah" path="res://Game/User Interface/InputSettings.tscn" id="2_hp85i"]
+[ext_resource type="Texture2D" uid="uid://cnht8sulglcj0" path="res://Assets/Backgrounds/PH/color_bg.png" id="2_pa8py"]
+[ext_resource type="Texture2D" uid="uid://s5ln8im8xbky" path="res://Assets/Backgrounds/PH/stars_bg.png" id="3_lbfm2"]
 [ext_resource type="AudioStream" uid="uid://duwphl22db3o2" path="res://Music and Sounds/Sound Effects/explosion1.mp3" id="4_yqeur"]
 [ext_resource type="AudioStream" uid="uid://bgbdnmrx20ga4" path="res://Music and Sounds/Musics/StartMenu.mp3" id="5_acegc"]
 
@@ -14,6 +16,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ycsvf")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+texture = ExtResource("2_pa8py")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 288.0
+texture = ExtResource("3_lbfm2")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -34,6 +48,8 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_next = NodePath("../InputSettings")
+focus_previous = NodePath("../ReturnButton")
 alignment = 1
 
 [node name="MasterAudioLabel" type="Label" parent="MarginContainer/HBoxContainer/AudioContainer"]
@@ -77,12 +93,16 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+focus_next = NodePath("../ReturnButton")
+focus_previous = NodePath("../AudioContainer")
 
 [node name="ReturnButton" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_vertical = 8
+focus_next = NodePath("../AudioContainer")
+focus_previous = NodePath("../InputSettings")
 text = "Return"
 
 [node name="ButtonAudio" type="AudioStreamPlayer" parent="."]
