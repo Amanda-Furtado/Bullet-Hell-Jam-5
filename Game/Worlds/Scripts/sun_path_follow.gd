@@ -34,23 +34,25 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if progress_ratio == 0.0:
-		right_point()
-	
-	if snappedf(progress_ratio, 0.01) == 0.50:
+	if the_sun != null:
+		if progress_ratio == 0.0:
+			right_point()
+		
+		if snappedf(progress_ratio, 0.01) == 0.50:
+			if the_sun.on_phase2:
+				in_mid.emit()
+				set_process(false)
+				return
+			mid_point()
+		
+		if progress_ratio == 1.0:
+			left_point()
+		
+		
 		if the_sun.on_phase2:
-			in_mid.emit()
-			set_process(false)
-			return
-		mid_point()
-	
-	if progress_ratio == 1.0:
-		left_point()
-	
-	if the_sun.on_phase2:
-		speed = 0.2
-	
-	progress_ratio += speed * delta
+			speed = 0.2
+		
+		progress_ratio += speed * delta
 
 
 func right_point() -> void:
