@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmmrexin7bc1w"]
+[gd_scene load_steps=15 format=3 uid="uid://bmmrexin7bc1w"]
 
 [ext_resource type="Texture2D" uid="uid://bhmcvpycnshxi" path="res://Assets/Bosses/The Star/shooting_star.png" id="1_4i214"]
 [ext_resource type="Script" path="res://Game/Bosses/The Star/Scripts/ShootingStar.gd" id="1_lcfc5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Components/Effects/shake_effect.gd" id="4_eh20t"]
 [ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="5_amaji"]
 [ext_resource type="PackedScene" uid="uid://bkcb672ohnlf3" path="res://Resources/Visual/Explosions/explosion_veffect.tscn" id="6_rwgib"]
+[ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="7_rw0md"]
 
 [sub_resource type="Animation" id="Animation_nup3s"]
 length = 0.001
@@ -211,7 +212,12 @@ _data = {
 "top_trail": SubResource("Animation_y04rv")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hr7kp"]
+radius = 16.0
+
 [node name="ShootingStar" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_lcfc5")
 
 [node name="ShootingSignal" type="Sprite2D" parent="."]
@@ -221,7 +227,6 @@ rotation = -3.14159
 texture = ExtResource("3_0dcu1")
 
 [node name="ShootingStar" type="Sprite2D" parent="."]
-position = Vector2(0, -16)
 texture = ExtResource("1_4i214")
 
 [node name="ShootingSignalAnimation" type="AnimationPlayer" parent="."]
@@ -241,3 +246,12 @@ node_to_shake = NodePath("../ShootingStar")
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource("5_amaji")
 scene = ExtResource("6_rwgib")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("7_rw0md")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_hr7kp")

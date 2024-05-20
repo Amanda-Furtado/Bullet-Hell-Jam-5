@@ -18,7 +18,7 @@ func _ready() -> void:
 
 
 func phase2() -> void:
-	stars.position.x = 64
+	stars.position.x = 88
 	top_star_fragment.set_process(true)
 	top_star_fragment.show()
 	bot_star_fragment.set_process(true)

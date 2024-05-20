@@ -2,6 +2,7 @@ extends Control
 
 
 @export var first_level: PackedScene
+@export var settings_scene: PackedScene
 
 @onready var start_button = %StartButton
 @onready var exit_button = %ExitButton
@@ -21,7 +22,7 @@ func _on_start_button_pressed() -> void:
 
 
 func _on_config_button_pressed():
-	pass # Replace with function body.
+	SceneManager.load_new_scene(settings_scene.resource_path)
 
 
 func _on_exit_button_pressed() -> void:

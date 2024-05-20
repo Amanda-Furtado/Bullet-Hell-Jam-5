@@ -18,8 +18,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooo4g"]
-size = Vector2(8, 8)
+[sub_resource type="CircleShape2D" id="CircleShape2D_niobb"]
+radius = 5.0
 
 [node name="PlayerBullet" instance=ExtResource("1_kvr3s")]
 direction = 0
@@ -33,4 +33,4 @@ autoplay = "default"
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource("RectangleShape2D_ooo4g")
+shape = SubResource("CircleShape2D_niobb")
