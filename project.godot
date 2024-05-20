@@ -24,6 +24,7 @@ EventsManager="*res://Autoloads/EventsManager.gd"
 
 window/size/viewport_width=512
 window/size/viewport_height=288
+window/size/mode=2
 window/size/window_width_override=1024
 window/size/window_height_override=576
 window/stretch/mode="viewport"

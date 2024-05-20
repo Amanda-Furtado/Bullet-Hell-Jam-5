@@ -6,6 +6,7 @@ extends Control
 @onready var music = $Music
 
 @onready var master_audio_slider = $MarginContainer/HBoxContainer/AudioContainer/MasterAudioSlider
+@onready var full_screen_check_button = $MarginContainer/HBoxContainer/AudioContainer/FullScreenCheckButton
 
 
 func _ready() -> void:
@@ -17,3 +18,10 @@ func _on_return_button_pressed():
 
 func _on_sfx_audio_slider_drag_ended(value_changed):
 	button_audio.play()
+
+
+func _on_full_screen_check_button_toggled(toggled_on):
+	if toggled_on != true:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
