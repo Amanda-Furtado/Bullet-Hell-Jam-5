@@ -154,5 +154,7 @@ dir_vector = Vector2(0, 1)
 position = Vector2(48, 320)
 
 [node name="PhaseMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("9_gpiqw")
 autoplay = true
+bus = &"Music"

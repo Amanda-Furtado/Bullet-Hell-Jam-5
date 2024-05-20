@@ -8,7 +8,8 @@ class_name Level extends Node2D
 @onready var hud: HUD = $CanvasLayer/Hud
 @onready var game_over_menu = $CanvasLayer/GameOverMenu
 @onready var next_level_menu = $CanvasLayer/NextLevelMenu
-
+@onready var pause_menu = preload("res://Game/User Interface/PauseMenu.tscn")
+@onready var canvas_layer = $CanvasLayer
 
 func _ready() -> void:
 	#Interface
@@ -36,3 +37,11 @@ func _ready() -> void:
 		)
 	
 	get_tree().paused = false
+
+
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().paused = true
+		var pause_menu_child = pause_menu.instantiate()
+		canvas_layer.add_child(pause_menu_child)
+

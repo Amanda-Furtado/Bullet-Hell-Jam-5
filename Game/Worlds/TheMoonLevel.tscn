@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dc1577qcp3rxm" path="res://Game/User Interface/GameOverMenu.tscn" id="5_dronw"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="5_xptiv"]
 [ext_resource type="PackedScene" uid="uid://cjmdhblarenrq" path="res://Game/User Interface/NextLevelMenu.tscn" id="6_5cx0w"]
-[ext_resource type="Script" path="res://Game/Worlds/Scripts/moon_path_follow.gd" id="6_fg75b"]
+[ext_resource type="Script" path="res://Game/Worlds/Scripts/moon_path_follow.gd" id="8_owaxk"]
 [ext_resource type="AudioStream" uid="uid://wfuut013riu8" path="res://Music and Sounds/Musics/phase1.mp3" id="8_woe1d"]
 [ext_resource type="AudioStream" uid="uid://dxp32e78qpvgd" path="res://Music and Sounds/Musics/phase2.mp3" id="9_vp0mj"]
 
@@ -62,7 +62,7 @@ position = Vector2(256, 144)
 rotation = 2.2143
 progress = 443.647
 rotates = false
-script = ExtResource("6_fg75b")
+script = ExtResource("8_owaxk")
 speed = 0.2
 
 [node name="TheMoon" parent="Path2D/MoonPathFollow" instance=ExtResource("2_lhcvt")]
@@ -73,9 +73,11 @@ rotation = -2.2143
 one_shot = true
 
 [node name="Phase1Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("8_woe1d")
 bus = &"Music"
 
 [node name="Phase2Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("9_vp0mj")
 bus = &"Music"

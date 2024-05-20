@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dc1577qcp3rxm" path="res://Game/User Interface/GameOverMenu.tscn" id="3_nnleh"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="4_4txsr"]
 [ext_resource type="PackedScene" uid="uid://cjmdhblarenrq" path="res://Game/User Interface/NextLevelMenu.tscn" id="4_77ci1"]
-[ext_resource type="Script" path="res://Game/Worlds/Scripts/sun_path_follow.gd" id="5_swusq"]
+[ext_resource type="Script" path="res://Game/Worlds/Scripts/sun_path_follow.gd" id="7_m2xia"]
 [ext_resource type="AudioStream" uid="uid://201rxnbqqhux" path="res://Music and Sounds/Musics/another_phase1.mp3" id="8_v3cj6"]
 [ext_resource type="AudioStream" uid="uid://d0an7eluobvxf" path="res://Music and Sounds/Musics/another_phase2.mp3" id="9_xbmg4"]
 
@@ -117,7 +117,7 @@ position = Vector2(512, 288)
 rotation = -1.5708
 rotates = false
 loop = false
-script = ExtResource("5_swusq")
+script = ExtResource("7_m2xia")
 speed = 0.15
 
 [node name="TheSun" parent="Path2D/PathFollow2D" instance=ExtResource("3_n28pe")]
@@ -128,9 +128,11 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Phase1Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("8_v3cj6")
 bus = &"Music"
 
 [node name="Phase2Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("9_xbmg4")
 bus = &"Music"

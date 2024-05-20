@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://odvyy1yo4cks" path="res://Assets/Backgrounds/PH/start_menu_bg.png" id="6_gfcb7"]
 
 [node name="StartMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
