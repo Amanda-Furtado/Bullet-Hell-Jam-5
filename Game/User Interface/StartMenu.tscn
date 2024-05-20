@@ -36,10 +36,19 @@ offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="space" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "START"
+
+[node name="SelectionButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "select level"
 
 [node name="ConfigButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
@@ -72,4 +81,5 @@ mix_target = 1
 bus = &"Music"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SelectionButton" to="." method="_on_selection_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ConfigButton" to="." method="_on_config_button_pressed"]
