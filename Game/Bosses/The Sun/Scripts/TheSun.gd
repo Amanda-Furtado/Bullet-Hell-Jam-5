@@ -74,7 +74,7 @@ func _ready() -> void:
 			scale += Vector2(0.005, 0.005)
 		if on_phase2:
 			return
-		if stats.health <= og_health/2:
+		if stats.health <= og_health/1.8:
 			rotate_way = 0.01
 			on_phase2 = true
 			is_health_mid = true
