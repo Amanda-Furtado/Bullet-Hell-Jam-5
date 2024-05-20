@@ -58,7 +58,7 @@ func _ready() -> void:
 	stats.health_changed.connect(func():
 		if on_phase2:
 			return
-		if stats.health <= og_health/2:
+		if stats.health <= og_health/1.7:
 			half_sprites.hide()
 			phase2_in_course.emit()
 			on_phase2 = true

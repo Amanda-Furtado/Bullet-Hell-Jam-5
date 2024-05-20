@@ -13,7 +13,7 @@ func _ready() -> void:
 	super()
 	
 	
-	RenderingServer.set_default_clear_color(Color.ROYAL_BLUE)
+	RenderingServer.set_default_clear_color(Color.DARK_SLATE_BLUE)
 	#boss related
 	
 	phase_1_music.play()

@@ -8,7 +8,7 @@ extends Level
 
 func _ready() -> void:
 	super()
-	RenderingServer.set_default_clear_color(Color.MIDNIGHT_BLUE)
+	RenderingServer.set_default_clear_color(Color.DARK_BLUE)
 	
 	top_star_fragment.set_process(false)
 	bot_star_fragment.set_process(false)
