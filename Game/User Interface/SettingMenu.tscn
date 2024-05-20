@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://tahgd141x81n"]
 
-[ext_resource type="Script" path="res://Game/User Interface/HSlider.gd" id="1_mena6"]
-[ext_resource type="Script" path="res://Game/User Interface/SettingMenu.gd" id="1_ycsvf"]
+[ext_resource type="Script" path="res://Game/User Interface/Scripts/HSlider.gd" id="1_mena6"]
+[ext_resource type="Script" path="res://Game/User Interface/Scripts/SettingMenu.gd" id="1_ycsvf"]
 [ext_resource type="PackedScene" uid="uid://bt2huu5365yah" path="res://Game/User Interface/InputSettings.tscn" id="2_hp85i"]
 [ext_resource type="AudioStream" uid="uid://duwphl22db3o2" path="res://Music and Sounds/Sound Effects/explosion1.mp3" id="4_yqeur"]
 [ext_resource type="AudioStream" uid="uid://bgbdnmrx20ga4" path="res://Music and Sounds/Musics/StartMenu.mp3" id="5_acegc"]
