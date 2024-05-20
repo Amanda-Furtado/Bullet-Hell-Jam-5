@@ -1,7 +1,6 @@
 class_name HUD extends Control
 
 @onready var health_bar = %HealthBar
-@onready var karma_bar = %KarmaBar
 @onready var boss_health_bar = %BossHealthBar
 
 

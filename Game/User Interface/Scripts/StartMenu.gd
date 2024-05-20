@@ -25,5 +25,5 @@ func _on_config_button_pressed():
 	SceneManager.load_new_scene(settings_scene.resource_path)
 
 
-func _on_exit_button_pressed() -> void:
-	get_tree().quit()
+#func _on_exit_button_pressed() -> void:
+	#get_tree().quit()

@@ -10,13 +10,15 @@ signal phase2_in_course
 @onready var boss_sprites = $bossSprites
 @onready var stats = $Stats
 @onready var meteors = $Meteors
+@onready var half_sprites = $bossSprites/HalfSprites
 
 #visual ef
 @onready var shake_effect = $ShakeEffect
 @onready var flash_effect = $FlashEffect
 @onready var scale_effect = $ScaleEffect
 @onready var audio_effect = $AudioEffect
-
+@onready var shake_effect_2 = $ShakeEffect2
+@onready var flash_effect_2 = $FlashEffect2
 #movement
 var rotation_speed: float = 2.0
 #phase2
@@ -36,12 +38,15 @@ func _ready() -> void:
 	boss_hurtbox.hurt.connect(func(hitbox: Hitbox):
 		flash_effect.flash()
 		shake_effect.tween_shake()
+		flash_effect_2.flash()
+		shake_effect_2.tween_shake()
 		)
 	
 	stats.health_changed.connect(func():
 		if on_phase2:
 			return
 		if stats.health <= og_health/2:
+			half_sprites.hide()
 			phase2_in_course.emit()
 			on_phase2 = true
 			boss_sprites.play("phase2"))

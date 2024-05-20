@@ -24,7 +24,7 @@ radius = 8.0
 [node name="QuessoBullet" instance=ExtResource("1_tm60x")]
 turn_back = true
 expire = true
-life_time = 4.0
+life_time = 10.0
 direction = 5
 speed = 2.0
 

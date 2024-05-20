@@ -69,10 +69,14 @@ barrel_origin = NodePath(".")
 sprite_frames = SubResource("SpriteFrames_bpiej")
 animation = &"phase1"
 autoplay = "phase1"
+flip_h = true
+flip_v = true
 
 [node name="HalfSprites" type="AnimatedSprite2D" parent="bossSprites"]
 sprite_frames = SubResource("SpriteFrames_evp6f")
 autoplay = "default"
+flip_h = true
+flip_v = true
 
 [node name="bossHitbox" type="Area2D" parent="."]
 collision_layer = 0
@@ -96,7 +100,7 @@ debug_color = Color(0.302776, 0.614443, 0.375808, 0.42)
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("5_hv6s8")
-health = 100
+health = 120
 
 [node name="Hurt" type="Node" parent="." node_paths=PackedStringArray("stats", "hurtbox")]
 script = ExtResource("9_7g424")
@@ -113,6 +117,16 @@ dest_ef_spawner = NodePath("DestroyedSpawner")
 position = Vector2(-1, 0)
 script = ExtResource("5_jswo6")
 scene = ExtResource("11_vob2e")
+
+[node name="ShakeEffect2" type="Node" parent="." node_paths=PackedStringArray("node_to_shake")]
+script = ExtResource("11_qw47l")
+node_to_shake = NodePath("../bossSprites/HalfSprites")
+
+[node name="FlashEffect2" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("12_h2nin")
+flash_material = ExtResource("13_utv8u")
+sprite = NodePath("../bossSprites/HalfSprites")
+flash_duration = 0.05
 
 [node name="ShakeEffect" type="Node" parent="." node_paths=PackedStringArray("node_to_shake")]
 script = ExtResource("11_qw47l")

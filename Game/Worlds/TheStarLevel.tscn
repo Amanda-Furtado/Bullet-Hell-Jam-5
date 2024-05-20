@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://u2iwyorybvbb"]
 
 [ext_resource type="Script" path="res://Game/Worlds/Scripts/TheStarLevel.gd" id="1_a1i37"]
+[ext_resource type="PackedScene" uid="uid://cb4follb366yw" path="res://Game/Worlds/TheSunLevel.tscn" id="2_2mijn"]
 [ext_resource type="Texture2D" uid="uid://dixiqobk8vsih" path="res://Assets/Tilesets/generictiles_spr.png" id="2_hkhng"]
 [ext_resource type="PackedScene" uid="uid://bhpew12gj1k16" path="res://Game/Bosses/The Star/TheStar.tscn" id="3_vycij"]
 [ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Player/Player.tscn" id="3_xnqh7"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="4_758gv"]
 [ext_resource type="PackedScene" uid="uid://bmmrexin7bc1w" path="res://Game/Bosses/The Star/ShootingStar.tscn" id="6_agcun"]
-[ext_resource type="PackedScene" uid="uid://bxe5nh2ej1176" path="res://Game/User Interface/DebugMenu.tscn" id="6_j0dqb"]
 [ext_resource type="PackedScene" uid="uid://8ea6gacj1x01" path="res://Game/Bosses/The Star/TopStarFragment.tscn" id="8_2ard4"]
 [ext_resource type="PackedScene" uid="uid://dtsfxyaf257i4" path="res://Game/Bosses/The Star/BotStarFragment.tscn" id="8_x1sf7"]
 [ext_resource type="AudioStream" uid="uid://y5t1ycksq515" path="res://Music and Sounds/Musics/wholephase.mp3" id="9_gpiqw"]
@@ -79,6 +79,7 @@ sources/0 = SubResource("TileSetAtlasSource_s457o")
 [node name="TheStarLevel" type="Node2D" node_paths=PackedStringArray("boss")]
 script = ExtResource("1_a1i37")
 boss = NodePath("TheStar")
+next_level = ExtResource("2_2mijn")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_rdv72")
@@ -96,17 +97,8 @@ position = Vector2(81, 151)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_top = 32.0
-offset_right = 40.0
-offset_bottom = 55.0
-text = "FPS:"
-metadata/_edit_use_anchors_ = true
-
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("4_758gv")]
 metadata/_edit_use_anchors_ = true
-
-[node name="DebugMenu" parent="CanvasLayer" instance=ExtResource("6_j0dqb")]
 
 [node name="BotStarFragment" parent="." instance=ExtResource("8_x1sf7")]
 visible = false

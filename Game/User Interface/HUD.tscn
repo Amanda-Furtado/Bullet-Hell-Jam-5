@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c78ehdrxbyqf0"]
+[gd_scene load_steps=7 format=3 uid="uid://c78ehdrxbyqf0"]
 
 [ext_resource type="Script" path="res://Game/User Interface/Scripts/HUD.gd" id="1_glb3a"]
 [ext_resource type="Texture2D" uid="uid://dxy855yk0iih4" path="res://Assets/UI/HUD/health_over.png" id="1_javle"]
 [ext_resource type="Texture2D" uid="uid://br1gex333cumg" path="res://Assets/UI/HUD/health_progress.png" id="2_1tuam"]
-[ext_resource type="Texture2D" uid="uid://xlqfa34gfyvc" path="res://Assets/UI/HUD/karma_over.png" id="3_ve36h"]
-[ext_resource type="Texture2D" uid="uid://h580rlkd1jmy" path="res://Assets/UI/HUD/karma_progress.png" id="4_gp7s5"]
-[ext_resource type="Texture2D" uid="uid://dqpqji3qtxcav" path="res://Assets/UI/HUD/card_frame.png" id="5_tnra5"]
+[ext_resource type="Texture2D" uid="uid://cn4v256hponmx" path="res://Assets/UI/HUD/health_under.png" id="2_ef22u"]
 [ext_resource type="Texture2D" uid="uid://bsnmcuiuseo3a" path="res://Assets/UI/HUD/boss_health_over.png" id="6_6q5q5"]
 [ext_resource type="Texture2D" uid="uid://dqlaqiyfmp43f" path="res://Assets/UI/HUD/boss_health_progress.png" id="7_k4k63"]
 
@@ -21,26 +19,15 @@ script = ExtResource("1_glb3a")
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 32.0
-offset_right = 80.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
 offset_bottom = 16.0
-max_value = 20.0
-value = 20.0
-nine_patch_stretch = true
+max_value = 10.0
+value = 5.0
+texture_under = ExtResource("2_ef22u")
 texture_over = ExtResource("1_javle")
 texture_progress = ExtResource("2_1tuam")
-
-[node name="KarmaBar" type="TextureProgressBar" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 32.0
-offset_top = 16.0
-offset_right = 80.0
-offset_bottom = 32.0
-value = 100.0
-nine_patch_stretch = true
-texture_over = ExtResource("3_ve36h")
-texture_progress = ExtResource("4_gp7s5")
 
 [node name="BossHealthBar" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
@@ -63,9 +50,3 @@ stretch_margin_left = 1
 stretch_margin_right = 1
 texture_over = ExtResource("6_6q5q5")
 texture_progress = ExtResource("7_k4k63")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-texture = ExtResource("5_tnra5")

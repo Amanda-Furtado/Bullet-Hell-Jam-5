@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Game/Worlds/Scripts/TheMoonLevel.gd" id="1_5rmj7"]
 [ext_resource type="PackedScene" uid="uid://qhcex4ei7jh" path="res://Game/Bosses/The Moon/TheMoon.tscn" id="2_lhcvt"]
+[ext_resource type="PackedScene" uid="uid://u2iwyorybvbb" path="res://Game/Worlds/TheStarLevel.tscn" id="2_li6to"]
 [ext_resource type="PackedScene" uid="uid://c7uf6qtxcabm7" path="res://Game/Bosses/The Moon/MoonSea.tscn" id="3_t7i8k"]
 [ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Player/Player.tscn" id="4_gl2if"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="5_xptiv"]
 [ext_resource type="Script" path="res://Game/Worlds/moon_path_follow.gd" id="6_fg75b"]
-[ext_resource type="PackedScene" uid="uid://bxe5nh2ej1176" path="res://Game/User Interface/DebugMenu.tscn" id="7_vksdh"]
 [ext_resource type="AudioStream" uid="uid://wfuut013riu8" path="res://Music and Sounds/Musics/phase1.mp3" id="8_woe1d"]
 [ext_resource type="AudioStream" uid="uid://dxp32e78qpvgd" path="res://Music and Sounds/Musics/phase2.mp3" id="9_vp0mj"]
 
@@ -23,6 +23,7 @@ point_count = 7
 [node name="TheMoonLevel" type="Node2D" node_paths=PackedStringArray("boss")]
 script = ExtResource("1_5rmj7")
 boss = NodePath("Path2D/MoonPathFollow/TheMoon")
+next_level = ExtResource("2_li6to")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_r7jav")
@@ -36,17 +37,6 @@ layer_1/tile_data = PackedInt32Array()
 position = Vector2(81, 151)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="DebugMenu" parent="CanvasLayer" instance=ExtResource("7_vksdh")]
-metadata/_edit_lock_ = true
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_top = 32.0
-offset_right = 40.0
-offset_bottom = 55.0
-text = "FPS:"
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("5_xptiv")]
 metadata/_edit_use_anchors_ = true
