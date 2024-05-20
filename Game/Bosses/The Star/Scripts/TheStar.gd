@@ -26,6 +26,8 @@ func _ready() -> void:
 			rotate_manager()
 			health_manager()
 			)
+	stats.no_health.connect(func():
+		EventsManager.destroy_all_bullets.emit())
 	
 	stats.health_changed.connect(func():
 		if on_phase2:

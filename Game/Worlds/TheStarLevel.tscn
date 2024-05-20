@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://u2iwyorybvbb"]
+[gd_scene load_steps=15 format=3 uid="uid://u2iwyorybvbb"]
 
 [ext_resource type="Script" path="res://Game/Worlds/Scripts/TheStarLevel.gd" id="1_a1i37"]
 [ext_resource type="PackedScene" uid="uid://cb4follb366yw" path="res://Game/Worlds/TheSunLevel.tscn" id="2_2mijn"]
@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Player/Player.tscn" id="3_xnqh7"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="4_758gv"]
 [ext_resource type="PackedScene" uid="uid://bmmrexin7bc1w" path="res://Game/Bosses/The Star/ShootingStar.tscn" id="6_agcun"]
+[ext_resource type="PackedScene" uid="uid://dc1577qcp3rxm" path="res://Game/User Interface/GameOverMenu.tscn" id="7_5s6uv"]
 [ext_resource type="PackedScene" uid="uid://8ea6gacj1x01" path="res://Game/Bosses/The Star/TopStarFragment.tscn" id="8_2ard4"]
 [ext_resource type="PackedScene" uid="uid://dtsfxyaf257i4" path="res://Game/Bosses/The Star/BotStarFragment.tscn" id="8_x1sf7"]
+[ext_resource type="PackedScene" uid="uid://cjmdhblarenrq" path="res://Game/User Interface/NextLevelMenu.tscn" id="8_x7mai"]
 [ext_resource type="AudioStream" uid="uid://y5t1ycksq515" path="res://Music and Sounds/Musics/wholephase.mp3" id="9_gpiqw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s457o"]
@@ -99,6 +101,13 @@ position = Vector2(81, 151)
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("4_758gv")]
 metadata/_edit_use_anchors_ = true
+
+[node name="GameOverMenu" parent="CanvasLayer" instance=ExtResource("7_5s6uv")]
+visible = false
+repeat_level_path = "res://Game/Worlds/TheStarLevel.tscn"
+
+[node name="NextLevelMenu" parent="CanvasLayer" instance=ExtResource("8_x7mai")]
+visible = false
 
 [node name="BotStarFragment" parent="." instance=ExtResource("8_x1sf7")]
 visible = false

@@ -1,7 +1,7 @@
 extends Control
 
 @onready var next_level_button = $NextLevelButton
-@export var next_level_scene: PackedScene
+@onready var next_level_scene: PackedScene
 
 
 func _ready() -> void:
@@ -10,4 +10,6 @@ func _ready() -> void:
 
 
 func _on_next_level_button_pressed():
+	EventsManager.destroy_all_bullets.emit()
 	next_level_button.disabled = true
+	SceneManager.load_new_scene(next_level_scene.resource_path)

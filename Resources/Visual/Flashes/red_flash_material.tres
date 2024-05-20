@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bo2cmslvq37pd"]
+
+[ext_resource type="Shader" path="res://Resources/Visual/Flashes/red_flash_material.gdshader" id="1_v3ed3"]
+
+[resource]
+shader = ExtResource("1_v3ed3")

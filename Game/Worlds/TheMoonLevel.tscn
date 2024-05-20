@@ -1,11 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmafyevf4c6fj"]
+[gd_scene load_steps=14 format=3 uid="uid://dmafyevf4c6fj"]
 
 [ext_resource type="Script" path="res://Game/Worlds/Scripts/TheMoonLevel.gd" id="1_5rmj7"]
 [ext_resource type="PackedScene" uid="uid://qhcex4ei7jh" path="res://Game/Bosses/The Moon/TheMoon.tscn" id="2_lhcvt"]
 [ext_resource type="PackedScene" uid="uid://u2iwyorybvbb" path="res://Game/Worlds/TheStarLevel.tscn" id="2_li6to"]
 [ext_resource type="PackedScene" uid="uid://c7uf6qtxcabm7" path="res://Game/Bosses/The Moon/MoonSea.tscn" id="3_t7i8k"]
 [ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Player/Player.tscn" id="4_gl2if"]
+[ext_resource type="PackedScene" uid="uid://dc1577qcp3rxm" path="res://Game/User Interface/GameOverMenu.tscn" id="5_dronw"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="5_xptiv"]
+[ext_resource type="PackedScene" uid="uid://cjmdhblarenrq" path="res://Game/User Interface/NextLevelMenu.tscn" id="6_5cx0w"]
 [ext_resource type="Script" path="res://Game/Worlds/moon_path_follow.gd" id="6_fg75b"]
 [ext_resource type="AudioStream" uid="uid://wfuut013riu8" path="res://Music and Sounds/Musics/phase1.mp3" id="8_woe1d"]
 [ext_resource type="AudioStream" uid="uid://dxp32e78qpvgd" path="res://Music and Sounds/Musics/phase2.mp3" id="9_vp0mj"]
@@ -41,6 +43,13 @@ position = Vector2(81, 151)
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("5_xptiv")]
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
+
+[node name="GameOverMenu" parent="CanvasLayer" instance=ExtResource("5_dronw")]
+visible = false
+repeat_level_path = "res://Game/Worlds/TheMoonLevel.tscn"
+
+[node name="NextLevelMenu" parent="CanvasLayer" instance=ExtResource("6_5cx0w")]
+visible = false
 
 [node name="MoonSea" parent="." instance=ExtResource("3_t7i8k")]
 

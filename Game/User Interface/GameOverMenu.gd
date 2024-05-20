@@ -1,13 +1,15 @@
 extends Control
 
 @onready var restart_button = %RestartButton
-@onready var repeat_level_scene: PackedScene
+@export var repeat_level_path: String
 
 
 func _ready() -> void:
 	restart_button.disabled = false
-	repeat_level_scene = get_parent().get_parent().same_level
 
 
 func _on_restart_button_pressed() -> void:
+	EventsManager.destroy_all_bullets.emit()
 	restart_button.disabled = true
+	get_tree().change_scene_to_file(repeat_level_path)	
+	

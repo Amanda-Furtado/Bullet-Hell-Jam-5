@@ -4,6 +4,7 @@ class_name Bullet extends CharacterBody2D
 
 @onready var hitbox: Hitbox = $Hitbox
 @onready var screen_notifier = $ScreenNotifier
+@onready var spawner = $Spawner
 
 @export var turn_back: bool = false
 @export var expire: bool = false
@@ -18,6 +19,11 @@ var dir_vector: Vector2 = Vector2.ZERO
 var is_dying: bool = false
 
 func _ready() -> void:
+	EventsManager.destroy_all_bullets.connect(func():
+		spawner.spawn()
+		await get_tree().create_timer(0.5).timeout
+		queue_free())
+	
 	hitbox.hit_hurtbox.connect(func(_hurtbox: Hurtbox):
 		is_dying = true
 		queue_free())

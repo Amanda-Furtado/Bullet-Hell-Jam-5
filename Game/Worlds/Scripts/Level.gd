@@ -2,11 +2,12 @@ class_name Level extends Node2D
 
 @export var boss: CharacterBody2D
 @export var next_level: PackedScene
-@export var same_level: PackedScene
 
 @onready var player = $Player
 
 @onready var hud: HUD = $CanvasLayer/Hud
+@onready var game_over_menu = $CanvasLayer/GameOverMenu
+@onready var next_level_menu = $CanvasLayer/NextLevelMenu
 
 
 func _ready() -> void:
@@ -22,7 +23,14 @@ func _ready() -> void:
 		hud.update_boss_health_bar(boss.stats.health))
 	
 	#Scene Change
-	boss.stats.no_health.connect(func():
-		await get_tree().create_timer(2.0).timeout
-		#SceneManager.load_new_scene(next_level.resource_path)
+	player.stats.no_health.connect(func():
+		await get_tree().create_timer(1.0).timeout
+		game_over_menu.show()
 		)
+	
+	boss.stats.no_health.connect(func():
+		await get_tree().create_timer(1.0).timeout
+		next_level_menu.show()
+		)
+	
+	get_tree().paused = false

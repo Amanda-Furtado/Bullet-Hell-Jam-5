@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cb4follb366yw"]
+[gd_scene load_steps=14 format=3 uid="uid://cb4follb366yw"]
 
 [ext_resource type="Script" path="res://Game/Worlds/Scripts/TheSunLevel.gd" id="1_8e8kc"]
 [ext_resource type="Texture2D" uid="uid://dixiqobk8vsih" path="res://Assets/Tilesets/generictiles_spr.png" id="1_i6l0t"]
 [ext_resource type="PackedScene" uid="uid://cavv0c8wefvuo" path="res://Game/Player/Player.tscn" id="3_8til5"]
 [ext_resource type="PackedScene" uid="uid://bdjjd164d8wkp" path="res://Game/Bosses/The Sun/TheSun.tscn" id="3_n28pe"]
+[ext_resource type="PackedScene" uid="uid://dc1577qcp3rxm" path="res://Game/User Interface/GameOverMenu.tscn" id="3_nnleh"]
 [ext_resource type="PackedScene" uid="uid://c78ehdrxbyqf0" path="res://Game/User Interface/HUD.tscn" id="4_4txsr"]
+[ext_resource type="PackedScene" uid="uid://cjmdhblarenrq" path="res://Game/User Interface/NextLevelMenu.tscn" id="4_77ci1"]
 [ext_resource type="Script" path="res://Game/Worlds/sun_path_follow.gd" id="5_swusq"]
 [ext_resource type="AudioStream" uid="uid://201rxnbqqhux" path="res://Music and Sounds/Musics/another_phase1.mp3" id="8_v3cj6"]
 [ext_resource type="AudioStream" uid="uid://d0an7eluobvxf" path="res://Music and Sounds/Musics/another_phase2.mp3" id="9_xbmg4"]
@@ -88,6 +90,13 @@ boss = NodePath("Path2D/PathFollow2D/TheSun")
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("4_4txsr")]
 metadata/_edit_use_anchors_ = true
+
+[node name="GameOverMenu" parent="CanvasLayer" instance=ExtResource("3_nnleh")]
+visible = false
+repeat_level_path = "res://Game/Worlds/TheSunLevel.tscn"
+
+[node name="NextLevelMenu" parent="CanvasLayer" instance=ExtResource("4_77ci1")]
+visible = false
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_v4uvb")

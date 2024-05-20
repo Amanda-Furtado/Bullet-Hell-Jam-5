@@ -34,6 +34,8 @@ var on_phase2: bool = false
 
 
 func _ready() -> void:
+	boss_hurtbox.is_invincible = true
+	
 	var og_health = stats.health
 	boss_hurtbox.hurt.connect(func(hitbox: Hitbox):
 		flash_effect.flash()
@@ -41,6 +43,9 @@ func _ready() -> void:
 		flash_effect_2.flash()
 		shake_effect_2.tween_shake()
 		)
+	
+	stats.no_health.connect(func():
+		EventsManager.destroy_all_bullets.emit())
 	
 	stats.health_changed.connect(func():
 		if on_phase2:
@@ -55,6 +60,8 @@ func _ready() -> void:
 		if meteors.get_child_count() == 0:
 			shoot()
 		)
+	await get_tree().create_timer(0.2).timeout
+	boss_hurtbox.is_invincible = false
 
 
 func _physics_process(delta: float) -> void:

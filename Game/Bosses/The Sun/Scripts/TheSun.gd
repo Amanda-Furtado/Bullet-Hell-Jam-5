@@ -59,6 +59,9 @@ func _ready() -> void:
 		zig_zag_shoot()
 		)
 	
+	stats.no_health.connect(func():
+		EventsManager.destroy_all_bullets.emit())
+	
 	stats.health_changed.connect(func():
 		if scale < Vector2(1.5, 1.5):
 			scale += Vector2(0.005, 0.005)

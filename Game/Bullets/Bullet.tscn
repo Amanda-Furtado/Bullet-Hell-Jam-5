@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddxg15egd2mbt"]
+[gd_scene load_steps=5 format=3 uid="uid://ddxg15egd2mbt"]
 
 [ext_resource type="Script" path="res://Game/Bullets/Bullet.gd" id="1_88hdw"]
 [ext_resource type="Script" path="res://Components/Damage/Hitbox.gd" id="2_s87j3"]
+[ext_resource type="Script" path="res://Components/Spawners/Spawn.gd" id="3_jtmxe"]
+[ext_resource type="PackedScene" uid="uid://bkcb672ohnlf3" path="res://Resources/Visual/Explosions/explosion_veffect.tscn" id="4_s4nyb"]
 
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 0
@@ -18,5 +20,9 @@ monitorable = false
 script = ExtResource("2_s87j3")
 
 [node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("3_jtmxe")
+scene = ExtResource("4_s4nyb")
 
 [connection signal="screen_exited" from="ScreenNotifier" to="." method="_on_screen_notifier_screen_exited"]
