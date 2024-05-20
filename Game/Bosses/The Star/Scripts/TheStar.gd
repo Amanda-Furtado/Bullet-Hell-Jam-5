@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 signal start_phase2
-
+signal spawn_vertical
+signal spawn_diagonal
 
 @onready var hurt_audio = $HurtAudio
 @onready var destroyed_audio = $DestroyedAudio
@@ -21,6 +22,11 @@ signal start_phase2
 
 var og_health: int
 var on_phase2: bool = false
+
+var v_emited: bool = false
+var x_emited: bool = false
+
+
 
 func _ready() -> void:
 	
@@ -53,18 +59,31 @@ func _ready() -> void:
 			start_phase2.emit()
 		)
 
+
+func _process(delta):
+	if vertical.get_child_count() == 0:
+		if !v_emited:
+			v_emited = true
+			spawn_vertical.emit()
+	
+	if diagonal.get_child_count() == 0:
+		if !x_emited:
+			x_emited = true
+			spawn_diagonal.emit()
+
+
 func health_manager() -> void:
 	hurt_audio.pitch_scale = randf_range(1.0, 1.2)
 	hurt_audio.play()
 	flash_effect.flash()
 	shake_effect.tween_shake()
-	stats.health -= 5
+	stats.health -= 10
 	stats.health_changed.emit()
 
 
 func _physics_process(_delta: float) -> void:
-	diagonal.rotate(min(0.01 + rotate_incr, 0.02))
-	vertical.rotate(max(-0.01 - rotate_incr, -0.02))
+	diagonal.rotate(min(0.01 + rotate_incr, 0.03))
+	vertical.rotate(max(-0.01 - rotate_incr, -0.03))
 
 
 func _on_atk_cooldown_timer_timeout() -> void:
@@ -82,4 +101,4 @@ func _on_atk_cooldown_timer_timeout() -> void:
 
 
 func rotate_manager() -> void:
-	rotate_incr += 0.005
+	rotate_incr += 0.01

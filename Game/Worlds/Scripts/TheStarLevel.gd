@@ -15,11 +15,15 @@ func _ready() -> void:
 	
 	boss.start_phase2.connect(func():
 		phase2())
+	
+	boss.spawn_diagonal.connect(func():
+		top_star_fragment.set_process(true)
+		top_star_fragment.show())
+	
+	boss.spawn_vertical.connect(func():
+		bot_star_fragment.set_process(true)
+		bot_star_fragment.show())
 
 
 func phase2() -> void:
 	stars.position.x = 88
-	top_star_fragment.set_process(true)
-	top_star_fragment.show()
-	bot_star_fragment.set_process(true)
-	bot_star_fragment.show()
